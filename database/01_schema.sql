@@ -1,0 +1,3 @@
+-- Tables, primary keys, foreign keys and constraints. Owner: Mohammed
+-- Online Shopping Management System
+-- Run after the previous script. Target DBMS: to be decided (see docs/TASKS.md 0.1)

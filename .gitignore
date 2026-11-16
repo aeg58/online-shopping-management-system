@@ -1,0 +1,23 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.iml
+# Build output
+target/
+build/
+out/
+bin/
+obj/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+# Secrets: never commit passwords
+.env
+application-local.properties
+appsettings.Development.json
+# Office temp files
+~$*
