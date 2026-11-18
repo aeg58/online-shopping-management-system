@@ -52,3 +52,84 @@ body {
     margin-inline: auto;
     max-width: 26rem;
 }
+
+.cart-quantity {
+    min-width: 11rem;
+}
+
+.cart-quantity .form-control {
+    width: 5rem;
+}
+
+.cart-table-wrapper {
+    container-type: inline-size;
+}
+
+/* On narrow screens every cart row becomes a card, so no button is hidden off screen */
+@container (width < 600px) {
+    .table.cart-table,
+    .table.cart-table tbody,
+    .table.cart-table tfoot,
+    .table.cart-table tr,
+    .table.cart-table th,
+    .table.cart-table td {
+        display: block;
+    }
+
+    .table.cart-table thead {
+        display: none;
+    }
+
+    .table.cart-table tbody tr {
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius);
+        margin-block-end: 1rem;
+        padding: 0.75rem;
+    }
+
+    .table.cart-table tbody th,
+    .table.cart-table tbody td,
+    .table.cart-table tfoot th,
+    .table.cart-table tfoot td {
+        border: 0;
+        padding: 0.25rem 0;
+    }
+
+    .table.cart-table tbody td {
+        align-items: center;
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+    }
+
+    .table.cart-table tbody td:nth-child(2)::before {
+        content: "Price";
+    }
+
+    .table.cart-table tbody td:nth-child(3)::before {
+        content: "Quantity";
+    }
+
+    .table.cart-table tbody td:nth-child(4)::before {
+        content: "Line total";
+    }
+
+    .table.cart-table tbody td::before {
+        color: var(--bs-secondary-color);
+    }
+
+    .table.cart-table tbody td:last-child form,
+    .table.cart-table tbody td:last-child button {
+        width: 100%;
+    }
+
+    .table.cart-table tfoot tr {
+        display: flex;
+        font-size: 1.125rem;
+        justify-content: space-between;
+    }
+
+    .table.cart-table tfoot td:last-child {
+        display: none;
+    }
+}

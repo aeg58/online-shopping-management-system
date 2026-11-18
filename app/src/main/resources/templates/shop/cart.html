@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Cart')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <h1 class="h3 mb-3">Your cart</h1>
+
+    <div th:if="${items.isEmpty()}">
+        <p class="text-secondary">Your cart is empty.</p>
+        <a class="btn btn-primary" th:href="@{/shop}">Go to shop</a>
+    </div>
+
+    <div class="cart-table-wrapper" th:unless="${items.isEmpty()}">
+        <table class="table align-middle cart-table">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col" class="text-end">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col" class="text-end">Line total</th>
+                <th scope="col"><span class="visually-hidden">Actions</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <th scope="row" class="fw-normal">
+                    <a th:href="@{/shop/product/{id}(id=${item.productId})}" th:if="${item.productActive}"
+                       th:text="${item.productName}">Product</a>
+                    <span th:unless="${item.productActive}" th:text="${item.productName}">Product</span>
+                    <div class="small text-danger" th:unless="${item.productActive}">No longer available</div>
+                    <div class="small text-danger" th:if="${item.productActive and item.quantity > item.quantityInStock}"
+                         th:text="'Only ' + ${item.quantityInStock} + ' left in stock'">Only 1 left in stock</div>
+                </th>
+                <td class="text-end text-nowrap"
+                    th:text="${#numbers.formatDecimal(item.price, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                <td>
+                    <form class="d-flex gap-2 cart-quantity" method="post" th:action="@{/shop/cart/update}">
+                        <input type="hidden" name="cartItemId" th:value="${item.cartItemId}">
+                        <label class="visually-hidden" th:for="'quantity-' + ${item.cartItemId}"
+                               th:text="'Quantity of ' + ${item.productName}">Quantity</label>
+                        <input class="form-control" type="number" name="quantity" min="1" inputmode="numeric" required
+                               th:id="'quantity-' + ${item.cartItemId}" th:value="${item.quantity}"
+                               th:max="${item.quantityInStock}">
+                        <button class="btn btn-outline-secondary" type="submit">Update</button>
+                    </form>
+                </td>
+                <td class="text-end text-nowrap"
+                    th:text="${#numbers.formatDecimal(item.lineTotal, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                <td class="text-end">
+                    <form method="post" th:action="@{/shop/cart/remove}">
+                        <input type="hidden" name="cartItemId" th:value="${item.cartItemId}">
+                        <button class="btn btn-outline-danger" type="submit"
+                                th:attr="aria-label='Remove ' + ${item.productName}">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th scope="row" colspan="3" class="text-end">Total</th>
+                <td class="text-end text-nowrap fw-semibold"
+                    th:text="${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                <td></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

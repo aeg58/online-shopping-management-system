@@ -1,22 +1,15 @@
 package com.osms.controller;
 
-import com.osms.repository.ProductRepository;
+import com.osms.model.SessionUser;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class HomeController {
 
-    private final ProductRepository productRepository;
-
-    public HomeController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
     @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("productCount", productRepository.countProducts());
-        return "home";
+    public String home(@ModelAttribute("currentUser") SessionUser currentUser) {
+        return "redirect:" + (currentUser != null ? currentUser.getHomePath() : "/shop");
     }
 }

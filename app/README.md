@@ -50,4 +50,4 @@ From the `app/` folder:
 
 On Windows use `mvnw.cmd spring-boot:run`.
 
-Open <http://localhost:8080>. The home page shows the number of products in the database.
+Open <http://localhost:8080>.

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${product.productName})}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <p><a th:href="@{/shop}">Back to shop</a></p>
+
+    <div class="row g-4">
+        <div class="col-12 col-lg-7">
+            <h1 class="h3" th:text="${product.productName}">Product</h1>
+            <p class="text-secondary">
+                <span th:text="${product.categoryName}">Category</span> ·
+                <span th:text="${product.storeName}">Store</span>
+            </p>
+            <p th:text="${product.description}">Description</p>
+            <p class="mb-0" th:if="${rating.reviewCount > 0}">
+                Rating:
+                <strong th:text="${#numbers.formatDecimal(rating.average, 1, 1, 'POINT')} + ' / 5'">0.0 / 5</strong>
+                (<span th:text="${rating.reviewCount} + (${rating.reviewCount == 1} ? ' review' : ' reviews')">0 reviews</span>)
+            </p>
+            <p class="text-secondary mb-0" th:if="${rating.reviewCount == 0}">No ratings yet</p>
+        </div>
+
+        <div class="col-12 col-lg-5">
+            <div class="border rounded p-3">
+                <p class="fs-4 fw-semibold mb-1"
+                   th:text="${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</p>
+                <p class="mb-3">
+                    <span class="badge text-bg-secondary" th:if="${product.quantityInStock == 0}">Out of stock</span>
+                    <span class="text-secondary" th:if="${product.quantityInStock > 0}"
+                          th:text="${product.quantityInStock} + ' in stock'">In stock</span>
+                </p>
+
+                <form method="post" th:action="@{/shop/cart/add}"
+                      th:if="${currentUser != null and currentUser.roleName == 'Customer' and product.quantityInStock > 0}">
+                    <input type="hidden" name="productId" th:value="${product.productId}">
+                    <div class="mb-3">
+                        <label class="form-label" for="quantity">Quantity</label>
+                        <input class="form-control" type="number" id="quantity" name="quantity" value="1" min="1"
+                               th:max="${product.quantityInStock}" inputmode="numeric" required>
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit">Add to cart</button>
+                </form>
+                <a class="btn btn-outline-secondary w-100" th:href="@{/login}"
+                   th:if="${currentUser == null and product.quantityInStock > 0}">Log in to buy</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-5" aria-labelledby="reviewsTitle">
+        <h2 class="h4" id="reviewsTitle">Reviews</h2>
+        <p class="text-secondary" th:if="${reviews.isEmpty()}">No reviews yet.</p>
+        <article class="border-top py-3" th:each="r : ${reviews}">
+            <p class="mb-1">
+                <strong th:text="${r.firstName}">Name</strong>
+                <span class="ms-2" th:text="${r.rating} + ' / 5'">5 / 5</span>
+                <span class="small text-secondary ms-2" th:text="${r.createdAt}">2026-01-01</span>
+            </p>
+            <p class="mb-0" th:if="${r.comment != null}" th:text="${r.comment}">Comment</p>
+        </article>
+    </section>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>
