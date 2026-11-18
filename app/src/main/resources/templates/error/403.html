@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Access denied')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <h1 class="h3">Access denied</h1>
+    <p>You do not have permission to view this page</p>
+    <a class="btn btn-primary" th:href="@{${currentUser != null ? currentUser.homePath : '/'}}">Go back</a>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

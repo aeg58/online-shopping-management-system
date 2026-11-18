@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Login')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div class="login-panel">
+        <div th:replace="~{fragments/layout :: messages}"></div>
+
+        <h1 class="h3 mb-3">Sign in</h1>
+
+        <form method="post" th:action="@{/login}">
+            <div class="mb-3">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-control" type="text" id="username" name="username"
+                       th:value="${username}" autocomplete="username" autocapitalize="none"
+                       autocorrect="off" spellcheck="false" required autofocus>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" type="password" id="password" name="password"
+                       autocomplete="current-password" required>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Sign in</button>
+        </form>
+
+        <section class="border rounded p-3 mt-4" aria-labelledby="demoAccounts">
+            <h2 class="h6" id="demoAccounts">Demo accounts</h2>
+            <dl class="row small mb-0">
+                <dt class="col-4">Admin</dt>
+                <dd class="col-8 mb-1">admin</dd>
+                <dt class="col-4">Sellers</dt>
+                <dd class="col-8 mb-1">techworld, fashionhub, homeandbooks</dd>
+                <dt class="col-4">Customers</dt>
+                <dd class="col-8 mb-0">ali_yilmaz, ayse_demir, mehmet_kaya, zeynep_arslan, can_ozturk</dd>
+            </dl>
+        </section>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>
