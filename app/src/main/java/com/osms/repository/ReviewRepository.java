@@ -24,6 +24,13 @@ public class ReviewRepository {
             WHERE ProductID = ?
             """;
 
+    private static final String HAS_PURCHASED = """
+            SELECT COUNT(*)
+            FROM Orders o
+            JOIN OrderItems oi ON oi.OrderID = o.OrderID
+            WHERE o.CustomerID = ? AND oi.ProductID = ? AND o.Status <> 'Cancelled'
+            """;
+
     private final JdbcTemplate jdbcTemplate;
 
     public ReviewRepository(JdbcTemplate jdbcTemplate) {
@@ -37,6 +44,23 @@ public class ReviewRepository {
                 rs.getString("Comment"),
                 rs.getDate("CreatedAt").toLocalDate()
         ), productId);
+    }
+
+    public boolean hasPurchased(int customerId, int productId) {
+        Integer count = jdbcTemplate.queryForObject(HAS_PURCHASED, Integer.class, customerId, productId);
+        return count != null && count > 0;
+    }
+
+    public boolean hasReviewed(int customerId, int productId) {
+        Integer count = jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM Reviews WHERE CustomerID = ? AND ProductID = ?",
+                Integer.class, customerId, productId);
+        return count != null && count > 0;
+    }
+
+    public void insert(int productId, int customerId, int rating, String comment) {
+        jdbcTemplate.update("INSERT INTO Reviews (ProductID, CustomerID, Rating, Comment) VALUES (?, ?, ?, ?)",
+                productId, customerId, rating, comment);
     }
 
     public RatingSummary findRatingSummary(int productId) {

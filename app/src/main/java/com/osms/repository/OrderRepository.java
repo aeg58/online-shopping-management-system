@@ -1,6 +1,7 @@
 package com.osms.repository;
 
 import com.osms.model.OrderItemView;
+import com.osms.model.OrderSummary;
 import com.osms.model.OrderView;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -31,9 +32,20 @@ public class OrderRepository {
             WHERE o.OrderID = ? AND o.CustomerID = ?
             """;
 
+    private static final String FIND_BY_CUSTOMER = """
+            SELECT OrderID, OrderDate, Status, TotalAmount
+            FROM Orders
+            WHERE CustomerID = ?
+            ORDER BY OrderDate DESC, OrderID DESC
+            """;
+
     private static final String FIND_ITEMS = """
             SELECT oi.ProductID, p.ProductName, oi.Quantity, oi.UnitPrice,
-                   oi.Quantity * oi.UnitPrice AS LineTotal
+                   oi.Quantity * oi.UnitPrice AS LineTotal,
+                   ISNULL((SELECT SUM(r.Quantity)
+                           FROM Returns r
+                           WHERE r.OrderID = oi.OrderID AND r.ProductID = oi.ProductID
+                             AND r.Status <> 'Rejected'), 0) AS ReturnedQuantity
             FROM OrderItems oi
             JOIN Products p ON p.ProductID = oi.ProductID
             WHERE oi.OrderID = ?
@@ -90,7 +102,17 @@ public class OrderRepository {
                 rs.getString("ProductName"),
                 rs.getInt("Quantity"),
                 rs.getBigDecimal("UnitPrice"),
-                rs.getBigDecimal("LineTotal")
+                rs.getBigDecimal("LineTotal"),
+                rs.getInt("ReturnedQuantity")
         ), orderId);
+    }
+
+    public List<OrderSummary> findByCustomer(int customerId) {
+        return jdbcTemplate.query(FIND_BY_CUSTOMER, (rs, rowNum) -> new OrderSummary(
+                rs.getInt("OrderID"),
+                rs.getDate("OrderDate").toLocalDate(),
+                rs.getString("Status"),
+                rs.getBigDecimal("TotalAmount")
+        ), customerId);
     }
 }

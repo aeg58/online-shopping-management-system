@@ -7,6 +7,7 @@
 <main class="container py-4">
     <div th:replace="~{fragments/layout :: messages}"></div>
 
+    <p><a th:href="@{/shop/orders}">Back to orders</a></p>
     <h1 class="h3" th:text="'Order #' + ${order.orderId}">Order #1</h1>
     <p class="text-secondary">
         <span th:text="${order.orderDate}">2026-01-01</span> ·
@@ -61,6 +62,62 @@
                     </tbody>
                 </table>
             </div>
+
+            <section class="mt-4" aria-labelledby="returnFormTitle" th:unless="${returnableItems.isEmpty()}">
+                <h2 class="h5" id="returnFormTitle">Request a return</h2>
+                <form class="row g-2 align-items-end border-top py-3" method="post"
+                      th:each="item : ${returnableItems}"
+                      th:action="@{/shop/orders/{id}/return(id=${order.orderId})}">
+                    <input type="hidden" name="productId" th:value="${item.productId}">
+                    <p class="col-12 mb-0">
+                        <strong th:text="${item.productName}">Product</strong>
+                        <span class="small text-secondary"
+                              th:text="'(you can return up to ' + ${item.remainingQuantity()} + ')'">(you can return up to 1)</span>
+                    </p>
+                    <div class="col-4 col-md-2">
+                        <label class="form-label" th:for="'return-quantity-' + ${item.productId}">Quantity</label>
+                        <input class="form-control" type="number" name="quantity" value="1" min="1" inputmode="numeric" required
+                               th:id="'return-quantity-' + ${item.productId}" th:max="${item.remainingQuantity()}">
+                    </div>
+                    <div class="col-8 col-md-7">
+                        <label class="form-label" th:for="'return-reason-' + ${item.productId}">Reason</label>
+                        <input class="form-control" type="text" name="reason" maxlength="255" required
+                               th:id="'return-reason-' + ${item.productId}">
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <button class="btn btn-outline-secondary w-100" type="submit">Request return</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="mt-4" aria-labelledby="returnsTitle" th:unless="${returns.isEmpty()}">
+                <h2 class="h5" id="returnsTitle">Return requests</h2>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col" class="text-end">Quantity</th>
+                            <th scope="col">Reason</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" class="text-end">Refund</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="r : ${returns}">
+                            <th scope="row" class="fw-normal" th:text="${r.productName}">Product</th>
+                            <td class="text-end" th:text="${r.quantity}">1</td>
+                            <td th:text="${r.reason}">Reason</td>
+                            <td class="text-nowrap" th:text="${r.requestDate}">2026-01-01</td>
+                            <td><span class="badge text-bg-light border" th:text="${r.status}">Requested</span></td>
+                            <td class="text-end text-nowrap"
+                                th:text="${r.refundAmount != null ? #numbers.formatDecimal(r.refundAmount, 1, 'COMMA', 2, 'POINT') + ' ₺' : '-'}">-</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
 
         <div class="col-12 col-lg-4">
@@ -78,7 +135,7 @@
                               th:text="'(' + ${order.couponCode} + ')'">(CODE)</span>
                     </span>
                     <span class="text-nowrap"
-                          th:text="'-' + ${#numbers.formatDecimal(order.discountAmount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">-0.00 ₺</span>
+                          th:text="(${order.discountAmount.signum() > 0} ? '-' : '') + ${#numbers.formatDecimal(order.discountAmount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
                 </p>
                 <p class="d-flex justify-content-between border-top pt-2 mb-0 fw-semibold">
                     <span>Total</span>
@@ -87,13 +144,30 @@
                 </p>
             </section>
 
-            <section class="border rounded p-3" aria-labelledby="addressTitle">
+            <section class="border rounded p-3 mb-3" aria-labelledby="addressTitle">
                 <h2 class="h5" id="addressTitle">Delivery address</h2>
                 <p class="mb-0">
                     <strong th:text="${order.addressTitle}">Home</strong><br>
                     <span th:text="${order.addressLine}">Address line</span><br>
                     <span th:text="${order.district + ' / ' + order.city}">District / City</span>
                 </p>
+            </section>
+
+            <section class="border rounded p-3" aria-labelledby="shipmentTitle">
+                <h2 class="h5" id="shipmentTitle">Shipment</h2>
+                <p class="text-secondary mb-0" th:if="${shipment == null}">Not shipped yet.</p>
+                <dl class="row small mb-0" th:if="${shipment != null}">
+                    <dt class="col-5">Company</dt>
+                    <dd class="col-7 mb-1" th:text="${shipment.companyName}">Company</dd>
+                    <dt class="col-5">Tracking no</dt>
+                    <dd class="col-7 mb-1 text-break" th:text="${shipment.trackingNumber}">TR1</dd>
+                    <dt class="col-5">Status</dt>
+                    <dd class="col-7 mb-1" th:text="${shipment.status}">InTransit</dd>
+                    <dt class="col-5">Shipped</dt>
+                    <dd class="col-7 mb-1" th:text="${shipment.shippedDate != null ? shipment.shippedDate : '-'}">2026-01-01</dd>
+                    <dt class="col-5">Delivered</dt>
+                    <dd class="col-7 mb-0" th:text="${shipment.deliveredDate != null ? shipment.deliveredDate : '-'}">-</dd>
+                </dl>
             </section>
         </div>
     </div>

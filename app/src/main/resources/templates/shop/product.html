@@ -53,6 +53,27 @@
 
     <section class="mt-5" aria-labelledby="reviewsTitle">
         <h2 class="h4" id="reviewsTitle">Reviews</h2>
+
+        <form class="border rounded p-3 mb-4" method="post" th:action="@{/shop/orders/review}" th:if="${canReview}">
+            <h3 class="h6">Write a review</h3>
+            <input type="hidden" name="productId" th:value="${product.productId}">
+            <div class="mb-3">
+                <label class="form-label" for="rating">Rating</label>
+                <select class="form-select" id="rating" name="rating" required>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Very poor</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="comment">Comment (optional)</label>
+                <textarea class="form-control" id="comment" name="comment" rows="3" maxlength="1000"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit review</button>
+        </form>
+
         <p class="text-secondary" th:if="${reviews.isEmpty()}">No reviews yet.</p>
         <article class="border-top py-3" th:each="r : ${reviews}">
             <p class="mb-1">
