@@ -108,4 +108,8 @@ public class CartRepository {
     public int deleteItem(int cartId, int cartItemId) {
         return jdbcTemplate.update("DELETE FROM CartItems WHERE CartID = ? AND CartItemID = ?", cartId, cartItemId);
     }
+
+    public void markCheckedOut(int cartId) {
+        jdbcTemplate.update("UPDATE Carts SET Status = 'CheckedOut' WHERE CartID = ?", cartId);
+    }
 }

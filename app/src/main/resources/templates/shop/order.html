@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Order #' + ${order.orderId})}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <h1 class="h3" th:text="'Order #' + ${order.orderId}">Order #1</h1>
+    <p class="text-secondary">
+        <span th:text="${order.orderDate}">2026-01-01</span> ·
+        <span class="badge text-bg-light border" th:text="${order.status}">Pending</span>
+    </p>
+
+    <div class="row g-4">
+        <div class="col-12 col-lg-8">
+            <h2 class="h5">Items</h2>
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col" class="text-end">Unit price</th>
+                        <th scope="col" class="text-end">Quantity</th>
+                        <th scope="col" class="text-end">Line total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${items}">
+                        <th scope="row" class="fw-normal" th:text="${item.productName}">Product</th>
+                        <td class="text-end text-nowrap"
+                            th:text="${#numbers.formatDecimal(item.unitPrice, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                        <td class="text-end" th:text="${item.quantity}">1</td>
+                        <td class="text-end text-nowrap"
+                            th:text="${#numbers.formatDecimal(item.lineTotal, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="h5 mt-4">Payment</h2>
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Paid on</th>
+                        <th scope="col" class="text-end">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="payment : ${payments}">
+                        <td th:text="${payment.method}">CreditCard</td>
+                        <td th:text="${payment.status}">Completed</td>
+                        <td th:text="${payment.paidAt != null ? payment.paidAt : '-'}">2026-01-01</td>
+                        <td class="text-end text-nowrap"
+                            th:text="${#numbers.formatDecimal(payment.amount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <section class="border rounded p-3 mb-3" aria-labelledby="totalsTitle">
+                <h2 class="h5" id="totalsTitle">Totals</h2>
+                <p class="d-flex justify-content-between mb-1">
+                    <span>Subtotal</span>
+                    <span class="text-nowrap"
+                          th:text="${#numbers.formatDecimal(order.totalAmount.add(order.discountAmount), 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                </p>
+                <p class="d-flex justify-content-between mb-1">
+                    <span>
+                        Discount
+                        <span class="small text-secondary" th:if="${order.couponCode != null}"
+                              th:text="'(' + ${order.couponCode} + ')'">(CODE)</span>
+                    </span>
+                    <span class="text-nowrap"
+                          th:text="'-' + ${#numbers.formatDecimal(order.discountAmount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">-0.00 ₺</span>
+                </p>
+                <p class="d-flex justify-content-between border-top pt-2 mb-0 fw-semibold">
+                    <span>Total</span>
+                    <span class="text-nowrap"
+                          th:text="${#numbers.formatDecimal(order.totalAmount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                </p>
+            </section>
+
+            <section class="border rounded p-3" aria-labelledby="addressTitle">
+                <h2 class="h5" id="addressTitle">Delivery address</h2>
+                <p class="mb-0">
+                    <strong th:text="${order.addressTitle}">Home</strong><br>
+                    <span th:text="${order.addressLine}">Address line</span><br>
+                    <span th:text="${order.district + ' / ' + order.city}">District / City</span>
+                </p>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Checkout')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <p><a th:href="@{/shop/cart}">Back to cart</a></p>
+    <h1 class="h3 mb-3">Checkout</h1>
+
+    <div class="row g-4">
+        <div class="col-12 col-lg-7">
+            <p class="text-danger" th:if="${addresses.isEmpty()}">You need an address before you can place an order.</p>
+
+            <form method="post" th:action="@{/shop/checkout}" th:unless="${addresses.isEmpty()}">
+                <div class="mb-3">
+                    <label class="form-label" for="addressId">Delivery address</label>
+                    <select class="form-select" id="addressId" name="addressId" required>
+                        <option th:each="a : ${addresses}" th:value="${a.addressId}"
+                                th:selected="${selectedAddressId != null ? a.addressId == selectedAddressId : a.defaultAddress}"
+                                th:text="${a.title + ': ' + a.addressLine + ', ' + a.district + ' / ' + a.city}">Address</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="couponCode">Coupon code (optional)</label>
+                    <input class="form-control" type="text" id="couponCode" name="couponCode" maxlength="30"
+                           th:value="${couponCode}" autocomplete="off" autocapitalize="characters" spellcheck="false">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="paymentMethod">Payment method</label>
+                    <select class="form-select" id="paymentMethod" name="paymentMethod" required>
+                        <option value="CreditCard" th:selected="${paymentMethod == 'CreditCard'}">Credit card</option>
+                        <option value="DebitCard" th:selected="${paymentMethod == 'DebitCard'}">Debit card</option>
+                        <option value="BankTransfer" th:selected="${paymentMethod == 'BankTransfer'}">Bank transfer</option>
+                        <option value="CashOnDelivery" th:selected="${paymentMethod == 'CashOnDelivery'}">Cash on delivery</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary w-100" type="submit">Place order</button>
+            </form>
+        </div>
+
+        <div class="col-12 col-lg-5">
+            <section class="border rounded p-3" aria-labelledby="summaryTitle">
+                <h2 class="h5" id="summaryTitle">Order summary</h2>
+                <ul class="list-unstyled mb-3">
+                    <li class="d-flex justify-content-between gap-3 py-1" th:each="item : ${items}">
+                        <span th:text="${item.productName} + ' × ' + ${item.quantity}">Product × 1</span>
+                        <span class="text-nowrap"
+                              th:text="${#numbers.formatDecimal(item.lineTotal, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                    </li>
+                </ul>
+                <p class="d-flex justify-content-between border-top pt-2 mb-1 fw-semibold">
+                    <span>Total</span>
+                    <span class="text-nowrap" th:text="${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                </p>
+                <p class="small text-secondary mb-0">A coupon discount is applied when you place the order.</p>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>
