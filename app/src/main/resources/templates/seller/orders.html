@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Seller orders')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <h1 class="h3 mb-3">Orders of my products</h1>
+
+    <p class="text-secondary" th:if="${orderLines.isEmpty()}">No orders yet.</p>
+
+    <div class="table-responsive" th:unless="${orderLines.isEmpty()}">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Order</th>
+                <th scope="col">Date</th>
+                <th scope="col">Product</th>
+                <th scope="col" class="text-end">Quantity</th>
+                <th scope="col" class="text-end">Unit price</th>
+                <th scope="col">Status</th>
+                <th scope="col">Customer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="line : ${orderLines}">
+                <th scope="row" class="fw-normal" th:text="'#' + ${line.orderId}">#1</th>
+                <td class="text-nowrap" th:text="${line.orderDate}">2026-01-01</td>
+                <td th:text="${line.productName}">Product</td>
+                <td class="text-end" th:text="${line.quantity}">1</td>
+                <td class="text-end text-nowrap"
+                    th:text="${#numbers.formatDecimal(line.unitPrice, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                <td><span class="badge text-bg-light border" th:text="${line.orderStatus}">Paid</span></td>
+                <td th:text="${line.customerFirstName}">Name</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

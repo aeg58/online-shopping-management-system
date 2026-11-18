@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('My products')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
+        <h1 class="h3 mb-0">My products</h1>
+        <a class="btn btn-primary" th:href="@{/seller/products/new}">Add product</a>
+    </div>
+
+    <p class="text-secondary" th:if="${products.isEmpty()}">You have no products yet.</p>
+
+    <div class="table-responsive" th:unless="${products.isEmpty()}">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col" class="d-none d-md-table-cell">Category</th>
+                <th scope="col" class="text-end">Price</th>
+                <th scope="col" class="text-end">Stock</th>
+                <th scope="col" class="d-none d-md-table-cell">Status</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${products}">
+                <th scope="row" class="fw-normal">
+                    <span th:text="${p.productName}">Product</span>
+                    <span class="d-block d-md-none small text-secondary"
+                          th:text="${p.categoryName + ' · ' + (p.active ? 'Active' : 'Inactive')}">Category · Active</span>
+                </th>
+                <td class="d-none d-md-table-cell" th:text="${p.categoryName}">Category</td>
+                <td class="text-end text-nowrap"
+                    th:text="${#numbers.formatDecimal(p.price, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                <td class="text-end" th:text="${p.quantityInStock}">0</td>
+                <td class="d-none d-md-table-cell">
+                    <span class="badge text-bg-light border" th:text="${p.active ? 'Active' : 'Inactive'}">Active</span>
+                </td>
+                <td class="text-end">
+                    <a class="btn btn-outline-secondary btn-sm"
+                       th:href="@{/seller/products/{id}/edit(id=${p.productId})}">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

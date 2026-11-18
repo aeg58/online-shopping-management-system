@@ -53,6 +53,11 @@ body {
     max-width: 26rem;
 }
 
+.product-form-panel {
+    margin-inline: auto;
+    max-width: 40rem;
+}
+
 .cart-quantity {
     min-width: 11rem;
 }

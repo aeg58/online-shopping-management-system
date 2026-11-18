@@ -7,8 +7,55 @@
 <main class="container py-4">
     <div th:replace="~{fragments/layout :: messages}"></div>
 
-    <h1 class="h3">Seller dashboard</h1>
-    <p>Welcome, <span th:text="${currentUser.username}">seller</span>.</p>
+    <h1 class="h3 mb-3">Seller dashboard</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-3 mb-4">
+        <div class="col">
+            <div class="border rounded p-3 h-100">
+                <p class="small text-secondary mb-1">Products</p>
+                <p class="fs-3 fw-semibold mb-0" th:text="${productCount}">0</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="border rounded p-3 h-100">
+                <p class="small text-secondary mb-1">Units sold</p>
+                <p class="fs-3 fw-semibold mb-0" th:text="${sales.unitsSold}">0</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="border rounded p-3 h-100">
+                <p class="small text-secondary mb-1">Revenue</p>
+                <p class="fs-3 fw-semibold mb-0"
+                   th:text="${#numbers.formatDecimal(sales.revenue, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="h5">Low stock (less than 5)</h2>
+    <p class="text-secondary" th:if="${lowStock.isEmpty()}">All products have enough stock.</p>
+    <div class="table-responsive" th:unless="${lowStock.isEmpty()}">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Category</th>
+                <th scope="col" class="text-end">In stock</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${lowStock}">
+                <th scope="row" class="fw-normal" th:text="${p.productName}">Product</th>
+                <td th:text="${p.categoryName}">Category</td>
+                <td class="text-end" th:text="${p.quantityInStock}">0</td>
+                <td class="text-end">
+                    <a class="btn btn-outline-secondary btn-sm"
+                       th:href="@{/seller/products/{id}/edit(id=${p.productId})}">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </main>
 
 <script th:replace="~{fragments/layout :: scripts}"></script>
