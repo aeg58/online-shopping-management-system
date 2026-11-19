@@ -19,6 +19,8 @@ import java.util.Locale;
 public class AdminService {
 
     private static final BigDecimal MAX_AMOUNT = new BigDecimal("99999999.99");
+    private static final String CANCELLED = "Cancelled";
+    private static final String DELIVERED = "Delivered";
 
     private final AdminRepository adminRepository;
     private final CategoryRepository categoryRepository;
@@ -77,10 +79,32 @@ public class AdminService {
                 parseUsageLimit(form.getUsageLimit()));
     }
 
+    /**
+     * Changes the order status in one transaction. Cancelling an order puts its items back into stock,
+     * gives the coupon use back and marks a shipment on the way as Returned.
+     * A delivered order is returned with a return request instead, and a cancelled order stays cancelled,
+     * so stock can never be added back twice.
+     */
+    @Transactional
     public void changeOrderStatus(int orderId, String status) {
-        if (adminRepository.updateOrderStatus(orderId, status) == 0) {
-            throw new AdminRequestException("This order was not found");
+        String currentStatus = adminRepository.lockOrderStatus(orderId)
+                .orElseThrow(() -> new AdminRequestException("This order was not found"));
+
+        if (CANCELLED.equals(currentStatus)) {
+            if (!CANCELLED.equals(status)) {
+                throw new AdminRequestException("A cancelled order cannot be reopened");
+            }
+            return;
         }
+        if (CANCELLED.equals(status)) {
+            if (DELIVERED.equals(currentStatus)) {
+                throw new AdminRequestException("A delivered order cannot be cancelled. Use a return request instead");
+            }
+            adminRepository.restoreStock(orderId);
+            adminRepository.releaseCoupon(orderId);
+            shipmentRepository.markReturned(orderId);
+        }
+        adminRepository.updateOrderStatus(orderId, status);
     }
 
     /** Creates the shipment and marks the order as shipped in one transaction. */
@@ -106,6 +130,11 @@ public class AdminService {
     /** Marks the shipment and the order as delivered in one transaction. Cash is collected on delivery. */
     @Transactional
     public void markDelivered(int orderId) {
+        String currentStatus = adminRepository.lockOrderStatus(orderId)
+                .orElseThrow(() -> new AdminRequestException("This order was not found"));
+        if (CANCELLED.equals(currentStatus)) {
+            throw new AdminRequestException("A cancelled order cannot be delivered");
+        }
         if (shipmentRepository.markDelivered(orderId) == 0) {
             throw new AdminRequestException("This order has no shipment on the way");
         }

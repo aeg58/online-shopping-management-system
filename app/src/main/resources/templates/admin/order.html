@@ -81,7 +81,14 @@
         <div class="col-12 col-lg-4">
             <section class="border rounded p-3 mb-3" aria-labelledby="statusTitle">
                 <h2 class="h5" id="statusTitle">Order status</h2>
-                <form class="d-flex gap-2" method="post" th:action="@{/admin/orders/{id}/status(id=${order.orderId})}">
+                <p class="small text-secondary mb-0" th:if="${order.status == 'Cancelled'}">
+                    This order is cancelled. Its items were put back into stock.
+                </p>
+                <p class="small text-secondary" th:if="${order.status == 'Delivered'}">
+                    A delivered order can only be returned with a return request.
+                </p>
+                <form class="d-flex gap-2" method="post" th:action="@{/admin/orders/{id}/status(id=${order.orderId})}"
+                      th:unless="${order.status == 'Cancelled'}">
                     <label class="visually-hidden" for="status">Order status</label>
                     <select class="form-select" id="status" name="status">
                         <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"
@@ -107,7 +114,7 @@
                     <dd class="col-7 mb-0" th:text="${shipment.deliveredDate != null ? shipment.deliveredDate : '-'}">-</dd>
                 </dl>
                 <form method="post" th:action="@{/admin/orders/{id}/deliver(id=${order.orderId})}"
-                      th:if="${shipment != null and shipment.status != 'Delivered'}">
+                      th:if="${shipment != null and order.status != 'Cancelled' and (shipment.status == 'Preparing' or shipment.status == 'InTransit')}">
                     <button class="btn btn-primary w-100" type="submit">Mark as delivered</button>
                 </form>
 

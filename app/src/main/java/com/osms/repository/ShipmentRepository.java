@@ -53,7 +53,15 @@ public class ShipmentRepository {
         return jdbcTemplate.update("""
                 UPDATE Shipments
                 SET Status = 'Delivered', DeliveredDate = CAST(GETDATE() AS DATE)
-                WHERE OrderID = ? AND Status <> 'Delivered'
+                WHERE OrderID = ? AND Status IN ('Preparing', 'InTransit')
+                """, orderId);
+    }
+
+    public void markReturned(int orderId) {
+        jdbcTemplate.update("""
+                UPDATE Shipments
+                SET Status = 'Returned'
+                WHERE OrderID = ? AND Status IN ('Preparing', 'InTransit')
                 """, orderId);
     }
 

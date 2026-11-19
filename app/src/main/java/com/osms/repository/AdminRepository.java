@@ -143,6 +143,26 @@ public class AdminRepository {
         return jdbcTemplate.update("UPDATE Orders SET Status = ? WHERE OrderID = ?", status, orderId);
     }
 
+    public void restoreStock(int orderId) {
+        jdbcTemplate.update("""
+                UPDATE i
+                SET i.QuantityInStock = i.QuantityInStock + oi.Quantity, i.LastUpdated = GETDATE()
+                FROM Inventory i
+                JOIN OrderItems oi ON oi.ProductID = i.ProductID
+                WHERE oi.OrderID = ?
+                """, orderId);
+    }
+
+    public void releaseCoupon(int orderId) {
+        jdbcTemplate.update("""
+                UPDATE c
+                SET c.UsedCount = c.UsedCount - 1
+                FROM Coupons c
+                JOIN Orders o ON o.CouponID = c.CouponID
+                WHERE o.OrderID = ? AND c.UsedCount > 0
+                """, orderId);
+    }
+
     public void completeCashPayment(int orderId) {
         jdbcTemplate.update("""
                 UPDATE Payments
