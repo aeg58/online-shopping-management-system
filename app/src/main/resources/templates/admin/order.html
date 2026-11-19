@@ -82,7 +82,7 @@
             <section class="border rounded p-3 mb-3" aria-labelledby="statusTitle">
                 <h2 class="h5" id="statusTitle">Order status</h2>
                 <p class="small text-secondary mb-0" th:if="${order.status == 'Cancelled'}">
-                    This order is cancelled. Its items were put back into stock.
+                    This order is cancelled. Its items were put back into stock and its payment was refunded.
                 </p>
                 <p class="small text-secondary" th:if="${order.status == 'Delivered'}">
                     A delivered order can only be returned with a return request.

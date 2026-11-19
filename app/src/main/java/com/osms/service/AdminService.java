@@ -81,7 +81,7 @@ public class AdminService {
 
     /**
      * Changes the order status in one transaction. Cancelling an order puts its items back into stock,
-     * gives the coupon use back and marks a shipment on the way as Returned.
+     * gives the coupon use back, refunds the payment and marks a shipment on the way as Returned.
      * A delivered order is returned with a return request instead, and a cancelled order stays cancelled,
      * so stock can never be added back twice.
      */
@@ -102,6 +102,7 @@ public class AdminService {
             }
             adminRepository.restoreStock(orderId);
             adminRepository.releaseCoupon(orderId);
+            adminRepository.cancelPayments(orderId);
             shipmentRepository.markReturned(orderId);
         }
         adminRepository.updateOrderStatus(orderId, status);

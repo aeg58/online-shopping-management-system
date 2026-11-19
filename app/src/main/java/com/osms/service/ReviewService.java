@@ -38,9 +38,10 @@ public class ReviewService {
     }
 
     private String friendlyMessage(DataIntegrityViolationException exception) {
-        return switch (DatabaseErrors.constraintName(exception)) {
-            case "UQ_Reviews_Product_Customer" -> "You have already reviewed this product";
-            case "CK_Reviews_Rating" -> "Rating must be between 1 and 5";
+        String constraint = DatabaseErrors.constraintName(exception);
+        return switch (constraint) {
+            case "UQ_Reviews_Product_Customer" -> "You have already reviewed this product (" + constraint + ")";
+            case "CK_Reviews_Rating" -> "Rating must be between 1 and 5 (" + constraint + ")";
             default -> DatabaseErrors.message(exception);
         };
     }

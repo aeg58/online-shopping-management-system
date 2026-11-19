@@ -50,4 +50,4 @@ From the `app/` folder:
 
 On Windows use `mvnw.cmd spring-boot:run`.
 
-Open <http://localhost:8080>.
+Open <http://localhost:8080>. The demo accounts and a step-by-step test list are in [TESTING.md](TESTING.md).

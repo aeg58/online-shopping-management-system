@@ -163,6 +163,15 @@ public class AdminRepository {
                 """, orderId);
     }
 
+    /** Money already taken is refunded; a payment that was never collected fails. */
+    public void cancelPayments(int orderId) {
+        jdbcTemplate.update("""
+                UPDATE Payments
+                SET Status = CASE WHEN Status = 'Completed' THEN 'Refunded' ELSE 'Failed' END
+                WHERE OrderID = ? AND Status IN ('Completed', 'Pending')
+                """, orderId);
+    }
+
     public void completeCashPayment(int orderId) {
         jdbcTemplate.update("""
                 UPDATE Payments
