@@ -27,6 +27,32 @@
                         <a class="nav-link" th:href="@{/admin}"
                            th:attr="aria-current=${currentPath == '/admin'} ? 'page' : null">Dashboard</a>
                     </li>
+                    <th:block th:if="${currentUser.roleName == 'Admin'}">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/users}"
+                               th:attr="aria-current=${#strings.startsWith(currentPath, '/admin/users')} ? 'page' : null">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/sellers}"
+                               th:attr="aria-current=${#strings.startsWith(currentPath, '/admin/sellers')} ? 'page' : null">Sellers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/categories}"
+                               th:attr="aria-current=${#strings.startsWith(currentPath, '/admin/categories')} ? 'page' : null">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/coupons}"
+                               th:attr="aria-current=${#strings.startsWith(currentPath, '/admin/coupons')} ? 'page' : null">Coupons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/orders}"
+                               th:attr="aria-current=${#strings.startsWith(currentPath, '/admin/orders')} ? 'page' : null">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/returns}"
+                               th:attr="aria-current=${#strings.startsWith(currentPath, '/admin/returns')} ? 'page' : null">Returns</a>
+                        </li>
+                    </th:block>
                     <li class="nav-item" th:if="${currentUser.roleName == 'Seller'}">
                         <a class="nav-link" th:href="@{/seller}"
                            th:attr="aria-current=${currentPath == '/seller'} ? 'page' : null">Dashboard</a>

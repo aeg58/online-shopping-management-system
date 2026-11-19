@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${category != null ? 'Edit category' : 'Add category'})}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div class="product-form-panel">
+        <div th:replace="~{fragments/layout :: messages}"></div>
+
+        <p><a th:href="@{/admin/categories}">Back to categories</a></p>
+        <h1 class="h3 mb-3" th:text="${category != null ? 'Edit category' : 'Add category'}">Add category</h1>
+
+        <form method="post"
+              th:action="${category != null} ? @{/admin/categories/{id}(id=${category.categoryId})} : @{/admin/categories}">
+            <div class="mb-3">
+                <label class="form-label" for="categoryName">Name</label>
+                <input class="form-control" type="text" id="categoryName" name="categoryName" maxlength="100"
+                       th:value="${categoryName}" autocomplete="off" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description (optional)</label>
+                <input class="form-control" type="text" id="description" name="description" maxlength="255"
+                       th:value="${description}" autocomplete="off">
+            </div>
+            <button class="btn btn-primary w-100" type="submit"
+                    th:text="${category != null ? 'Save changes' : 'Add category'}">Add category</button>
+        </form>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

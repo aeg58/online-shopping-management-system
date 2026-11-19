@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Users')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <h1 class="h3 mb-3">Users</h1>
+
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col" class="d-none d-md-table-cell">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col" class="d-none d-sm-table-cell">Status</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="u : ${users}">
+                <th scope="row" class="fw-normal">
+                    <span th:text="${u.username}">username</span>
+                    <span class="d-block d-sm-none small text-secondary" th:text="${u.active ? 'Active' : 'Inactive'}">Active</span>
+                </th>
+                <td class="d-none d-md-table-cell" th:text="${u.email}">mail</td>
+                <td th:text="${u.roleName}">Role</td>
+                <td class="d-none d-sm-table-cell">
+                    <span class="badge text-bg-light border" th:text="${u.active ? 'Active' : 'Inactive'}">Active</span>
+                </td>
+                <td class="text-end">
+                    <span class="small text-secondary" th:if="${u.userId == currentUser.userId}">You</span>
+                    <form method="post" th:action="@{/admin/users/{id}/active(id=${u.userId})}"
+                          th:unless="${u.userId == currentUser.userId}">
+                        <input type="hidden" name="active" th:value="${!u.active}">
+                        <button class="btn btn-sm" type="submit"
+                                th:classappend="${u.active} ? 'btn-outline-danger' : 'btn-outline-secondary'"
+                                th:text="${u.active ? 'Deactivate' : 'Activate'}"
+                                th:attr="aria-label=(${u.active} ? 'Deactivate ' : 'Activate ') + ${u.username}">Deactivate</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

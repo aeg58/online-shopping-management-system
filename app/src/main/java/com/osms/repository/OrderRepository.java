@@ -4,6 +4,7 @@ import com.osms.model.OrderItemView;
 import com.osms.model.OrderSummary;
 import com.osms.model.OrderView;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -23,14 +24,26 @@ public class OrderRepository {
             VALUES (?, ?, ?, 'Pending', ?, ?)
             """;
 
-    private static final String FIND_FOR_CUSTOMER = """
+    private static final String SELECT_ORDER = """
             SELECT o.OrderID, o.OrderDate, o.Status, o.DiscountAmount, o.TotalAmount,
                    a.Title, a.City, a.District, a.AddressLine, c.Code
             FROM Orders o
             JOIN Addresses a ON a.AddressID = o.AddressID
             LEFT JOIN Coupons c ON c.CouponID = o.CouponID
-            WHERE o.OrderID = ? AND o.CustomerID = ?
             """;
+
+    private static final RowMapper<OrderView> ORDER_MAPPER = (rs, rowNum) -> new OrderView(
+            rs.getInt("OrderID"),
+            rs.getDate("OrderDate").toLocalDate(),
+            rs.getString("Status"),
+            rs.getBigDecimal("DiscountAmount"),
+            rs.getBigDecimal("TotalAmount"),
+            rs.getString("Title"),
+            rs.getString("City"),
+            rs.getString("District"),
+            rs.getString("AddressLine"),
+            rs.getString("Code")
+    );
 
     private static final String FIND_BY_CUSTOMER = """
             SELECT OrderID, OrderDate, Status, TotalAmount
@@ -82,18 +95,12 @@ public class OrderRepository {
     }
 
     public Optional<OrderView> findForCustomer(int orderId, int customerId) {
-        return jdbcTemplate.query(FIND_FOR_CUSTOMER, (rs, rowNum) -> new OrderView(
-                rs.getInt("OrderID"),
-                rs.getDate("OrderDate").toLocalDate(),
-                rs.getString("Status"),
-                rs.getBigDecimal("DiscountAmount"),
-                rs.getBigDecimal("TotalAmount"),
-                rs.getString("Title"),
-                rs.getString("City"),
-                rs.getString("District"),
-                rs.getString("AddressLine"),
-                rs.getString("Code")
-        ), orderId, customerId).stream().findFirst();
+        return jdbcTemplate.query(SELECT_ORDER + "WHERE o.OrderID = ? AND o.CustomerID = ?",
+                ORDER_MAPPER, orderId, customerId).stream().findFirst();
+    }
+
+    public Optional<OrderView> findById(int orderId) {
+        return jdbcTemplate.query(SELECT_ORDER + "WHERE o.OrderID = ?", ORDER_MAPPER, orderId).stream().findFirst();
     }
 
     public List<OrderItemView> findItems(int orderId) {

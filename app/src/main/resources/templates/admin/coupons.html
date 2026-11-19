@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Coupons')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
+        <h1 class="h3 mb-0">Coupons</h1>
+        <a class="btn btn-primary" th:href="@{/admin/coupons/new}">Add coupon</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Discount</th>
+                <th scope="col" class="d-none d-md-table-cell text-end">Min. order</th>
+                <th scope="col" class="d-none d-sm-table-cell">Valid</th>
+                <th scope="col" class="text-end">Used</th>
+                <th scope="col" class="d-none d-md-table-cell">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${coupons}">
+                <th scope="row" class="fw-normal" th:text="${c.code}">CODE</th>
+                <td class="text-nowrap"
+                    th:text="${c.discountType == 'Percent'} ? ${#numbers.formatDecimal(c.discountValue, 1, 0, 'POINT')} + ' %' : ${#numbers.formatDecimal(c.discountValue, 1, 'COMMA', 2, 'POINT')} + ' ₺'">10 %</td>
+                <td class="d-none d-md-table-cell text-end text-nowrap"
+                    th:text="${#numbers.formatDecimal(c.minOrderAmount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
+                <td class="d-none d-sm-table-cell text-nowrap" th:text="${c.startDate} + ' – ' + ${c.endDate}">dates</td>
+                <td class="text-end" th:text="${c.usedCount} + ' / ' + ${c.usageLimit}">0 / 100</td>
+                <td class="d-none d-md-table-cell">
+                    <span class="badge text-bg-light border" th:text="${c.active ? 'Active' : 'Inactive'}">Active</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

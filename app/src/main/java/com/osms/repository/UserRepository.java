@@ -40,4 +40,10 @@ public class UserRepository {
         ), username);
         return users.stream().findFirst();
     }
+
+    public boolean isActive(int userId) {
+        Integer count = jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM Users WHERE UserID = ? AND IsActive = 1", Integer.class, userId);
+        return count != null && count > 0;
+    }
 }

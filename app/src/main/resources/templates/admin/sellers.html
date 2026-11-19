@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Sellers')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <h1 class="h3 mb-3">Sellers</h1>
+
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Store</th>
+                <th scope="col" class="d-none d-md-table-cell">Tax number</th>
+                <th scope="col" class="d-none d-sm-table-cell">Username</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="s : ${sellers}">
+                <th scope="row" class="fw-normal" th:text="${s.storeName}">Store</th>
+                <td class="d-none d-md-table-cell" th:text="${s.taxNumber}">123</td>
+                <td class="d-none d-sm-table-cell" th:text="${s.username}">user</td>
+                <td>
+                    <span class="badge text-bg-light border" th:text="${s.approved ? 'Approved' : 'Waiting'}">Approved</span>
+                </td>
+                <td class="text-end">
+                    <form method="post" th:action="@{/admin/sellers/{id}/approve(id=${s.sellerId})}" th:unless="${s.approved}">
+                        <button class="btn btn-primary btn-sm" type="submit"
+                                th:attr="aria-label='Approve ' + ${s.storeName}">Approve</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Add coupon')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div class="product-form-panel">
+        <div th:replace="~{fragments/layout :: messages}"></div>
+
+        <p><a th:href="@{/admin/coupons}">Back to coupons</a></p>
+        <h1 class="h3 mb-3">Add coupon</h1>
+
+        <form method="post" th:action="@{/admin/coupons}">
+            <div class="row g-3 mb-3">
+                <div class="col-12 col-sm-6">
+                    <label class="form-label" for="code">Code</label>
+                    <input class="form-control" type="text" id="code" name="code" maxlength="30" th:value="${form.code}"
+                           autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label class="form-label" for="discountType">Discount type</label>
+                    <select class="form-select" id="discountType" name="discountType">
+                        <option value="Percent" th:selected="${form.discountType == 'Percent'}">Percent (%)</option>
+                        <option value="Fixed" th:selected="${form.discountType == 'Fixed'}">Fixed amount (₺)</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label class="form-label" for="discountValue">Discount value</label>
+                    <input class="form-control" type="number" id="discountValue" name="discountValue" step="0.01"
+                           inputmode="decimal" th:value="${form.discountValue}" required>
+                </div>
+                <div class="col-6">
+                    <label class="form-label" for="minOrderAmount">Minimum order (₺)</label>
+                    <input class="form-control" type="number" id="minOrderAmount" name="minOrderAmount" step="0.01"
+                           inputmode="decimal" th:value="${form.minOrderAmount}" required>
+                </div>
+                <div class="col-6">
+                    <label class="form-label" for="startDate">Start date</label>
+                    <input class="form-control" type="date" id="startDate" name="startDate" th:value="${form.startDate}" required>
+                </div>
+                <div class="col-6">
+                    <label class="form-label" for="endDate">End date</label>
+                    <input class="form-control" type="date" id="endDate" name="endDate" th:value="${form.endDate}" required>
+                </div>
+                <div class="col-6">
+                    <label class="form-label" for="usageLimit">Usage limit</label>
+                    <input class="form-control" type="number" id="usageLimit" name="usageLimit" step="1"
+                           inputmode="numeric" th:value="${form.usageLimit}" required>
+                </div>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Add coupon</button>
+        </form>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>
