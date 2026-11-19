@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1160 928" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="class-1-overview-title class-1-overview-desc" id="class-1-overview-root">
+      <title id="class-1-overview-title">Application layers · class diagram</title>
+      <desc id="class-1-overview-desc">Package level view: config guards the controllers, controllers render templates and call services, services call repositories, repositories run SQL on SQL Server and map rows to model records.</desc>
+      <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #class-1-overview-root { --color-paper: #ffffff; --color-ink: #212529; --color-muted: #495057; }
+      #class-1-overview-root { font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--color-ink); }
+      #class-1-overview-root .scroll { overflow-x: auto; }</style>
+        <marker id="class-1-overview-uml-triangle" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 0, 16 6, 0 12" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+        </marker>
+        <marker id="class-1-overview-uml-diamond-filled" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 5, 9 0, 18 5, 9 10" fill="#212529"/>
+        </marker>
+        <marker id="class-1-overview-uml-diamond-hollow" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 5, 9 0, 18 5, 9 10" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+        </marker>
+        <marker id="class-1-overview-uml-open" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L9,4 L0,8" fill="none" stroke="#495057" stroke-width="1"/>
+        </marker>
+      </defs>
+      <rect width="100%" height="100%" fill="#ffffff"/>
+      <path d="M 320,92 L 400,92" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-1-overview-uml-open)"/>
+      <path d="M 760,122 L 840,122" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-1-overview-uml-open)"/>
+      <path d="M 580,204 L 580,260" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-1-overview-uml-open)"/>
+      <path d="M 580,424 L 580,480" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-1-overview-uml-open)"/>
+      <path d="M 760,562 L 840,562" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-1-overview-uml-open)"/>
+      <path d="M 580,644 L 580,700" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-1-overview-uml-open)"/>
+      <rect x="335.8" y="70" width="48.400000000000006" height="14" rx="2" fill="#ffffff"/>
+      <text x="360" y="80" fill="#495057" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">GUARDS</text>
+      <rect x="772.6" y="100" width="54.800000000000004" height="14" rx="2" fill="#ffffff"/>
+      <text x="800" y="110" fill="#495057" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">RENDERS</text>
+      <rect x="766.2" y="540" width="67.6" height="14" rx="2" fill="#ffffff"/>
+      <text x="800" y="550" fill="#495057" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">MAPS ROWS</text>
+      <rect x="589.4" y="666" width="29.200000000000003" height="14" rx="2" fill="#ffffff"/>
+      <text x="604" y="676" fill="#495057" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">SQL</text>
+      <rect x="40" y="40" width="280" height="104" rx="6" fill="#ffffff"/>
+      <rect x="40" y="40" width="280" height="104" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="180.0" y="59" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package»</text>
+      <text x="180.0" y="78" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">config</text>
+      <line x1="40" y1="92" x2="320" y2="92" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="54" y="113" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">WebConfig</text>
+      <text x="54" y="133" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">RoleInterceptor</text>
+      <rect x="400" y="40" width="360" height="164" rx="6" fill="#ffffff"/>
+      <rect x="400" y="40" width="360" height="164" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="580.0" y="59" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package»</text>
+      <text x="580.0" y="78" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">controller</text>
+      <line x1="400" y1="92" x2="760" y2="92" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="414" y="113" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">10 controllers, 3 helpers</text>
+      <text x="414" y="133" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">LoginController · HomeController</text>
+      <text x="414" y="153" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ShopController · CartController</text>
+      <text x="414" y="173" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CheckoutController · OrderController</text>
+      <text x="414" y="193" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">SellerController · Admin*Controller (3)</text>
+      <rect x="840" y="40" width="280" height="164" rx="6" fill="#ffffff"/>
+      <rect x="840" y="40" width="280" height="164" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="980.0" y="59" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package»</text>
+      <text x="980.0" y="78" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">templates</text>
+      <line x1="840" y1="92" x2="1120" y2="92" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="854" y="113" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">login.html · error pages</text>
+      <text x="854" y="133" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">shop/ (6 pages)</text>
+      <text x="854" y="153" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">seller/ (4 pages)</text>
+      <text x="854" y="173" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">admin/ (10 pages)</text>
+      <text x="854" y="193" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">fragments/layout.html</text>
+      <rect x="400" y="260" width="360" height="164" rx="6" fill="#ffffff"/>
+      <rect x="400" y="260" width="360" height="164" rx="6" fill="#f1f8f7" stroke="#0f766e" stroke-width="1"/>
+      <rect x="400" y="260" width="360" height="52" rx="6" fill="#dcedeb"/>
+      <rect x="400" y="304" width="360" height="8" fill="#dcedeb"/>
+      <text x="580.0" y="279" fill="#0f766e" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package» · @Transactional</text>
+      <text x="580.0" y="298" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">service</text>
+      <line x1="400" y1="312" x2="760" y2="312" stroke="#0f766e" stroke-width="1" stroke-opacity="0.40"/>
+      <text x="414" y="333" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">8 services, 7 helper classes</text>
+      <text x="414" y="353" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">AuthService · PasswordService</text>
+      <text x="414" y="373" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CartService · OrderService</text>
+      <text x="414" y="393" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ReviewService · ReturnService</text>
+      <text x="414" y="413" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">SellerProductService · AdminService</text>
+      <rect x="400" y="480" width="360" height="164" rx="6" fill="#ffffff"/>
+      <rect x="400" y="480" width="360" height="164" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="580.0" y="499" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package»</text>
+      <text x="580.0" y="518" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">repository</text>
+      <line x1="400" y1="532" x2="760" y2="532" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="414" y="553" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">14 repositories, JdbcTemplate + SQL</text>
+      <text x="414" y="573" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">UserRepository · ProductRepository</text>
+      <text x="414" y="593" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CartRepository · OrderRepository</text>
+      <text x="414" y="613" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">SellerRepository · AdminRepository</text>
+      <text x="414" y="633" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ 8 more</text>
+      <rect x="840" y="480" width="280" height="164" rx="6" fill="#ffffff"/>
+      <rect x="840" y="480" width="280" height="164" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="980.0" y="499" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package»</text>
+      <text x="980.0" y="518" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">model</text>
+      <line x1="840" y1="532" x2="1120" y2="532" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="854" y="553" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">29 records and form classes</text>
+      <text x="854" y="573" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">SessionUser · UserAccount</text>
+      <text x="854" y="593" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ProductView · CartItemView</text>
+      <text x="854" y="613" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">OrderView · PaymentView</text>
+      <text x="854" y="633" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ProductForm · CouponForm</text>
+      <rect x="400" y="700" width="360" height="124" rx="6" fill="#ffffff"/>
+      <rect x="400" y="700" width="360" height="124" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="580.0" y="719" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«database»</text>
+      <text x="580.0" y="738" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">SQL Server</text>
+      <line x1="400" y1="752" x2="760" y2="752" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="414" y="773" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">shoppingmngmntsystem</text>
+      <text x="414" y="793" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">18 tables</text>
+      <text x="414" y="813" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">PK · FK · UNIQUE · CHECK</text>
+      <line x1="40" y1="864" x2="1120" y2="864" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="40" y="884" fill="#5c636a" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">LEGEND · RELATIONSHIPS</text>
+      <line x1="40.0" y1="904" x2="72.0" y2="904" stroke="#212529" stroke-width="1" marker-end="url(#class-1-overview-uml-triangle)"/>
+      <text x="82.0" y="908" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Inheritance</text>
+      <line x1="220.0" y1="904" x2="252.0" y2="904" stroke="#212529" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#class-1-overview-uml-triangle)"/>
+      <text x="262.0" y="908" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Realization</text>
+      <line x1="400.0" y1="904" x2="432.0" y2="904" stroke="#212529" stroke-width="1" marker-start="url(#class-1-overview-uml-diamond-filled)"/>
+      <text x="442.0" y="908" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Composition</text>
+      <line x1="580.0" y1="904" x2="612.0" y2="904" stroke="#212529" stroke-width="1" marker-start="url(#class-1-overview-uml-diamond-hollow)"/>
+      <text x="622.0" y="908" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Aggregation</text>
+      <line x1="760.0" y1="904" x2="792.0" y2="904" stroke="#495057" stroke-width="1" marker-end="url(#class-1-overview-uml-open)"/>
+      <text x="802.0" y="908" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Association</text>
+      <line x1="940.0" y1="904" x2="972.0" y2="904" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-1-overview-uml-open)"/>
+      <text x="982.0" y="908" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Dependency · uses</text>
+    </svg>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and role check · class diagram</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --color-paper: #ffffff; --color-ink: #212529; --color-muted: #495057; }
+    body { font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--color-paper); color: var(--color-ink); padding: 3rem 2rem; }
+    .frame { max-width: 1160px; margin: 0 auto; }
+    .eyebrow { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+               color: var(--color-muted); margin-bottom: 0.5rem; }
+    h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .scroll { overflow-x: auto; }
+    svg { width: 100%; min-width: 1120px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">UML class · Online Shopping Management System</p>
+    <h1>Login and role check · class diagram</h1>
+    <div class="scroll">
+    <svg viewBox="0 0 1120 768" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="class-2-login-title class-2-login-desc">
+      <title id="class-2-login-title">Login and role check · class diagram</title>
+      <desc id="class-2-login-desc">AuthService checks the password with PasswordService and the account with UserRepository and creates a SessionUser; RoleInterceptor implements HandlerInterceptor and reads the SessionUser on every protected page.</desc>
+      <defs>
+        <marker id="uml-triangle" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 0, 16 6, 0 12" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+        </marker>
+        <marker id="uml-diamond-filled" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 5, 9 0, 18 5, 9 10" fill="#212529"/>
+        </marker>
+        <marker id="uml-diamond-hollow" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 5, 9 0, 18 5, 9 10" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+        </marker>
+        <marker id="uml-open" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L9,4 L0,8" fill="none" stroke="#495057" stroke-width="1"/>
+        </marker>
+      </defs>
+      <rect width="100%" height="100%" fill="#ffffff"/>
+      <path d="M 200,152 L 200,208" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 360,260 L 400,260" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 144,352 L 144,424" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 272,352 L 272,380 Q 272,388 280,388 L 472,388 Q 480,388 480,396 L 480,424" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 856,332 L 856,380 Q 856,388 848,388 L 648,388 Q 640,388 640,396 L 640,424" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 1000,332 L 1000,656 Q 1000,664 992,664 L 208,664 Q 200,664 200,656 L 200,548" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 920,208 L 920,124" fill="none" stroke="#212529" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#uml-triangle)"/>
+      <rect x="348.6" y="366" width="54.800000000000004" height="14" rx="2" fill="#ffffff"/>
+      <text x="376" y="376" fill="#495057" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">CREATES</text>
+      <rect x="727.0" y="366" width="42.0" height="14" rx="2" fill="#ffffff"/>
+      <text x="748" y="376" fill="#495057" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">READS</text>
+      <rect x="843.0" y="642" width="74.0" height="14" rx="2" fill="#ffffff"/>
+      <text x="880" y="652" fill="#495057" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">IS ACTIVE?</text>
+      <rect x="40" y="40" width="320" height="112" rx="6" fill="#ffffff"/>
+      <rect x="40" y="40" width="320" height="112" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="200.0" y="65" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">LoginController</text>
+      <line x1="40" y1="80" x2="360" y2="80" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="54" y="101" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ loginPage(currentUser): String</text>
+      <text x="54" y="121" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ login(username, password): String</text>
+      <text x="54" y="141" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ logout(request): String</text>
+      <rect x="760" y="40" width="320" height="84" rx="6" fill="#ffffff"/>
+      <rect x="760" y="40" width="320" height="84" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="920.0" y="59" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«interface» · Spring MVC</text>
+      <text x="920.0" y="78" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">HandlerInterceptor</text>
+      <line x1="760" y1="92" x2="1080" y2="92" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="774" y="113" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ preHandle(req, res, handler): boolean</text>
+      <rect x="40" y="208" width="320" height="144" rx="6" fill="#ffffff"/>
+      <rect x="40" y="208" width="320" height="144" rx="6" fill="#f1f8f7" stroke="#0f766e" stroke-width="1"/>
+      <rect x="40" y="208" width="320" height="40" rx="6" fill="#dcedeb"/>
+      <rect x="40" y="240" width="320" height="8" fill="#dcedeb"/>
+      <text x="200.0" y="233" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">AuthService</text>
+      <line x1="40" y1="248" x2="360" y2="248" stroke="rgba(15,118,110,0.40)" stroke-width="1"/>
+      <text x="54" y="269" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- userRepository: UserRepository</text>
+      <text x="54" y="289" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- passwordService: PasswordService</text>
+      <line x1="40" y1="300" x2="360" y2="300" stroke="rgba(15,118,110,0.40)" stroke-width="1"/>
+      <text x="54" y="321" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ login(username, password): SessionUser</text>
+      <text x="54" y="341" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- checkProfile(account): void</text>
+      <rect x="400" y="208" width="320" height="104" rx="6" fill="#ffffff"/>
+      <rect x="400" y="208" width="320" height="104" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="560.0" y="233" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">PasswordService</text>
+      <line x1="400" y1="248" x2="720" y2="248" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="414" y="269" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- encoder: BCryptPasswordEncoder</text>
+      <line x1="400" y1="280" x2="720" y2="280" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="414" y="301" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ matches(entered, stored): boolean</text>
+      <rect x="760" y="208" width="320" height="124" rx="6" fill="#ffffff"/>
+      <rect x="760" y="208" width="320" height="124" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="920.0" y="233" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">RoleInterceptor</text>
+      <line x1="760" y1="248" x2="1080" y2="248" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="774" y="269" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- requiredRole: String</text>
+      <text x="774" y="289" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- userRepository: UserRepository</text>
+      <line x1="760" y1="300" x2="1080" y2="300" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="774" y="321" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ preHandle(req, res, handler): boolean</text>
+      <rect x="40" y="424" width="320" height="124" rx="6" fill="#ffffff"/>
+      <rect x="40" y="424" width="320" height="124" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="200.0" y="449" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">UserRepository</text>
+      <line x1="40" y1="464" x2="360" y2="464" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="54" y="485" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- jdbcTemplate: JdbcTemplate</text>
+      <line x1="40" y1="496" x2="360" y2="496" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="54" y="517" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ findByUsername(name): Optional&lt;…&gt;</text>
+      <text x="54" y="537" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ isActive(userId: int): boolean</text>
+      <rect x="400" y="424" width="320" height="196" rx="6" fill="#ffffff"/>
+      <rect x="400" y="424" width="320" height="196" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="560.0" y="443" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«session object»</text>
+      <text x="560.0" y="462" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">SessionUser</text>
+      <line x1="400" y1="476" x2="720" y2="476" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="414" y="497" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- userId: int</text>
+      <text x="414" y="517" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- username: String</text>
+      <text x="414" y="537" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- roleName: String</text>
+      <text x="414" y="557" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- customerId: Integer</text>
+      <text x="414" y="577" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- sellerId: Integer</text>
+      <line x1="400" y1="588" x2="720" y2="588" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="414" y="609" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ getHomePath(): String</text>
+      <line x1="40" y1="704" x2="1080" y2="704" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="40" y="724" fill="#5c636a" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">LEGEND · RELATIONSHIPS</text>
+      <line x1="40.0" y1="744" x2="72.0" y2="744" stroke="#212529" stroke-width="1" marker-end="url(#uml-triangle)"/>
+      <text x="82.0" y="748" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Inheritance</text>
+      <line x1="213.33333333333334" y1="744" x2="245.33333333333334" y2="744" stroke="#212529" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#uml-triangle)"/>
+      <text x="255.33333333333334" y="748" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Realization</text>
+      <line x1="386.6666666666667" y1="744" x2="418.6666666666667" y2="744" stroke="#212529" stroke-width="1" marker-start="url(#uml-diamond-filled)"/>
+      <text x="428.6666666666667" y="748" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Composition</text>
+      <line x1="560.0" y1="744" x2="592.0" y2="744" stroke="#212529" stroke-width="1" marker-start="url(#uml-diamond-hollow)"/>
+      <text x="602.0" y="748" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Aggregation</text>
+      <line x1="733.3333333333334" y1="744" x2="765.3333333333334" y2="744" stroke="#495057" stroke-width="1" marker-end="url(#uml-open)"/>
+      <text x="775.3333333333334" y="748" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Association</text>
+      <line x1="906.6666666666667" y1="744" x2="938.6666666666667" y2="744" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <text x="948.6666666666667" y="748" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Dependency · uses</text>
+    </svg>
+    </div>
+  </div>
+</body>
+</html>

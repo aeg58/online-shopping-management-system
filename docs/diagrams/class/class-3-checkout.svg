@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1080 740" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="class-3-checkout-title class-3-checkout-desc" id="class-3-checkout-root">
+      <title id="class-3-checkout-title">Placing an order · class diagram</title>
+      <desc id="class-3-checkout-desc">CheckoutController calls OrderService.placeOrder, which runs as one transaction and uses the cart, inventory, coupon, order and payment repositories.</desc>
+      <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #class-3-checkout-root { --color-paper: #ffffff; --color-ink: #212529; --color-muted: #495057; }
+      #class-3-checkout-root { font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--color-ink); }
+      #class-3-checkout-root .scroll { overflow-x: auto; }</style>
+        <marker id="class-3-checkout-uml-triangle" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 0, 16 6, 0 12" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+        </marker>
+        <marker id="class-3-checkout-uml-diamond-filled" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 5, 9 0, 18 5, 9 10" fill="#212529"/>
+        </marker>
+        <marker id="class-3-checkout-uml-diamond-hollow" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 5, 9 0, 18 5, 9 10" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+        </marker>
+        <marker id="class-3-checkout-uml-open" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L9,4 L0,8" fill="none" stroke="#495057" stroke-width="1"/>
+        </marker>
+      </defs>
+      <rect width="100%" height="100%" fill="#ffffff"/>
+      <path d="M 250,204 L 250,260" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-3-checkout-uml-open)"/>
+      <path d="M 460,286 L 492,286 Q 500,286 500,278 L 500,104 Q 500,96 508,96 L 600,96" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-3-checkout-uml-open)"/>
+      <path d="M 460,312 L 532,312 Q 540,312 540,304 L 540,230 Q 540,222 548,222 L 600,222" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-3-checkout-uml-open)"/>
+      <path d="M 460,338 L 600,338" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-3-checkout-uml-open)"/>
+      <path d="M 460,364 L 532,364 Q 540,364 540,372 L 540,456 Q 540,464 548,464 L 600,464" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-3-checkout-uml-open)"/>
+      <path d="M 460,390 L 492,390 Q 500,390 500,398 L 500,582 Q 500,590 508,590 L 600,590" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-3-checkout-uml-open)"/>
+      
+      <rect x="40" y="112" width="420" height="92" rx="6" fill="#ffffff"/>
+      <rect x="40" y="112" width="420" height="92" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="250.0" y="137" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">CheckoutController</text>
+      <line x1="40" y1="152" x2="460" y2="152" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="54" y="173" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ checkout(user, model): String</text>
+      <text x="54" y="193" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ placeOrder(user, addressId, ...): String</text>
+      <rect x="40" y="260" width="420" height="156" rx="6" fill="#ffffff"/>
+      <rect x="40" y="260" width="420" height="156" rx="6" fill="#f1f8f7" stroke="#0f766e" stroke-width="1"/>
+      <rect x="40" y="260" width="420" height="52" rx="6" fill="#dcedeb"/>
+      <rect x="40" y="304" width="420" height="8" fill="#dcedeb"/>
+      <text x="250.0" y="279" fill="#0f766e" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«service» · @Transactional</text>
+      <text x="250.0" y="298" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">OrderService</text>
+      <line x1="40" y1="312" x2="460" y2="312" stroke="#0f766e" stroke-width="1" stroke-opacity="0.40"/>
+      <text x="54" y="333" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- PAYMENT_METHODS: List&lt;String&gt;</text>
+      <line x1="40" y1="344" x2="460" y2="344" stroke="#0f766e" stroke-width="1" stroke-opacity="0.40"/>
+      <text x="54" y="365" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ placeOrder(customerId, addressId, code, method): int</text>
+      <text x="54" y="385" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- findValidCoupon(code, subtotal): Coupon</text>
+      <text x="54" y="405" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- calculateDiscount(coupon, subtotal): BigDecimal</text>
+      <rect x="600" y="40" width="440" height="112" rx="6" fill="#ffffff"/>
+      <rect x="600" y="40" width="440" height="112" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="820.0" y="65" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">CartRepository</text>
+      <line x1="600" y1="80" x2="1040" y2="80" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="614" y="101" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ lockActiveCartId(customerId): Optional&lt;Integer&gt;</text>
+      <text x="614" y="121" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ findItems(cartId): List&lt;CartItemView&gt;</text>
+      <text x="614" y="141" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ markCheckedOut(cartId): void</text>
+      <rect x="600" y="176" width="440" height="92" rx="6" fill="#ffffff"/>
+      <rect x="600" y="176" width="440" height="92" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="820.0" y="201" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">InventoryRepository</text>
+      <line x1="600" y1="216" x2="1040" y2="216" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="614" y="237" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ lockStock(productId): int</text>
+      <text x="614" y="257" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ decreaseStock(productId, quantity): void</text>
+      <rect x="600" y="292" width="440" height="92" rx="6" fill="#ffffff"/>
+      <rect x="600" y="292" width="440" height="92" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="820.0" y="317" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">CouponRepository</text>
+      <line x1="600" y1="332" x2="1040" y2="332" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="614" y="353" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ lockByCode(code): Optional&lt;Coupon&gt;</text>
+      <text x="614" y="373" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ increaseUsedCount(couponId): void</text>
+      <rect x="600" y="408" width="440" height="112" rx="6" fill="#ffffff"/>
+      <rect x="600" y="408" width="440" height="112" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="820.0" y="433" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">OrderRepository</text>
+      <line x1="600" y1="448" x2="1040" y2="448" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="614" y="469" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ insertOrder(customerId, addressId, ...): int</text>
+      <text x="614" y="489" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ insertItem(orderId, productId, qty, price): void</text>
+      <text x="614" y="509" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ markPaid(orderId): void</text>
+      <rect x="600" y="544" width="440" height="92" rx="6" fill="#ffffff"/>
+      <rect x="600" y="544" width="440" height="92" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="820.0" y="569" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">PaymentRepository</text>
+      <line x1="600" y1="584" x2="1040" y2="584" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="614" y="605" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ insertCompleted(orderId, method, amount): void</text>
+      <text x="614" y="625" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ insertPending(orderId, method, amount): void</text>
+      <line x1="40" y1="676" x2="1040" y2="676" stroke="#212529" stroke-width="1" stroke-opacity="0.18"/>
+      <text x="40" y="696" fill="#5c636a" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">LEGEND · RELATIONSHIPS</text>
+      <line x1="40.0" y1="716" x2="72.0" y2="716" stroke="#212529" stroke-width="1" marker-end="url(#class-3-checkout-uml-triangle)"/>
+      <text x="82.0" y="720" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Inheritance</text>
+      <line x1="206.66666666666666" y1="716" x2="238.66666666666666" y2="716" stroke="#212529" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#class-3-checkout-uml-triangle)"/>
+      <text x="248.66666666666666" y="720" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Realization</text>
+      <line x1="373.3333333333333" y1="716" x2="405.3333333333333" y2="716" stroke="#212529" stroke-width="1" marker-start="url(#class-3-checkout-uml-diamond-filled)"/>
+      <text x="415.3333333333333" y="720" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Composition</text>
+      <line x1="540.0" y1="716" x2="572.0" y2="716" stroke="#212529" stroke-width="1" marker-start="url(#class-3-checkout-uml-diamond-hollow)"/>
+      <text x="582.0" y="720" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Aggregation</text>
+      <line x1="706.6666666666666" y1="716" x2="738.6666666666666" y2="716" stroke="#495057" stroke-width="1" marker-end="url(#class-3-checkout-uml-open)"/>
+      <text x="748.6666666666666" y="720" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Association</text>
+      <line x1="873.3333333333333" y1="716" x2="905.3333333333333" y2="716" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-3-checkout-uml-open)"/>
+      <text x="915.3333333333333" y="720" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Dependency · uses</text>
+    </svg>

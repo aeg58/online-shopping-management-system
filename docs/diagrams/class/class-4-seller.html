@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller panel · class diagram</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --color-paper: #ffffff; --color-ink: #212529; --color-muted: #495057; }
+    body { font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--color-paper); color: var(--color-ink); padding: 3rem 2rem; }
+    .frame { max-width: 1280px; margin: 0 auto; }
+    .eyebrow { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+               color: var(--color-muted); margin-bottom: 0.5rem; }
+    h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .scroll { overflow-x: auto; }
+    svg { width: 100%; min-width: 1240px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">UML class · Online Shopping Management System</p>
+    <h1>Seller panel · class diagram</h1>
+    <div class="scroll">
+    <svg viewBox="0 0 1240 744" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="class-4-seller-title class-4-seller-desc">
+      <title id="class-4-seller-title">Seller panel · class diagram</title>
+      <desc id="class-4-seller-desc">SellerController reads data through SellerRepository and CategoryRepository and saves products through SellerProductService; every SellerRepository query is filtered by the seller id from the session.</desc>
+      <defs>
+        <marker id="uml-triangle" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 0, 16 6, 0 12" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+        </marker>
+        <marker id="uml-diamond-filled" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 5, 9 0, 18 5, 9 10" fill="#212529"/>
+        </marker>
+        <marker id="uml-diamond-hollow" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+          <polygon points="0 5, 9 0, 18 5, 9 10" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+        </marker>
+        <marker id="uml-open" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L9,4 L0,8" fill="none" stroke="#495057" stroke-width="1"/>
+        </marker>
+      </defs>
+      <rect width="100%" height="100%" fill="#ffffff"/>
+      <path d="M 620,204 L 620,268" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 440,96 L 228,96 Q 220,96 220,104 L 220,268" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 440,152 L 428,152 Q 420,152 420,160 L 420,544 Q 420,552 428,552 L 440,552" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 620.0,392 L 620.0,476" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 800,324 L 840,324" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 800,552 L 840,552" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      
+      <rect x="440" y="40" width="360" height="164" rx="6" fill="#ffffff"/>
+      <rect x="440" y="40" width="360" height="164" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="620.0" y="65" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">SellerController</text>
+      <line x1="440" y1="80" x2="800" y2="80" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="454" y="101" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- sellerProductService: SellerProductService</text>
+      <line x1="440" y1="112" x2="800" y2="112" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="454" y="133" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ dashboard(user, model): String</text>
+      <text x="454" y="153" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ addProduct(user, form, model): String</text>
+      <text x="454" y="173" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ updateProduct(user, id, form): String</text>
+      <text x="454" y="193" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ orders(user, model): String</text>
+      <rect x="40" y="268" width="360" height="92" rx="6" fill="#ffffff"/>
+      <rect x="40" y="268" width="360" height="92" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="220.0" y="293" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">CategoryRepository</text>
+      <line x1="40" y1="308" x2="400" y2="308" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="54" y="329" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ findAll(): List&lt;Category&gt;</text>
+      <text x="54" y="349" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ findById(categoryId): Optional&lt;Category&gt;</text>
+      <rect x="440" y="268" width="360" height="124" rx="6" fill="#ffffff"/>
+      <rect x="440" y="268" width="360" height="124" rx="6" fill="#f1f8f7" stroke="#0f766e" stroke-width="1"/>
+      <rect x="440" y="268" width="360" height="52" rx="6" fill="#dcedeb"/>
+      <rect x="440" y="312" width="360" height="8" fill="#dcedeb"/>
+      <text x="620.0" y="287" fill="#0f766e" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«service» · @Transactional</text>
+      <text x="620.0" y="306" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">SellerProductService</text>
+      <line x1="440" y1="320" x2="800" y2="320" stroke="rgba(15,118,110,0.40)" stroke-width="1"/>
+      <text x="454" y="341" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ addProduct(sellerId, form): void</text>
+      <text x="454" y="361" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ updateProduct(sellerId, productId, form): void</text>
+      <text x="454" y="381" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- parsePrice(value: String): BigDecimal</text>
+      <rect x="840" y="268" width="360" height="152" rx="6" fill="#ffffff"/>
+      <rect x="840" y="268" width="360" height="152" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="1020.0" y="293" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">ProductForm</text>
+      <line x1="840" y1="308" x2="1200" y2="308" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="854" y="329" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- categoryId: String</text>
+      <text x="854" y="349" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- productName: String</text>
+      <text x="854" y="369" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- price: String</text>
+      <text x="854" y="389" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- stock: String</text>
+      <text x="854" y="409" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- active: boolean</text>
+      <rect x="440" y="476" width="360" height="152" rx="6" fill="#ffffff"/>
+      <rect x="440" y="476" width="360" height="152" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="620.0" y="501" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">SellerRepository</text>
+      <line x1="440" y1="516" x2="800" y2="516" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="454" y="537" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ findProducts(sellerId): List&lt;SellerProductView&gt;</text>
+      <text x="454" y="557" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ findSales(sellerId): SellerSales</text>
+      <text x="454" y="577" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ insertProduct(sellerId, categoryId, ...): int</text>
+      <text x="454" y="597" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ updateStock(sellerId, productId, stock): int</text>
+      <text x="454" y="617" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ findOrderLines(sellerId): List&lt;…&gt;</text>
+      <rect x="840" y="476" width="360" height="164" rx="6" fill="#ffffff"/>
+      <rect x="840" y="476" width="360" height="164" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
+      <text x="1020.0" y="495" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«record»</text>
+      <text x="1020.0" y="514" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">SellerProductView</text>
+      <line x1="840" y1="528" x2="1200" y2="528" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="854" y="549" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ productId: int</text>
+      <text x="854" y="569" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ productName: String</text>
+      <text x="854" y="589" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ price: BigDecimal</text>
+      <text x="854" y="609" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ active: boolean</text>
+      <text x="854" y="629" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ quantityInStock: int</text>
+      <line x1="40" y1="680" x2="1200" y2="680" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
+      <text x="40" y="700" fill="#5c636a" font-size="9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">LEGEND · RELATIONSHIPS</text>
+      <line x1="40.0" y1="720" x2="72.0" y2="720" stroke="#212529" stroke-width="1" marker-end="url(#uml-triangle)"/>
+      <text x="82.0" y="724" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Inheritance</text>
+      <line x1="233.33333333333334" y1="720" x2="265.33333333333337" y2="720" stroke="#212529" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#uml-triangle)"/>
+      <text x="275.33333333333337" y="724" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Realization</text>
+      <line x1="426.6666666666667" y1="720" x2="458.6666666666667" y2="720" stroke="#212529" stroke-width="1" marker-start="url(#uml-diamond-filled)"/>
+      <text x="468.6666666666667" y="724" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Composition</text>
+      <line x1="620.0" y1="720" x2="652.0" y2="720" stroke="#212529" stroke-width="1" marker-start="url(#uml-diamond-hollow)"/>
+      <text x="662.0" y="724" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Aggregation</text>
+      <line x1="813.3333333333334" y1="720" x2="845.3333333333334" y2="720" stroke="#495057" stroke-width="1" marker-end="url(#uml-open)"/>
+      <text x="855.3333333333334" y="724" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Association</text>
+      <line x1="1006.6666666666667" y1="720" x2="1038.6666666666667" y2="720" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <text x="1048.6666666666667" y="724" fill="#5c636a" font-size="10.5" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">Dependency · uses</text>
+    </svg>
+    </div>
+  </div>
+</body>
+</html>
