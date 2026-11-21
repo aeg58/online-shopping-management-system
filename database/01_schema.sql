@@ -318,3 +318,13 @@ CREATE TABLE Returns (
     CONSTRAINT CK_Returns_Status CHECK (Status IN ('Requested', 'Approved', 'Rejected', 'Refunded')),
     CONSTRAINT CK_Returns_RefundAmount CHECK (RefundAmount >= 0)
 );
+
+/* ==================== Additions for the interface ==================== */
+-- The admin writes why a return request was rejected; the customer sees it.
+ALTER TABLE Returns ADD RejectReason VARCHAR(255) NULL;
+
+-- The customer picks the shipping company at checkout; its BaseFee is added
+-- to the order total and the admin ships the order with this company.
+ALTER TABLE Orders ADD ShippingCompanyID INT NULL;
+ALTER TABLE Orders ADD CONSTRAINT FK_Orders_ShippingCompanies
+    FOREIGN KEY (ShippingCompanyID) REFERENCES ShippingCompanies(ShippingCompanyID);
