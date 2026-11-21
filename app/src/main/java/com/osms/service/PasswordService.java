@@ -18,4 +18,9 @@ public class PasswordService {
         }
         return storedPassword.equals(enteredPassword);
     }
+
+    /** New accounts store only the BCrypt hash of the password, never the password itself. */
+    public String hash(String password) {
+        return encoder.encode(password);
+    }
 }

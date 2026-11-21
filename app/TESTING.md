@@ -23,6 +23,9 @@ Each step lists the expected result after the arrow.
 3. Log in as `ali_yilmaz` → you land on the shop and the menu shows Shop, Cart, Orders and Addresses.
 4. While logged in as a customer, open `/admin` and `/seller` → "You do not have permission to view this page".
 5. Click Logout → "You have been logged out", and `/shop/cart` sends you to the login page again.
+6. **Customer sign up:** Click Sign up, then Sign up as a customer. Enter a first name, last name, a new username (letters, numbers, dots and underscores), an email and a password of at least 6 characters twice; leave phone and birth date empty → "Your account was created. Please sign in." with the username filled in. Log in with it → you land on the shop. The password is stored as a BCrypt hash, never as plain text.
+7. **Sign up errors:** Passwords that do not match → "The passwords do not match" and the other fields keep their values; a password of 5 characters → "Password must have at least 6 characters".
+8. **Seller sign up:** Click Sign up, then Sign up as a seller, and create a store with a new name and tax number → "Your store was created. You can sign in after the admin approves it." Logging in now → "Your store is waiting for admin approval". The approval is step 4.3.
 
 ## 2. Customer
 
@@ -60,7 +63,7 @@ Log in as `admin`.
 
 1. **Dashboard:** User counts per role, total orders, revenue and the 5 latest orders are shown.
 2. **Users:** Deactivate `ayse_demir` → she cannot log in ("This account is disabled"). Activate her again. Your own row shows "You" and has no button.
-3. **Sellers:** All sample sellers are approved; a seller waiting for approval would have an Approve button.
+3. **Sellers:** The sample sellers are approved. The store from step 1.8 is waiting and has an Approve button: click it → "Seller approved", and the seller can now log in and reaches the seller dashboard.
 4. **Categories:** Add a category named `Toys` → "Category added".
 5. **Coupons:** Add coupon `NEW15`, Percent, value 15, minimum 0, valid this month, usage limit 50 → "Coupon added".
 6. **Shipment:** Open order #4 (Pending, from the sample data), choose Aras Kargo, enter a tracking number and click Create shipment → the order becomes Shipped. Click Mark as delivered → the order becomes Delivered and the cash on delivery payment becomes Completed.
@@ -82,3 +85,7 @@ These values are sent to SQL Server on purpose. The page names the constraint th
 | Admin → Add category | Name `Books` | A category with this name already exists (UQ_Categories_CategoryName) |
 | Admin → Order #4 → Create shipment (before step 4.6) | Tracking number `YK1000000001` | This tracking number is already used (UQ_Shipments_TrackingNumber) |
 | Customer → open the same product in two tabs and submit the review form in both | Any rating | You have already reviewed this product (UQ_Reviews_Product_Customer) |
+| Sign up as a customer | Username `ali_yilmaz` | This username is already taken (UQ_Users_Username) |
+| Sign up as a customer | Email `ali.yilmaz@mail.com` | An account with this email already exists (UQ_Users_Email) |
+| Sign up as a seller | Store name `TechWorld` | A store with this name already exists (UQ_Sellers_StoreName). The Users row inserted before it is rolled back, so the username stays free |
+| Sign up as a seller | Tax number `1234567890` | A store with this tax number already exists (UQ_Sellers_TaxNumber) |

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Customer sign up')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div class="product-form-panel">
+        <div th:replace="~{fragments/layout :: messages}"></div>
+
+        <p><a th:href="@{/signup}">Back</a></p>
+        <h1 class="h3 mb-3">Customer sign up</h1>
+
+        <form method="post" th:action="@{/signup/customer}" th:object="${form}">
+            <div class="row g-2 mb-3">
+                <div class="col-12 col-sm-6">
+                    <label class="form-label" for="firstName">First name</label>
+                    <input class="form-control" type="text" id="firstName" th:field="*{firstName}" maxlength="50"
+                           autocomplete="given-name" required autofocus>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label class="form-label" for="lastName">Last name</label>
+                    <input class="form-control" type="text" id="lastName" th:field="*{lastName}" maxlength="50"
+                           autocomplete="family-name" required>
+                </div>
+            </div>
+
+            <th:block th:replace="~{fragments/signup :: account}"></th:block>
+
+            <div class="row g-2 mb-3">
+                <div class="col-12 col-sm-6">
+                    <label class="form-label" for="phone">Phone (optional)</label>
+                    <input class="form-control" type="tel" id="phone" th:field="*{phone}" maxlength="20"
+                           autocomplete="tel">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label class="form-label" for="birthDate">Birth date (optional)</label>
+                    <input class="form-control" type="date" id="birthDate" th:field="*{birthDate}"
+                           th:max="${today.minusDays(1)}" autocomplete="bday">
+                </div>
+            </div>
+
+            <button class="btn btn-primary w-100" type="submit">Create account</button>
+        </form>
+
+        <p class="mt-4 mb-0">Already have an account? <a th:href="@{/login}">Sign in</a></p>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

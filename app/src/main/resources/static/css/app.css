@@ -25,6 +25,18 @@ body {
     --bs-btn-focus-shadow-rgb: 15, 118, 110;
 }
 
+.btn-outline-primary {
+    --bs-btn-color: var(--osms-accent);
+    --bs-btn-border-color: var(--osms-accent);
+    --bs-btn-hover-bg: var(--osms-accent);
+    --bs-btn-hover-border-color: var(--osms-accent);
+    --bs-btn-active-bg: var(--osms-accent-dark);
+    --bs-btn-active-border-color: var(--osms-accent-dark);
+    --bs-btn-disabled-color: var(--osms-accent);
+    --bs-btn-disabled-border-color: var(--osms-accent);
+    --bs-btn-focus-shadow-rgb: 15, 118, 110;
+}
+
 .form-control:focus,
 .form-select:focus {
     border-color: var(--osms-accent);

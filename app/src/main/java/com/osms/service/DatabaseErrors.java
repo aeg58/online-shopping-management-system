@@ -22,7 +22,13 @@ public final class DatabaseErrors {
             Map.entry("CK_Orders_Status", "This order status is not allowed"),
             Map.entry("UQ_Shipments_OrderID", "This order already has a shipment"),
             Map.entry("UQ_Shipments_TrackingNumber", "This tracking number is already used"),
-            Map.entry("FK_Shipments_ShippingCompanies", "Please choose a shipping company")
+            Map.entry("FK_Shipments_ShippingCompanies", "Please choose a shipping company"),
+            Map.entry("UQ_Users_Username", "This username is already taken"),
+            Map.entry("UQ_Users_Email", "An account with this email already exists"),
+            Map.entry("CK_Users_Email", "Please enter a valid email address"),
+            Map.entry("CK_Customers_BirthDate", "Birth date must be in the past"),
+            Map.entry("UQ_Sellers_StoreName", "A store with this name already exists"),
+            Map.entry("UQ_Sellers_TaxNumber", "A store with this tax number already exists")
     );
 
     private DatabaseErrors() {

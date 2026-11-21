@@ -88,6 +88,10 @@
                         <a class="nav-link" th:href="@{/login}"
                            th:attr="aria-current=${currentPath == '/login'} ? 'page' : null">Login</a>
                     </li>
+                    <li class="nav-item" th:if="${currentUser == null}">
+                        <a class="nav-link" th:href="@{/signup}"
+                           th:attr="aria-current=${#strings.startsWith(currentPath, '/signup')} ? 'page' : null">Sign up</a>
+                    </li>
                     <th:block th:if="${currentUser != null}">
                         <li class="nav-item">
                             <span class="navbar-text me-lg-3">

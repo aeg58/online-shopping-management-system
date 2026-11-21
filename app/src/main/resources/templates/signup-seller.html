@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Seller sign up')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div class="product-form-panel">
+        <div th:replace="~{fragments/layout :: messages}"></div>
+
+        <p><a th:href="@{/signup}">Back</a></p>
+        <h1 class="h3 mb-1">Seller sign up</h1>
+        <p class="text-secondary mb-3">The admin approves new stores. You can sign in after the approval.</p>
+
+        <form method="post" th:action="@{/signup/seller}" th:object="${form}">
+            <div class="mb-3">
+                <label class="form-label" for="storeName">Store name</label>
+                <input class="form-control" type="text" id="storeName" th:field="*{storeName}" maxlength="100"
+                       autocomplete="organization" required autofocus>
+            </div>
+            <div class="row g-2 mb-3">
+                <div class="col-12 col-sm-6">
+                    <label class="form-label" for="taxNumber">Tax number</label>
+                    <input class="form-control" type="text" id="taxNumber" th:field="*{taxNumber}" maxlength="20"
+                           inputmode="numeric" autocomplete="off" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label class="form-label" for="phone">Phone (optional)</label>
+                    <input class="form-control" type="tel" id="phone" th:field="*{phone}" maxlength="20"
+                           autocomplete="tel">
+                </div>
+            </div>
+
+            <th:block th:replace="~{fragments/signup :: account}"></th:block>
+
+            <button class="btn btn-primary w-100" type="submit">Create store account</button>
+        </form>
+
+        <p class="mt-4 mb-0">Already have an account? <a th:href="@{/login}">Sign in</a></p>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

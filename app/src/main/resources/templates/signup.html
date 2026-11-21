@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Sign up')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div class="product-form-panel">
+        <div th:replace="~{fragments/layout :: messages}"></div>
+
+        <h1 class="h3 mb-1">Create an account</h1>
+        <p class="text-secondary mb-4">Choose how you want to use OnlineShop.</p>
+
+        <div class="row g-3">
+            <div class="col-12 col-sm-6">
+                <section class="border rounded p-3 h-100 d-flex flex-column" aria-labelledby="customerTitle">
+                    <h2 class="h5" id="customerTitle">I want to shop</h2>
+                    <p class="text-secondary flex-grow-1">Buy products, save addresses, track orders and write reviews.</p>
+                    <a class="btn btn-primary w-100" th:href="@{/signup/customer}">Sign up as a customer</a>
+                </section>
+            </div>
+            <div class="col-12 col-sm-6">
+                <section class="border rounded p-3 h-100 d-flex flex-column" aria-labelledby="sellerTitle">
+                    <h2 class="h5" id="sellerTitle">I want to sell</h2>
+                    <p class="text-secondary flex-grow-1">Open a store and list your products. The admin approves new stores.</p>
+                    <a class="btn btn-outline-primary w-100" th:href="@{/signup/seller}">Sign up as a seller</a>
+                </section>
+            </div>
+        </div>
+
+        <p class="mt-4 mb-0">Already have an account? <a th:href="@{/login}">Sign in</a></p>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>
