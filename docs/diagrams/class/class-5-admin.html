@@ -54,7 +54,7 @@
       <text x="454" y="121" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ changeStatus(id, status): String</text>
       <text x="454" y="141" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ createShipment(id, companyId, no): String</text>
       <text x="454" y="161" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ markDelivered(id): String</text>
-      <text x="454" y="181" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ refundReturn(id): String</text>
+      <text x="454" y="181" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ rejectReturn(id, rejectReason): String</text>
       <rect x="40" y="256" width="360" height="152" rx="6" fill="#ffffff"/>
       <rect x="40" y="256" width="360" height="152" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
       <text x="220.0" y="281" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">AdminRepository</text>
@@ -63,7 +63,7 @@
       <text x="54" y="337" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ restoreStock(orderId): void</text>
       <text x="54" y="357" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ releaseCoupon(orderId): void</text>
       <text x="54" y="377" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ cancelPayments(orderId): void</text>
-      <text x="54" y="397" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ lockReturn(returnId): Optional&lt;…&gt;</text>
+      <text x="54" y="397" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ rejectReturn(returnId, reason): void</text>
       <rect x="440" y="256" width="360" height="164" rx="6" fill="#ffffff"/>
       <rect x="440" y="256" width="360" height="164" rx="6" fill="#f1f8f7" stroke="#0f766e" stroke-width="1"/>
       <rect x="440" y="256" width="360" height="52" rx="6" fill="#dcedeb"/>
@@ -75,7 +75,7 @@
       <text x="454" y="349" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ createShipment(orderId, companyId, no): void</text>
       <text x="454" y="369" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ markDelivered(orderId): void</text>
       <text x="454" y="389" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ refundReturn(returnId): void</text>
-      <text x="454" y="409" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ addCoupon(form: CouponForm): void</text>
+      <text x="454" y="409" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ rejectReturn(returnId, reason): void</text>
       <rect x="840" y="256" width="360" height="112" rx="6" fill="#ffffff"/>
       <rect x="840" y="256" width="360" height="112" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
       <text x="1020.0" y="281" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">CategoryRepository</text>
