@@ -328,3 +328,11 @@ ALTER TABLE Returns ADD RejectReason VARCHAR(255) NULL;
 ALTER TABLE Orders ADD ShippingCompanyID INT NULL;
 ALTER TABLE Orders ADD CONSTRAINT FK_Orders_ShippingCompanies
     FOREIGN KEY (ShippingCompanyID) REFERENCES ShippingCompanies(ShippingCompanyID);
+
+-- The shipping fee is kept on the order, so a later change of BaseFee does not change old orders.
+ALTER TABLE Orders ADD ShippingFee DECIMAL(10,2) NOT NULL DEFAULT 0;
+ALTER TABLE Orders ADD CONSTRAINT CK_Orders_ShippingFee CHECK (ShippingFee >= 0);
+
+-- When a customer edits an address that an order already uses, the old row is kept for that
+-- order (IsActive = 0) and the edited address is saved as a new row.
+ALTER TABLE Addresses ADD IsActive BIT NOT NULL DEFAULT 1;
