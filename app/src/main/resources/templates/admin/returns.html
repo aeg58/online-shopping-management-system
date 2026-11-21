@@ -34,7 +34,11 @@
                 <td class="text-end" th:text="${r.quantity}">1</td>
                 <td class="d-none d-md-table-cell" th:text="${r.reason}">Reason</td>
                 <td class="d-none d-lg-table-cell text-nowrap" th:text="${r.requestDate}">2026-01-01</td>
-                <td><span class="badge text-bg-light border" th:text="${r.status}">Requested</span></td>
+                <td>
+                    <span class="badge text-bg-light border" th:text="${r.status}">Requested</span>
+                    <span class="d-block small text-secondary" th:if="${r.rejectReason != null}"
+                          th:text="${r.rejectReason}">Reject reason</span>
+                </td>
                 <td class="d-none d-sm-table-cell text-end text-nowrap"
                     th:text="${r.refundAmount != null ? #numbers.formatDecimal(r.refundAmount, 1, 'COMMA', 2, 'POINT') + ' ₺' : '-'}">-</td>
                 <td class="text-end">
@@ -42,9 +46,16 @@
                         <form method="post" th:action="@{/admin/returns/{id}/approve(id=${r.returnId})}">
                             <button class="btn btn-outline-secondary btn-sm w-100" type="submit">Approve</button>
                         </form>
-                        <form method="post" th:action="@{/admin/returns/{id}/reject(id=${r.returnId})}">
-                            <button class="btn btn-outline-danger btn-sm w-100" type="submit">Reject</button>
-                        </form>
+                        <details class="reject-box">
+                            <summary class="btn btn-outline-danger btn-sm w-100">Reject</summary>
+                            <form class="mt-2 text-start" method="post"
+                                  th:action="@{/admin/returns/{id}/reject(id=${r.returnId})}">
+                                <label class="form-label small" th:for="'reject-reason-' + ${r.returnId}">Reason for rejecting</label>
+                                <input class="form-control form-control-sm mb-2" type="text" name="rejectReason"
+                                       maxlength="255" required th:id="'reject-reason-' + ${r.returnId}">
+                                <button class="btn btn-danger btn-sm w-100" type="submit">Reject return</button>
+                            </form>
+                        </details>
                     </div>
                     <form method="post" th:action="@{/admin/returns/{id}/refund(id=${r.returnId})}"
                           th:if="${r.status == 'Approved'}">

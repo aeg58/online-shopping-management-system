@@ -2,19 +2,32 @@ package com.osms.repository;
 
 import com.osms.model.AddressView;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class AddressRepository {
 
-    private static final String FIND_BY_CUSTOMER = """
-            SELECT AddressID, Title, City, District, AddressLine, IsDefault
-            FROM Addresses
-            WHERE CustomerID = ?
-            ORDER BY IsDefault DESC, AddressID
+    private static final String SELECT_ADDRESS = """
+            SELECT a.AddressID, a.Title, a.Country, a.City, a.District, a.AddressLine, a.PostalCode, a.IsDefault,
+                   (SELECT COUNT(*) FROM Orders o WHERE o.AddressID = a.AddressID) AS OrderCount
+            FROM Addresses a
             """;
+
+    private static final RowMapper<AddressView> ADDRESS_MAPPER = (rs, rowNum) -> new AddressView(
+            rs.getInt("AddressID"),
+            rs.getString("Title"),
+            rs.getString("Country"),
+            rs.getString("City"),
+            rs.getString("District"),
+            rs.getString("AddressLine"),
+            rs.getString("PostalCode"),
+            rs.getBoolean("IsDefault"),
+            rs.getInt("OrderCount") > 0
+    );
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -23,14 +36,13 @@ public class AddressRepository {
     }
 
     public List<AddressView> findByCustomer(int customerId) {
-        return jdbcTemplate.query(FIND_BY_CUSTOMER, (rs, rowNum) -> new AddressView(
-                rs.getInt("AddressID"),
-                rs.getString("Title"),
-                rs.getString("City"),
-                rs.getString("District"),
-                rs.getString("AddressLine"),
-                rs.getBoolean("IsDefault")
-        ), customerId);
+        return jdbcTemplate.query(SELECT_ADDRESS + " WHERE a.CustomerID = ? ORDER BY a.IsDefault DESC, a.AddressID",
+                ADDRESS_MAPPER, customerId);
+    }
+
+    public Optional<AddressView> findForCustomer(int addressId, int customerId) {
+        return jdbcTemplate.query(SELECT_ADDRESS + " WHERE a.AddressID = ? AND a.CustomerID = ?",
+                ADDRESS_MAPPER, addressId, customerId).stream().findFirst();
     }
 
     public boolean belongsToCustomer(int addressId, int customerId) {
@@ -38,5 +50,36 @@ public class AddressRepository {
                 "SELECT COUNT(*) FROM Addresses WHERE AddressID = ? AND CustomerID = ?",
                 Integer.class, addressId, customerId);
         return count != null && count > 0;
+    }
+
+    public void insert(int customerId, String title, String country, String city, String district,
+                       String addressLine, String postalCode, boolean defaultAddress) {
+        jdbcTemplate.update("""
+                INSERT INTO Addresses (CustomerID, Title, Country, City, District, AddressLine, PostalCode, IsDefault)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """, customerId, title, country, city, district, addressLine, postalCode, defaultAddress);
+    }
+
+    public int update(int addressId, int customerId, String title, String country, String city, String district,
+                      String addressLine, String postalCode, boolean defaultAddress) {
+        return jdbcTemplate.update("""
+                UPDATE Addresses
+                SET Title = ?, Country = ?, City = ?, District = ?, AddressLine = ?, PostalCode = ?, IsDefault = ?
+                WHERE AddressID = ? AND CustomerID = ?
+                """, title, country, city, district, addressLine, postalCode, defaultAddress, addressId, customerId);
+    }
+
+    /** Only one default address per customer: the others lose the mark. */
+    public void clearDefault(int customerId) {
+        jdbcTemplate.update("UPDATE Addresses SET IsDefault = 0 WHERE CustomerID = ?", customerId);
+    }
+
+    /** Deletes the address only if no order ships to it. Returns the number of deleted rows. */
+    public int deleteUnused(int addressId, int customerId) {
+        return jdbcTemplate.update("""
+                DELETE FROM Addresses
+                WHERE AddressID = ? AND CustomerID = ?
+                  AND NOT EXISTS (SELECT 1 FROM Orders o WHERE o.AddressID = Addresses.AddressID)
+                """, addressId, customerId);
     }
 }

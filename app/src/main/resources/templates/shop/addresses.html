@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Addresses')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+
+<main class="container py-4">
+    <div th:replace="~{fragments/layout :: messages}"></div>
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <h1 class="h3 mb-0">Your addresses</h1>
+        <a class="btn btn-primary" th:href="@{/shop/addresses/new}">Add address</a>
+    </div>
+
+    <p class="text-secondary" th:if="${addresses.isEmpty()}">You have no saved address yet.</p>
+
+    <div class="row g-3">
+        <div class="col-12 col-md-6 col-xl-4" th:each="a : ${addresses}">
+            <article class="border rounded p-3 h-100 d-flex flex-column">
+                <p class="mb-1">
+                    <strong th:text="${a.title}">Home</strong>
+                    <span class="badge text-bg-light border ms-1" th:if="${a.defaultAddress}">Default</span>
+                </p>
+                <p class="mb-1" th:text="${a.addressLine}">Street 1</p>
+                <p class="mb-1" th:text="${a.district + ' / ' + a.city}">District / City</p>
+                <p class="text-secondary small mb-3"
+                   th:text="${a.country + (a.postalCode != null ? ' · ' + a.postalCode : '')}">Turkey · 34000</p>
+                <div class="d-flex gap-2 mt-auto">
+                    <a class="btn btn-outline-secondary btn-sm" th:href="@{/shop/addresses/{id}/edit(id=${a.addressId})}">Edit</a>
+                    <form method="post" th:action="@{/shop/addresses/{id}/delete(id=${a.addressId})}"
+                          th:unless="${a.usedInOrders}" data-confirm="Delete this address?">
+                        <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                    <span class="small text-secondary align-self-center" th:if="${a.usedInOrders}">Used by an order</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+<script th:src="@{/js/app.js}" defer></script>
+</body>
+</html>

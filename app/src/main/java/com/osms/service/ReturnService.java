@@ -40,6 +40,9 @@ public class ReturnService {
 
         int orderedQuantity = returnRepository.lockOrderedQuantity(orderId, productId)
                 .orElseThrow(() -> new CustomerRequestException("This product is not in the order"));
+        if (returnRepository.hasRejectedReturn(orderId, productId)) {
+            throw new CustomerRequestException("Your return request for this product was rejected, so you cannot ask again");
+        }
         int remainingQuantity = orderedQuantity - returnRepository.sumActiveReturns(orderId, productId);
         if (quantity > remainingQuantity) {
             throw new CustomerRequestException("You can return at most " + remainingQuantity + " of this product");

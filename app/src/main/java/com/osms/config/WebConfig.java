@@ -22,6 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new RoleInterceptor(SessionUser.ROLE_SELLER, userRepository))
                 .addPathPatterns("/seller/**");
         registry.addInterceptor(new RoleInterceptor(SessionUser.ROLE_CUSTOMER, userRepository))
-                .addPathPatterns("/shop/cart/**", "/shop/checkout/**", "/shop/orders/**");
+                .addPathPatterns("/shop/cart/**", "/shop/checkout/**", "/shop/orders/**",
+                        "/shop/addresses/**");
     }
 }

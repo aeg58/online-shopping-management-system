@@ -1,13 +1,16 @@
 package com.osms.service;
 
 import com.osms.model.CartItemView;
+import com.osms.model.CheckoutSummary;
 import com.osms.model.Coupon;
+import com.osms.model.ShippingCompany;
 import com.osms.repository.AddressRepository;
 import com.osms.repository.CartRepository;
 import com.osms.repository.CouponRepository;
 import com.osms.repository.InventoryRepository;
 import com.osms.repository.OrderRepository;
 import com.osms.repository.PaymentRepository;
+import com.osms.repository.ShipmentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +18,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -29,24 +33,44 @@ public class OrderService {
     private final CouponRepository couponRepository;
     private final OrderRepository orderRepository;
     private final PaymentRepository paymentRepository;
+    private final ShipmentRepository shipmentRepository;
+    private final AdminService adminService;
 
     public OrderService(CartRepository cartRepository, AddressRepository addressRepository,
                         InventoryRepository inventoryRepository, CouponRepository couponRepository,
-                        OrderRepository orderRepository, PaymentRepository paymentRepository) {
+                        OrderRepository orderRepository, PaymentRepository paymentRepository,
+                        ShipmentRepository shipmentRepository, AdminService adminService) {
         this.cartRepository = cartRepository;
         this.addressRepository = addressRepository;
         this.inventoryRepository = inventoryRepository;
         this.couponRepository = couponRepository;
         this.orderRepository = orderRepository;
         this.paymentRepository = paymentRepository;
+        this.shipmentRepository = shipmentRepository;
+        this.adminService = adminService;
+    }
+
+    /**
+     * The customer cancels an order that is not shipped yet (Pending or Paid).
+     * It runs the same cancellation as the admin: stock, coupon use and payment are given back in one transaction.
+     */
+    @Transactional
+    public void cancelByCustomer(int customerId, int orderId) {
+        orderRepository.findForCustomer(orderId, customerId)
+                .orElseThrow(() -> new CustomerRequestException("This order was not found"));
+        String status = adminService.lockOrderStatus(orderId);
+        if (!"Pending".equals(status) && !"Paid".equals(status)) {
+            throw new CustomerRequestException("Only orders that are not shipped yet can be cancelled");
+        }
+        adminService.changeOrderStatus(orderId, "Cancelled");
     }
 
     /**
      * Places an order as ONE database transaction. If any step fails, every step is rolled back.
      *
      * 1. Lock and re-check the stock of every cart item.
-     * 2. Validate the coupon (optional) and calculate the discount.
-     * 3. Insert the order with status Pending.
+     * 2. Validate the coupon (optional) and calculate the discount, then add the shipping fee.
+     * 3. Insert the order with status Pending and the chosen shipping company.
      * 4. Insert the order items with the current product price (business rule BR7).
      * 5. Decrease the stock.
      * 6. Increase the used count of the coupon.
@@ -54,10 +78,12 @@ public class OrderService {
      * 8. Mark the cart as CheckedOut.
      */
     @Transactional
-    public int placeOrder(int customerId, int addressId, String couponCode, String paymentMethod) {
+    public int placeOrder(int customerId, int addressId, int shippingCompanyId, String couponCode,
+                          String paymentMethod) {
         if (!PAYMENT_METHODS.contains(paymentMethod)) {
             throw new CheckoutException("Please choose a payment method");
         }
+        ShippingCompany company = findCompany(shippingCompanyId);
         if (!addressRepository.belongsToCustomer(addressId, customerId)) {
             throw new CheckoutException("Please choose one of your addresses");
         }
@@ -85,16 +111,17 @@ public class OrderService {
 
         // Step 2
         BigDecimal subtotal = items.stream().map(CartItemView::lineTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
-        Coupon coupon = findValidCoupon(couponCode, subtotal);
+        Coupon coupon = findValidCoupon(couponRepository.lockByCode(couponCode.trim()), couponCode, subtotal);
         BigDecimal discount = coupon == null ? BigDecimal.ZERO : calculateDiscount(coupon, subtotal);
-        BigDecimal total = subtotal.subtract(discount);
+        BigDecimal total = subtotal.subtract(discount).add(company.baseFee());
         if (total.signum() <= 0) {
             throw new CheckoutException("The order total must be greater than 0 after the discount");
         }
 
         // Step 3
         Integer couponId = coupon == null ? null : coupon.couponId();
-        int orderId = orderRepository.insertOrder(customerId, addressId, couponId, discount, total);
+        int orderId = orderRepository.insertOrder(customerId, addressId, couponId, company.shippingCompanyId(),
+                discount, total);
 
         for (CartItemView item : items) {
             // Step 4
@@ -121,13 +148,39 @@ public class OrderService {
         return orderId;
     }
 
-    private Coupon findValidCoupon(String couponCode, BigDecimal subtotal) {
+    /**
+     * Calculates the order summary for the checkout page while the customer types a coupon or picks a company.
+     * Nothing is saved; placeOrder checks everything again inside its transaction.
+     */
+    public CheckoutSummary previewOrder(List<CartItemView> items, int shippingCompanyId, String couponCode) {
+        BigDecimal subtotal = items.stream().map(CartItemView::lineTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal fee = shipmentRepository.findCompany(shippingCompanyId)
+                .map(ShippingCompany::baseFee)
+                .orElse(BigDecimal.ZERO);
+        BigDecimal discount = BigDecimal.ZERO;
+        String couponError = null;
+        try {
+            Coupon coupon = findValidCoupon(couponRepository.findByCode(couponCode.trim()), couponCode, subtotal);
+            if (coupon != null) {
+                discount = calculateDiscount(coupon, subtotal);
+            }
+        } catch (CheckoutException e) {
+            couponError = e.getMessage();
+        }
+        return new CheckoutSummary(subtotal, discount, fee, subtotal.subtract(discount).add(fee), couponError);
+    }
+
+    private ShippingCompany findCompany(int shippingCompanyId) {
+        return shipmentRepository.findCompany(shippingCompanyId)
+                .orElseThrow(() -> new CheckoutException("Please choose a shipping company"));
+    }
+
+    private Coupon findValidCoupon(Optional<Coupon> found, String couponCode, BigDecimal subtotal) {
         String code = couponCode.trim();
         if (code.isEmpty()) {
             return null;
         }
-        Coupon coupon = couponRepository.lockByCode(code)
-                .orElseThrow(() -> new CheckoutException("Coupon " + code + " does not exist"));
+        Coupon coupon = found.orElseThrow(() -> new CheckoutException("Coupon " + code + " does not exist"));
         if (!coupon.active()) {
             throw new CheckoutException("Coupon " + coupon.code() + " is not active");
         }

@@ -38,17 +38,19 @@
                 <td class="text-end text-nowrap"
                     th:text="${#numbers.formatDecimal(item.price, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
                 <td>
-                    <form class="d-flex gap-2 cart-quantity" method="post" th:action="@{/shop/cart/update}">
+                    <form class="d-flex gap-2 cart-quantity" method="post" th:action="@{/shop/cart/update}"
+                          data-live-cart>
                         <input type="hidden" name="cartItemId" th:value="${item.cartItemId}">
                         <label class="visually-hidden" th:for="'quantity-' + ${item.cartItemId}"
                                th:text="'Quantity of ' + ${item.productName}">Quantity</label>
                         <input class="form-control" type="number" name="quantity" min="1" inputmode="numeric" required
                                th:id="'quantity-' + ${item.cartItemId}" th:value="${item.quantity}"
                                th:max="${item.quantityInStock}">
-                        <button class="btn btn-outline-secondary" type="submit">Update</button>
+                        <button class="btn btn-outline-secondary" type="submit" data-update-button>Update</button>
                     </form>
+                    <div class="small text-danger mt-1" data-cart-error aria-live="polite"></div>
                 </td>
-                <td class="text-end text-nowrap"
+                <td class="text-end text-nowrap" data-line-total
                     th:text="${#numbers.formatDecimal(item.lineTotal, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
                 <td class="text-end">
                     <form method="post" th:action="@{/shop/cart/remove}">
@@ -62,7 +64,7 @@
             <tfoot>
             <tr>
                 <th scope="row" colspan="3" class="text-end">Total</th>
-                <td class="text-end text-nowrap fw-semibold"
+                <td class="text-end text-nowrap fw-semibold" data-cart-total aria-live="polite"
                     th:text="${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
                 <td></td>
             </tr>
@@ -75,5 +77,6 @@
 </main>
 
 <script th:replace="~{fragments/layout :: scripts}"></script>
+<script th:src="@{/js/app.js}" defer></script>
 </body>
 </html>

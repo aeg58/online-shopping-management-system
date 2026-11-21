@@ -11,7 +11,7 @@ import java.util.Optional;
 public class ReturnRepository {
 
     private static final String FIND_BY_ORDER = """
-            SELECT p.ProductName, r.Quantity, r.Reason, r.Status, r.RequestDate, r.RefundAmount
+            SELECT p.ProductName, r.Quantity, r.Reason, r.Status, r.RequestDate, r.RefundAmount, r.RejectReason
             FROM Returns r
             JOIN Products p ON p.ProductID = r.ProductID
             WHERE r.OrderID = ?
@@ -38,6 +38,13 @@ public class ReturnRepository {
                 Integer.class, orderId, productId).stream().findFirst();
     }
 
+    public boolean hasRejectedReturn(int orderId, int productId) {
+        Integer count = jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM Returns WHERE OrderID = ? AND ProductID = ? AND Status = 'Rejected'",
+                Integer.class, orderId, productId);
+        return count != null && count > 0;
+    }
+
     public int sumActiveReturns(int orderId, int productId) {
         Integer sum = jdbcTemplate.queryForObject(SUM_ACTIVE_RETURNS, Integer.class, orderId, productId);
         return sum == null ? 0 : sum;
@@ -55,7 +62,8 @@ public class ReturnRepository {
                 rs.getString("Reason"),
                 rs.getString("Status"),
                 rs.getDate("RequestDate").toLocalDate(),
-                rs.getBigDecimal("RefundAmount")
+                rs.getBigDecimal("RefundAmount"),
+                rs.getString("RejectReason")
         ), orderId);
     }
 }

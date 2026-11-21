@@ -20,16 +20,18 @@ import java.util.Optional;
 public class OrderRepository {
 
     private static final String INSERT_ORDER = """
-            INSERT INTO Orders (CustomerID, AddressID, CouponID, Status, DiscountAmount, TotalAmount)
-            VALUES (?, ?, ?, 'Pending', ?, ?)
+            INSERT INTO Orders (CustomerID, AddressID, CouponID, ShippingCompanyID, Status, DiscountAmount, TotalAmount)
+            VALUES (?, ?, ?, ?, 'Pending', ?, ?)
             """;
 
     private static final String SELECT_ORDER = """
             SELECT o.OrderID, o.OrderDate, o.Status, o.DiscountAmount, o.TotalAmount,
-                   a.Title, a.City, a.District, a.AddressLine, c.Code
+                   a.Title, a.City, a.District, a.AddressLine, c.Code,
+                   o.ShippingCompanyID, sc.CompanyName, sc.BaseFee
             FROM Orders o
             JOIN Addresses a ON a.AddressID = o.AddressID
             LEFT JOIN Coupons c ON c.CouponID = o.CouponID
+            LEFT JOIN ShippingCompanies sc ON sc.ShippingCompanyID = o.ShippingCompanyID
             """;
 
     private static final RowMapper<OrderView> ORDER_MAPPER = (rs, rowNum) -> new OrderView(
@@ -42,7 +44,10 @@ public class OrderRepository {
             rs.getString("City"),
             rs.getString("District"),
             rs.getString("AddressLine"),
-            rs.getString("Code")
+            rs.getString("Code"),
+            rs.getObject("ShippingCompanyID", Integer.class),
+            rs.getString("CompanyName"),
+            rs.getBigDecimal("BaseFee")
     );
 
     private static final String FIND_BY_CUSTOMER = """
@@ -58,7 +63,16 @@ public class OrderRepository {
                    ISNULL((SELECT SUM(r.Quantity)
                            FROM Returns r
                            WHERE r.OrderID = oi.OrderID AND r.ProductID = oi.ProductID
-                             AND r.Status <> 'Rejected'), 0) AS ReturnedQuantity
+                             AND r.Status <> 'Rejected'), 0) AS ReturnedQuantity,
+                   (SELECT r.Status
+                    FROM Returns r
+                    WHERE r.ReturnID = (SELECT MAX(r2.ReturnID)
+                                        FROM Returns r2
+                                        WHERE r2.OrderID = oi.OrderID AND r2.ProductID = oi.ProductID)) AS LatestReturnStatus,
+                   (SELECT COUNT(*)
+                    FROM Returns r
+                    WHERE r.OrderID = oi.OrderID AND r.ProductID = oi.ProductID
+                      AND r.Status = 'Rejected') AS RejectedReturns
             FROM OrderItems oi
             JOIN Products p ON p.ProductID = oi.ProductID
             WHERE oi.OrderID = ?
@@ -71,15 +85,17 @@ public class OrderRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public int insertOrder(int customerId, int addressId, Integer couponId, BigDecimal discount, BigDecimal total) {
+    public int insertOrder(int customerId, int addressId, Integer couponId, int shippingCompanyId,
+                           BigDecimal discount, BigDecimal total) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection.prepareStatement(INSERT_ORDER, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, customerId);
             statement.setInt(2, addressId);
             statement.setObject(3, couponId, Types.INTEGER);
-            statement.setBigDecimal(4, discount);
-            statement.setBigDecimal(5, total);
+            statement.setInt(4, shippingCompanyId);
+            statement.setBigDecimal(5, discount);
+            statement.setBigDecimal(6, total);
             return statement;
         }, keyHolder);
         return keyHolder.getKey().intValue();
@@ -110,7 +126,9 @@ public class OrderRepository {
                 rs.getInt("Quantity"),
                 rs.getBigDecimal("UnitPrice"),
                 rs.getBigDecimal("LineTotal"),
-                rs.getInt("ReturnedQuantity")
+                rs.getInt("ReturnedQuantity"),
+                rs.getString("LatestReturnStatus"),
+                rs.getInt("RejectedReturns") > 0
         ), orderId);
     }
 

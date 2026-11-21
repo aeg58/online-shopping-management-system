@@ -12,9 +12,13 @@
 
     <div class="row g-4">
         <div class="col-12 col-lg-7">
-            <p class="text-danger" th:if="${addresses.isEmpty()}">You need an address before you can place an order.</p>
+            <div th:if="${addresses.isEmpty()}">
+                <p class="text-danger">You need an address before you can place an order.</p>
+                <a class="btn btn-outline-primary" th:href="@{/shop/addresses/new}">Add an address</a>
+            </div>
 
-            <form method="post" th:action="@{/shop/checkout}" th:unless="${addresses.isEmpty()}">
+            <form method="post" th:action="@{/shop/checkout}" th:unless="${addresses.isEmpty()}"
+                  data-live-checkout th:attr="data-summary-url=@{/shop/checkout/summary}">
                 <div class="mb-3">
                     <label class="form-label" for="addressId">Delivery address</label>
                     <select class="form-select" id="addressId" name="addressId" required>
@@ -22,11 +26,23 @@
                                 th:selected="${selectedAddressId != null ? a.addressId == selectedAddressId : a.defaultAddress}"
                                 th:text="${a.title + ': ' + a.addressLine + ', ' + a.district + ' / ' + a.city}">Address</option>
                     </select>
+                    <a class="small d-inline-block mt-1" th:href="@{/shop/addresses}">Manage addresses</a>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="shippingCompanyId">Shipping company</label>
+                    <select class="form-select" id="shippingCompanyId" name="shippingCompanyId" required>
+                        <option th:each="c : ${companies}" th:value="${c.shippingCompanyId}"
+                                th:selected="${c.shippingCompanyId == selectedCompanyId}"
+                                th:text="${c.companyName} + ' (' + ${#numbers.formatDecimal(c.baseFee, 1, 'COMMA', 2, 'POINT')} + ' ₺)'">Company</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="couponCode">Coupon code (optional)</label>
                     <input class="form-control" type="text" id="couponCode" name="couponCode" maxlength="30"
-                           th:value="${couponCode}" autocomplete="off" autocapitalize="characters" spellcheck="false">
+                           th:value="${couponCode}" autocomplete="off" autocapitalize="characters" spellcheck="false"
+                           aria-describedby="couponError">
+                    <div class="small text-danger mt-1" id="couponError" data-coupon-error aria-live="polite"
+                         th:text="${summary.couponError}"></div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="paymentMethod">Payment method</label>
@@ -51,16 +67,32 @@
                               th:text="${#numbers.formatDecimal(item.lineTotal, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
                     </li>
                 </ul>
-                <p class="d-flex justify-content-between border-top pt-2 mb-1 fw-semibold">
-                    <span>Total</span>
-                    <span class="text-nowrap" th:text="${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                <p class="d-flex justify-content-between border-top pt-2 mb-1">
+                    <span>Subtotal</span>
+                    <span class="text-nowrap" data-summary="subtotal"
+                          th:text="${#numbers.formatDecimal(summary.subtotal, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
                 </p>
-                <p class="small text-secondary mb-0">A coupon discount is applied when you place the order.</p>
+                <p class="d-flex justify-content-between mb-1">
+                    <span>Coupon discount</span>
+                    <span class="text-nowrap" data-summary="discount"
+                          th:text="'-' + ${#numbers.formatDecimal(summary.discount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">-0.00 ₺</span>
+                </p>
+                <p class="d-flex justify-content-between mb-1">
+                    <span>Shipping</span>
+                    <span class="text-nowrap" data-summary="shipping"
+                          th:text="${#numbers.formatDecimal(summary.shippingFee, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                </p>
+                <p class="d-flex justify-content-between border-top pt-2 mb-0 fw-semibold">
+                    <span>Total</span>
+                    <span class="text-nowrap" data-summary="total" aria-live="polite"
+                          th:text="${#numbers.formatDecimal(summary.total, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                </p>
             </section>
         </div>
     </div>
 </main>
 
 <script th:replace="~{fragments/layout :: scripts}"></script>
+<script th:src="@{/js/app.js}" defer></script>
 </body>
 </html>

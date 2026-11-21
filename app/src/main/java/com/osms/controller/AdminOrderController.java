@@ -108,8 +108,10 @@ public class AdminOrderController {
     }
 
     @PostMapping("/returns/{id}/reject")
-    public String rejectReturn(@PathVariable int id, RedirectAttributes redirectAttributes) {
-        AdminActions.perform(redirectAttributes, "Return rejected", () -> adminService.rejectReturn(id));
+    public String rejectReturn(@PathVariable int id,
+                               @RequestParam(defaultValue = "") String rejectReason,
+                               RedirectAttributes redirectAttributes) {
+        AdminActions.perform(redirectAttributes, "Return rejected", () -> adminService.rejectReturn(id, rejectReason));
         return "redirect:/admin/returns";
     }
 

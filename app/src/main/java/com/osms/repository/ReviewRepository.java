@@ -28,7 +28,7 @@ public class ReviewRepository {
             SELECT COUNT(*)
             FROM Orders o
             JOIN OrderItems oi ON oi.OrderID = o.OrderID
-            WHERE o.CustomerID = ? AND oi.ProductID = ? AND o.Status <> 'Cancelled'
+            WHERE o.CustomerID = ? AND oi.ProductID = ? AND o.Status = 'Delivered'
             """;
 
     private final JdbcTemplate jdbcTemplate;

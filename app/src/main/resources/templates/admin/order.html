@@ -72,6 +72,8 @@
                         <span th:text="${r.quantity}">1</span> ·
                         <span class="badge text-bg-light border" th:text="${r.status}">Requested</span>
                         <span class="d-block small text-secondary" th:text="${r.reason}">Reason</span>
+                        <span class="d-block small text-danger" th:if="${r.rejectReason != null}"
+                              th:text="'Rejected: ' + ${r.rejectReason}">Rejected: reason</span>
                     </li>
                 </ul>
                 <a class="small" th:href="@{/admin/returns}">Manage returns</a>
@@ -124,12 +126,18 @@
                     </p>
                     <form method="post" th:action="@{/admin/orders/{id}/shipment(id=${order.orderId})}"
                           th:unless="${order.status == 'Cancelled' or order.status == 'Delivered'}">
-                        <div class="mb-2">
+                        <div class="mb-2" th:if="${order.shippingCompanyId == null}">
                             <label class="form-label" for="shippingCompanyId">Shipping company</label>
                             <select class="form-select" id="shippingCompanyId" name="shippingCompanyId" required>
                                 <option th:each="c : ${companies}" th:value="${c.shippingCompanyId}"
                                         th:text="${c.companyName}">Company</option>
                             </select>
+                        </div>
+                        <div class="mb-2" th:if="${order.shippingCompanyId != null}">
+                            <input type="hidden" name="shippingCompanyId" th:value="${order.shippingCompanyId}">
+                            <p class="form-label mb-1">Shipping company</p>
+                            <p class="mb-0" th:text="${order.shippingCompany}">Company</p>
+                            <p class="small text-secondary mb-0">Chosen by the customer at checkout</p>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="trackingNumber">Tracking number</label>
@@ -151,6 +159,11 @@
                     </span>
                     <span class="text-nowrap"
                           th:text="${#numbers.formatDecimal(order.discountAmount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                </p>
+                <p class="d-flex justify-content-between mb-1" th:if="${order.shippingFee != null}">
+                    <span th:text="'Shipping (' + ${order.shippingCompany} + ')'">Shipping</span>
+                    <span class="text-nowrap"
+                          th:text="${#numbers.formatDecimal(order.shippingFee, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
                 </p>
                 <p class="d-flex justify-content-between mb-2 fw-semibold">
                     <span>Total</span>

@@ -23,7 +23,7 @@ public class ReviewService {
     /** The rating range and the one review per customer rule are checked by the database (BR10). */
     public void addReview(int customerId, int productId, int rating, String comment) {
         if (!reviewRepository.hasPurchased(customerId, productId)) {
-            throw new CustomerRequestException("You can only review products you have ordered");
+            throw new CustomerRequestException("You can review a product after your order is delivered");
         }
         String text = comment.trim();
         if (text.length() > MAX_COMMENT_LENGTH) {

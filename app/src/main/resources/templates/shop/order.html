@@ -13,6 +13,12 @@
         <span th:text="${order.orderDate}">2026-01-01</span> ·
         <span class="badge text-bg-light border" th:text="${order.status}">Pending</span>
     </p>
+    <form class="mb-3" method="post" th:action="@{/shop/orders/{id}/cancel(id=${order.orderId})}"
+          th:if="${order.status == 'Pending' or order.status == 'Paid'}"
+          data-confirm="Cancel this order? The payment will be refunded.">
+        <button class="btn btn-outline-danger btn-sm" type="submit">Cancel order</button>
+        <span class="small text-secondary ms-2">You can cancel until the order is shipped.</span>
+    </form>
 
     <div class="row g-4">
         <div class="col-12 col-lg-8">
@@ -29,7 +35,15 @@
                     </thead>
                     <tbody>
                     <tr th:each="item : ${items}">
-                        <th scope="row" class="fw-normal" th:text="${item.productName}">Product</th>
+                        <th scope="row" class="fw-normal">
+                            <span th:text="${item.productName}">Product</span>
+                            <span class="badge return-badge d-table mt-1" th:if="${item.returnStatus != null}"
+                                  th:classappend="${'return-' + #strings.toLowerCase(item.returnStatus)}"
+                                  th:text="${item.returnStatus == 'Requested' ? 'Return requested'
+                                          : item.returnStatus == 'Approved' ? 'Return approved'
+                                          : item.returnStatus == 'Refunded' ? 'Refunded'
+                                          : 'Return rejected'}">Return requested</span>
+                        </th>
                         <td class="text-end text-nowrap"
                             th:text="${#numbers.formatDecimal(item.unitPrice, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
                         <td class="text-end" th:text="${item.quantity}">1</td>
@@ -108,7 +122,11 @@
                         <tr th:each="r : ${returns}">
                             <th scope="row" class="fw-normal" th:text="${r.productName}">Product</th>
                             <td class="text-end" th:text="${r.quantity}">1</td>
-                            <td th:text="${r.reason}">Reason</td>
+                            <td>
+                                <span th:text="${r.reason}">Reason</span>
+                                <span class="d-block small text-danger" th:if="${r.rejectReason != null}"
+                                      th:text="'Rejected: ' + ${r.rejectReason}">Rejected: reason</span>
+                            </td>
                             <td class="text-nowrap" th:text="${r.requestDate}">2026-01-01</td>
                             <td><span class="badge text-bg-light border" th:text="${r.status}">Requested</span></td>
                             <td class="text-end text-nowrap"
@@ -126,7 +144,7 @@
                 <p class="d-flex justify-content-between mb-1">
                     <span>Subtotal</span>
                     <span class="text-nowrap"
-                          th:text="${#numbers.formatDecimal(order.totalAmount.add(order.discountAmount), 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                          th:text="${#numbers.formatDecimal(order.subtotal(), 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
                 </p>
                 <p class="d-flex justify-content-between mb-1">
                     <span>
@@ -136,6 +154,11 @@
                     </span>
                     <span class="text-nowrap"
                           th:text="(${order.discountAmount.signum() > 0} ? '-' : '') + ${#numbers.formatDecimal(order.discountAmount, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
+                </p>
+                <p class="d-flex justify-content-between mb-1" th:if="${order.shippingFee != null}">
+                    <span th:text="'Shipping (' + ${order.shippingCompany} + ')'">Shipping</span>
+                    <span class="text-nowrap"
+                          th:text="${#numbers.formatDecimal(order.shippingFee, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</span>
                 </p>
                 <p class="d-flex justify-content-between border-top pt-2 mb-0 fw-semibold">
                     <span>Total</span>
@@ -174,5 +197,6 @@
 </main>
 
 <script th:replace="~{fragments/layout :: scripts}"></script>
+<script th:src="@{/js/app.js}" defer></script>
 </body>
 </html>

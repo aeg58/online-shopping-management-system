@@ -3,6 +3,7 @@ package com.osms.repository;
 import com.osms.model.ShipmentView;
 import com.osms.model.ShippingCompany;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
@@ -36,10 +37,19 @@ public class ShipmentRepository {
         ), orderId).stream().findFirst();
     }
 
+    private static final RowMapper<ShippingCompany> COMPANY_MAPPER = (rs, rowNum) -> new ShippingCompany(
+            rs.getInt("ShippingCompanyID"), rs.getString("CompanyName"), rs.getBigDecimal("BaseFee"));
+
     public List<ShippingCompany> findCompanies() {
         return jdbcTemplate.query(
-                "SELECT ShippingCompanyID, CompanyName FROM ShippingCompanies ORDER BY CompanyName",
-                (rs, rowNum) -> new ShippingCompany(rs.getInt("ShippingCompanyID"), rs.getString("CompanyName")));
+                "SELECT ShippingCompanyID, CompanyName, BaseFee FROM ShippingCompanies ORDER BY CompanyName",
+                COMPANY_MAPPER);
+    }
+
+    public Optional<ShippingCompany> findCompany(int shippingCompanyId) {
+        return jdbcTemplate.query(
+                "SELECT ShippingCompanyID, CompanyName, BaseFee FROM ShippingCompanies WHERE ShippingCompanyID = ?",
+                COMPANY_MAPPER, shippingCompanyId).stream().findFirst();
     }
 
     public void insertInTransit(int orderId, int shippingCompanyId, String trackingNumber) {

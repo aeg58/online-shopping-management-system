@@ -1,4 +1,6 @@
 package com.osms.model;
 
-public record ShippingCompany(int shippingCompanyId, String companyName) {
+import java.math.BigDecimal;
+
+public record ShippingCompany(int shippingCompanyId, String companyName, BigDecimal baseFee) {
 }

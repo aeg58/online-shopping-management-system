@@ -53,7 +53,8 @@ public class AdminRepository {
             """;
 
     private static final String FIND_RETURNS = """
-            SELECT r.ReturnID, r.OrderID, p.ProductName, r.Quantity, r.Reason, r.Status, r.RequestDate, r.RefundAmount
+            SELECT r.ReturnID, r.OrderID, p.ProductName, r.Quantity, r.Reason, r.Status, r.RequestDate, r.RefundAmount,
+                   r.RejectReason
             FROM Returns r
             JOIN Products p ON p.ProductID = r.ProductID
             ORDER BY r.RequestDate DESC, r.ReturnID DESC
@@ -189,7 +190,8 @@ public class AdminRepository {
                 rs.getString("Reason"),
                 rs.getString("Status"),
                 rs.getDate("RequestDate").toLocalDate(),
-                rs.getBigDecimal("RefundAmount")
+                rs.getBigDecimal("RefundAmount"),
+                rs.getString("RejectReason")
         ));
     }
 
@@ -201,6 +203,11 @@ public class AdminRepository {
                 rs.getString("Status"),
                 rs.getBigDecimal("RefundAmount")
         ), returnId).stream().findFirst();
+    }
+
+    public void rejectReturn(int returnId, String rejectReason) {
+        jdbcTemplate.update("UPDATE Returns SET Status = 'Rejected', RejectReason = ? WHERE ReturnID = ?",
+                rejectReason, returnId);
     }
 
     public void updateReturnStatus(int returnId, String status) {
@@ -216,5 +223,11 @@ public class AdminRepository {
         jdbcTemplate.update(
                 "UPDATE Inventory SET QuantityInStock = QuantityInStock + ?, LastUpdated = GETDATE() WHERE ProductID = ?",
                 quantity, productId);
+    }
+
+    /** The shipping company the customer chose at checkout, or empty for older orders. */
+    public Optional<Integer> findChosenShippingCompany(int orderId) {
+        return jdbcTemplate.query("SELECT ShippingCompanyID FROM Orders WHERE OrderID = ? AND ShippingCompanyID IS NOT NULL",
+                (rs, rowNum) -> rs.getInt("ShippingCompanyID"), orderId).stream().findFirst();
     }
 }

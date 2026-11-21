@@ -7,8 +7,10 @@ import com.osms.repository.OrderRepository;
 import com.osms.repository.PaymentRepository;
 import com.osms.repository.ReturnRepository;
 import com.osms.repository.ShipmentRepository;
+import com.osms.service.AdminRequestException;
 import com.osms.service.CustomerRequestException;
 import com.osms.service.DatabaseErrors;
+import com.osms.service.OrderService;
 import com.osms.service.ReturnService;
 import com.osms.service.ReviewService;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -39,16 +41,18 @@ public class OrderController {
     private final ReturnRepository returnRepository;
     private final ReturnService returnService;
     private final ReviewService reviewService;
+    private final OrderService orderService;
 
     public OrderController(OrderRepository orderRepository, PaymentRepository paymentRepository,
                            ShipmentRepository shipmentRepository, ReturnRepository returnRepository,
-                           ReturnService returnService, ReviewService reviewService) {
+                           ReturnService returnService, ReviewService reviewService, OrderService orderService) {
         this.orderRepository = orderRepository;
         this.paymentRepository = paymentRepository;
         this.shipmentRepository = shipmentRepository;
         this.returnRepository = returnRepository;
         this.returnService = returnService;
         this.reviewService = reviewService;
+        this.orderService = orderService;
     }
 
     @GetMapping
@@ -65,7 +69,7 @@ public class OrderController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         List<OrderItemView> items = orderRepository.findItems(id);
         List<OrderItemView> returnableItems = "Delivered".equals(order.status())
-                ? items.stream().filter(item -> item.remainingQuantity() > 0).toList()
+                ? items.stream().filter(OrderItemView::canRequestReturn).toList()
                 : List.of();
 
         model.addAttribute("order", order);
@@ -91,6 +95,19 @@ public class OrderController {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         } catch (DataIntegrityViolationException e) {
             redirectAttributes.addFlashAttribute("errorMessage", DatabaseErrors.message(e));
+        }
+        return "redirect:/shop/orders/" + id;
+    }
+
+    @PostMapping("/{id}/cancel")
+    public String cancelOrder(@SessionAttribute(SessionUser.SESSION_KEY) SessionUser user,
+                              @PathVariable int id,
+                              RedirectAttributes redirectAttributes) {
+        try {
+            orderService.cancelByCustomer(user.getCustomerId(), id);
+            redirectAttributes.addFlashAttribute("successMessage", "Your order was cancelled");
+        } catch (CustomerRequestException | AdminRequestException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
         return "redirect:/shop/orders/" + id;
     }

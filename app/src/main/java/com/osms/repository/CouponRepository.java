@@ -23,6 +23,14 @@ public class CouponRepository {
             WHERE Code = ?
             """;
 
+    // Same columns without the lock: used only to show the discount before the order is placed
+    private static final String FIND_BY_CODE = """
+            SELECT CouponID, Code, DiscountType, DiscountValue, MinOrderAmount, UsageLimit, UsedCount, IsActive,
+                   CASE WHEN CAST(GETDATE() AS DATE) BETWEEN StartDate AND EndDate THEN 1 ELSE 0 END AS InDateRange
+            FROM Coupons
+            WHERE Code = ?
+            """;
+
     private static final String FIND_ALL = """
             SELECT CouponID, Code, DiscountType, DiscountValue, MinOrderAmount,
                    StartDate, EndDate, UsageLimit, UsedCount, IsActive
@@ -42,7 +50,15 @@ public class CouponRepository {
     }
 
     public Optional<Coupon> lockByCode(String code) {
-        return jdbcTemplate.query(LOCK_BY_CODE, (rs, rowNum) -> new Coupon(
+        return findCoupon(LOCK_BY_CODE, code);
+    }
+
+    public Optional<Coupon> findByCode(String code) {
+        return findCoupon(FIND_BY_CODE, code);
+    }
+
+    private Optional<Coupon> findCoupon(String sql, String code) {
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Coupon(
                 rs.getInt("CouponID"),
                 rs.getString("Code"),
                 rs.getString("DiscountType"),

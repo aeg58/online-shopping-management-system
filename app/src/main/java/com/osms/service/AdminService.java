@@ -85,6 +85,12 @@ public class AdminService {
      * A delivered order is returned with a return request instead, and a cancelled order stays cancelled,
      * so stock can never be added back twice.
      */
+    /** Locks the order row until the transaction ends and returns its status. */
+    public String lockOrderStatus(int orderId) {
+        return adminRepository.lockOrderStatus(orderId)
+                .orElseThrow(() -> new AdminRequestException("This order was not found"));
+    }
+
     @Transactional
     public void changeOrderStatus(int orderId, String status) {
         String currentStatus = adminRepository.lockOrderStatus(orderId)
@@ -123,6 +129,11 @@ public class AdminService {
         if ("Cancelled".equals(status) || "Delivered".equals(status)) {
             throw new AdminRequestException("A " + status.toLowerCase(Locale.ROOT) + " order cannot be shipped");
         }
+        // The customer paid the fee of the company chosen at checkout, so the order is shipped with that company
+        int chosenCompany = adminRepository.findChosenShippingCompany(orderId).orElse(shippingCompanyId);
+        if (chosenCompany != shippingCompanyId) {
+            throw new AdminRequestException("This order must be shipped with the company the customer chose");
+        }
 
         shipmentRepository.insertInTransit(orderId, shippingCompanyId, tracking);
         adminRepository.updateOrderStatus(orderId, "Shipped");
@@ -148,9 +159,21 @@ public class AdminService {
         decideReturn(returnId, "Approved");
     }
 
+    /** The admin must say why; the customer sees the reason on the order page. */
     @Transactional
-    public void rejectReturn(int returnId) {
-        decideReturn(returnId, "Rejected");
+    public void rejectReturn(int returnId, String rejectReason) {
+        String reason = rejectReason.trim();
+        if (reason.isEmpty()) {
+            throw new AdminRequestException("Please write why the return is rejected");
+        }
+        if (reason.length() > 255) {
+            throw new AdminRequestException("The reason can have at most 255 characters");
+        }
+        ReturnRecord record = lockReturn(returnId);
+        if (!"Requested".equals(record.status())) {
+            throw new AdminRequestException("This return was already processed");
+        }
+        adminRepository.rejectReturn(returnId, reason);
     }
 
     /** Refunds the return and puts the returned quantity back into stock in one transaction. */
