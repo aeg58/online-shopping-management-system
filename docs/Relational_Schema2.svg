@@ -1,86 +1,87 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="4228" height="1340" viewBox="0 0 4228 1340" font-family="Arial, Helvetica, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
+<svg xmlns="http://www.w3.org/2000/svg" width="4964" height="1370" viewBox="0 0 4964 1370" font-family="Arial, Helvetica, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
 <rect width="100%" height="100%" fill="white"/>
-<text x="2114" y="60" font-size="38" font-weight="bold" text-anchor="middle" fill="#222">Relational Schema - Online Shopping Management System</text>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="1980.0,299.0 1980.0,220.0 2163.4,220.0 2163.4,190.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="1474.0,469.0 1474.0,375.0 1885.4,375.0 1885.4,345.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="2164.0,469.0 2164.0,390.0 1899.4,390.0 1899.4,345.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="509.4,699.0 509.4,545.0 1346.2,545.0 1346.2,515.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="2053.8,699.0 2053.8,560.0 2066.8,560.0 2066.8,515.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="2170.2,699.0 2170.2,575.0 2785.6,575.0 2785.6,515.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="715.0,989.0 715.0,895.0 1914.2,895.0 1914.2,745.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="1547.0,699.0 1547.0,590.0 1360.2,590.0 1360.2,515.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="1322.6,989.0 1322.6,850.0 1440.2,850.0 1440.2,745.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="1424.6,989.0 1424.6,865.0 1928.2,865.0 1928.2,745.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="1819.8,989.0 1819.8,820.0 290.0,820.0 290.0,605.0 1374.2,605.0 1374.2,515.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="1941.0,989.0 1941.0,805.0 388.2,805.0 388.2,745.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="2052.6,989.0 2052.6,880.0 2937.0,880.0 2937.0,745.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="806.8,1234.0 806.8,1065.0 1687.2,1065.0 1687.2,1035.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="913.6,1234.0 913.6,1080.0 266.0,1080.0 266.0,910.0 1942.2,910.0 1942.2,745.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="1430.0,1234.0 1430.0,1095.0 1701.2,1095.0 1701.2,1035.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="2073.6,1234.0 2073.6,1140.0 1715.2,1140.0 1715.2,1035.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="2218.8,1234.0 2218.8,1110.0 3497.0,1110.0 3497.0,1035.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="2845.0,989.0 2845.0,835.0 1956.2,835.0 1956.2,745.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="2966.2,989.0 2966.2,775.0 242.0,775.0 242.0,620.0 1388.2,620.0 1388.2,515.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="3083.2,1234.0 3083.2,1125.0 1729.2,1125.0 1729.2,1035.0"/>
-<polyline fill="none" stroke="#222" stroke-width="1.7" points="3190.0,1234.0 3190.0,1155.0 4143.6,1155.0 4143.6,790.0 1970.2,790.0 1970.2,745.0"/>
-<text x="2119.6" y="132" font-size="22" font-weight="bold" fill="#111">Roles</text>
-<rect x="2119.6" y="144" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2163.4" y="173.0" font-size="17" text-anchor="middle" fill="#111">RoleID</text>
-<line x1="2136.4" y1="177.0" x2="2190.4" y2="177.0" stroke="#111" stroke-width="1.6"/>
-<rect x="2207.2" y="144" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2260.6" y="173.0" font-size="17" text-anchor="middle" fill="#111">RoleName</text>
-<text x="1848.6" y="287" font-size="22" font-weight="bold" fill="#111">Users</text>
-<rect x="1848.6" y="299" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1892.4" y="328.0" font-size="17" text-anchor="middle" fill="#111">UserID</text>
-<line x1="1865.4" y1="332.0" x2="1919.4" y2="332.0" stroke="#111" stroke-width="1.6"/>
-<rect x="1936.2" y="299" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1980.0" y="328.0" font-size="17" text-anchor="middle" fill="#111">RoleID</text>
-<rect x="2023.8" y="299" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2077.2" y="328.0" font-size="17" text-anchor="middle" fill="#111">Username</text>
-<rect x="2130.6" y="299" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2173.6" y="328.0" font-size="17" text-anchor="middle" fill="#111">Email</text>
-<rect x="2216.6" y="299" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2289.2" y="328.0" font-size="17" text-anchor="middle" fill="#111">PasswordHash</text>
-<rect x="2361.8" y="299" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2415.2" y="328.0" font-size="17" text-anchor="middle" fill="#111">IsActive</text>
-<rect x="2468.6" y="299" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2526.8" y="328.0" font-size="17" text-anchor="middle" fill="#111">CreatedAt</text>
-<text x="1304.2" y="457" font-size="22" font-weight="bold" fill="#111">Customers</text>
-<rect x="1304.2" y="469" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1367.2" y="498.0" font-size="17" text-anchor="middle" fill="#111">CustomerID</text>
-<line x1="1322.2" y1="502.0" x2="1412.2" y2="502.0" stroke="#111" stroke-width="1.6"/>
-<rect x="1430.2" y="469" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1474.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">UserID</text>
-<rect x="1517.8" y="469" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1576.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">FirstName</text>
-<rect x="1634.2" y="469" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1687.6" y="498.0" font-size="17" text-anchor="middle" fill="#111">LastName</text>
-<rect x="1741.0" y="469" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1784.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">Phone</text>
-<rect x="1827.0" y="469" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1885.2" y="498.0" font-size="17" text-anchor="middle" fill="#111">BirthDate</text>
-<text x="2013.4" y="457" font-size="22" font-weight="bold" fill="#111">Sellers</text>
-<rect x="2013.4" y="469" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2066.8" y="498.0" font-size="17" text-anchor="middle" fill="#111">SellerID</text>
-<line x1="2030.8" y1="502.0" x2="2102.8" y2="502.0" stroke="#111" stroke-width="1.6"/>
-<rect x="2120.2" y="469" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2164.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">UserID</text>
-<rect x="2207.8" y="469" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2266.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">StoreName</text>
-<rect x="2324.2" y="469" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2382.4" y="498.0" font-size="17" text-anchor="middle" fill="#111">TaxNumber</text>
-<rect x="2440.6" y="469" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2483.6" y="498.0" font-size="17" text-anchor="middle" fill="#111">Phone</text>
-<rect x="2526.6" y="469" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2589.6" y="498.0" font-size="17" text-anchor="middle" fill="#111">IsApproved</text>
-<text x="2722.6" y="457" font-size="22" font-weight="bold" fill="#111">Categories</text>
-<rect x="2722.6" y="469" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2785.6" y="498.0" font-size="17" text-anchor="middle" fill="#111">CategoryID</text>
-<line x1="2740.6" y1="502.0" x2="2830.6" y2="502.0" stroke="#111" stroke-width="1.6"/>
-<rect x="2848.6" y="469" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2921.2" y="498.0" font-size="17" text-anchor="middle" fill="#111">CategoryName</text>
-<rect x="2993.8" y="469" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3061.6" y="498.0" font-size="17" text-anchor="middle" fill="#111">Description</text>
+<text x="2482" y="60" font-size="38" font-weight="bold" text-anchor="middle" fill="#222">Relational Schema - Online Shopping Management System</text>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2324.4,299.0 2324.4,220.0 2507.8,220.0 2507.8,190.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="1818.4,469.0 1818.4,375.0 2229.8,375.0 2229.8,345.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2508.4,469.0 2508.4,390.0 2243.8,390.0 2243.8,345.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="509.4,699.0 509.4,545.0 1690.6,545.0 1690.6,515.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2160.6,699.0 2160.6,560.0 2411.2,560.0 2411.2,515.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2277.0,699.0 2277.0,575.0 3130.0,575.0 3130.0,515.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="1186.0,1019.0 1186.0,895.0 2021.0,895.0 2021.0,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="1653.8,699.0 1653.8,590.0 1704.6,590.0 1704.6,515.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="1793.6,1019.0 1793.6,850.0 1547.0,850.0 1547.0,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="1895.6,1019.0 1895.6,865.0 2035.0,865.0 2035.0,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2290.8,1019.0 2290.8,805.0 290.0,805.0 290.0,605.0 1718.6,605.0 1718.6,515.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2412.0,1019.0 2412.0,790.0 388.2,790.0 388.2,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2523.6,1019.0 2523.6,880.0 3043.8,880.0 3043.8,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="3177.6,1019.0 3177.6,925.0 4370.0,925.0 4370.0,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="1078.6,1264.0 1078.6,1095.0 2158.2,1095.0 2158.2,1065.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="1185.4,1264.0 1185.4,1110.0 266.0,1110.0 266.0,940.0 2049.0,940.0 2049.0,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="1701.8,1264.0 1701.8,1125.0 2172.2,1125.0 2172.2,1065.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2345.4,1264.0 2345.4,1170.0 2186.2,1170.0 2186.2,1065.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="2490.6,1264.0 2490.6,1140.0 4832.4,1140.0 4832.4,835.0 4384.0,835.0 4384.0,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="3644.8,1019.0 3644.8,820.0 2063.0,820.0 2063.0,745.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="3766.0,1019.0 3766.0,910.0 4856.4,910.0 4856.4,620.0 1732.6,620.0 1732.6,515.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="3355.0,1264.0 3355.0,1155.0 2200.2,1155.0 2200.2,1065.0"/>
+<polyline fill="none" stroke="#222" stroke-width="1.7" points="3461.8,1264.0 3461.8,1185.0 4880.4,1185.0 4880.4,775.0 2077.0,775.0 2077.0,745.0"/>
+<text x="2464.0" y="132" font-size="22" font-weight="bold" fill="#111">Roles</text>
+<rect x="2464.0" y="144" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2507.8" y="173.0" font-size="17" text-anchor="middle" fill="#111">RoleID</text>
+<line x1="2480.8" y1="177.0" x2="2534.8" y2="177.0" stroke="#111" stroke-width="1.6"/>
+<rect x="2551.6" y="144" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2605.0" y="173.0" font-size="17" text-anchor="middle" fill="#111">RoleName</text>
+<text x="2193.0" y="287" font-size="22" font-weight="bold" fill="#111">Users</text>
+<rect x="2193.0" y="299" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2236.8" y="328.0" font-size="17" text-anchor="middle" fill="#111">UserID</text>
+<line x1="2209.8" y1="332.0" x2="2263.8" y2="332.0" stroke="#111" stroke-width="1.6"/>
+<rect x="2280.6" y="299" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2324.4" y="328.0" font-size="17" text-anchor="middle" fill="#111">RoleID</text>
+<rect x="2368.2" y="299" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2421.6" y="328.0" font-size="17" text-anchor="middle" fill="#111">Username</text>
+<rect x="2475.0" y="299" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2518.0" y="328.0" font-size="17" text-anchor="middle" fill="#111">Email</text>
+<rect x="2561.0" y="299" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2633.6" y="328.0" font-size="17" text-anchor="middle" fill="#111">PasswordHash</text>
+<rect x="2706.2" y="299" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2759.6" y="328.0" font-size="17" text-anchor="middle" fill="#111">IsActive</text>
+<rect x="2813.0" y="299" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2871.2" y="328.0" font-size="17" text-anchor="middle" fill="#111">CreatedAt</text>
+<text x="1648.6" y="457" font-size="22" font-weight="bold" fill="#111">Customers</text>
+<rect x="1648.6" y="469" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1711.6" y="498.0" font-size="17" text-anchor="middle" fill="#111">CustomerID</text>
+<line x1="1666.6" y1="502.0" x2="1756.6" y2="502.0" stroke="#111" stroke-width="1.6"/>
+<rect x="1774.6" y="469" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1818.4" y="498.0" font-size="17" text-anchor="middle" fill="#111">UserID</text>
+<rect x="1862.2" y="469" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1920.4" y="498.0" font-size="17" text-anchor="middle" fill="#111">FirstName</text>
+<rect x="1978.6" y="469" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2032.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">LastName</text>
+<rect x="2085.4" y="469" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2128.4" y="498.0" font-size="17" text-anchor="middle" fill="#111">Phone</text>
+<rect x="2171.4" y="469" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2229.6" y="498.0" font-size="17" text-anchor="middle" fill="#111">BirthDate</text>
+<text x="2357.8" y="457" font-size="22" font-weight="bold" fill="#111">Sellers</text>
+<rect x="2357.8" y="469" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2411.2" y="498.0" font-size="17" text-anchor="middle" fill="#111">SellerID</text>
+<line x1="2375.2" y1="502.0" x2="2447.2" y2="502.0" stroke="#111" stroke-width="1.6"/>
+<rect x="2464.6" y="469" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2508.4" y="498.0" font-size="17" text-anchor="middle" fill="#111">UserID</text>
+<rect x="2552.2" y="469" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2610.4" y="498.0" font-size="17" text-anchor="middle" fill="#111">StoreName</text>
+<rect x="2668.6" y="469" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2726.8" y="498.0" font-size="17" text-anchor="middle" fill="#111">TaxNumber</text>
+<rect x="2785.0" y="469" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2828.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">Phone</text>
+<rect x="2871.0" y="469" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2934.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">IsApproved</text>
+<text x="3067.0" y="457" font-size="22" font-weight="bold" fill="#111">Categories</text>
+<rect x="3067.0" y="469" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3130.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">CategoryID</text>
+<line x1="3085.0" y1="502.0" x2="3175.0" y2="502.0" stroke="#111" stroke-width="1.6"/>
+<rect x="3193.0" y="469" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3265.6" y="498.0" font-size="17" text-anchor="middle" fill="#111">CategoryName</text>
+<rect x="3338.2" y="469" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3406.0" y="498.0" font-size="17" text-anchor="middle" fill="#111">Description</text>
 <text x="330.0" y="687" font-size="22" font-weight="bold" fill="#111">Addresses</text>
 <rect x="330.0" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
 <text x="388.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">AddressID</text>
@@ -101,198 +102,207 @@
 <text x="1147.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">PostalCode</text>
 <rect x="1210.0" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
 <text x="1268.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">IsDefault</text>
-<text x="1396.4" y="687" font-size="22" font-weight="bold" fill="#111">Carts</text>
-<rect x="1396.4" y="699" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1440.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">CartID</text>
-<line x1="1413.2" y1="732.0" x2="1467.2" y2="732.0" stroke="#111" stroke-width="1.6"/>
-<rect x="1484.0" y="699" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1547.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">CustomerID</text>
-<rect x="1610.0" y="699" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1653.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
-<rect x="1697.6" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1755.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">CreatedAt</text>
-<text x="1884.0" y="687" font-size="22" font-weight="bold" fill="#111">Products</text>
-<rect x="1884.0" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1942.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
-<line x1="1901.7" y1="732.0" x2="1982.7" y2="732.0" stroke="#111" stroke-width="1.6"/>
-<rect x="2000.4" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2053.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">SellerID</text>
-<rect x="2107.2" y="699" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2170.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">CategoryID</text>
-<rect x="2233.2" y="699" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2301.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">ProductName</text>
-<rect x="2368.8" y="699" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2436.6" y="728.0" font-size="17" text-anchor="middle" fill="#111">Description</text>
-<rect x="2504.4" y="699" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2547.4" y="728.0" font-size="17" text-anchor="middle" fill="#111">Price</text>
-<rect x="2590.4" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2643.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">IsActive</text>
-<rect x="2697.2" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2755.4" y="728.0" font-size="17" text-anchor="middle" fill="#111">CreatedAt</text>
-<text x="2883.6" y="687" font-size="22" font-weight="bold" fill="#111">Coupons</text>
-<rect x="2883.6" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2937.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">CouponID</text>
-<line x1="2901.0" y1="732.0" x2="2973.0" y2="732.0" stroke="#111" stroke-width="1.6"/>
-<rect x="2990.4" y="699" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3033.4" y="728.0" font-size="17" text-anchor="middle" fill="#111">Code</text>
-<rect x="3076.4" y="699" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3149.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">DiscountType</text>
-<rect x="3221.6" y="699" width="154.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3299.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">DiscountValue</text>
-<rect x="3376.4" y="699" width="164.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3458.6" y="728.0" font-size="17" text-anchor="middle" fill="#111">MinOrderAmount</text>
-<rect x="3540.8" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3599.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">StartDate</text>
-<rect x="3657.2" y="699" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3705.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">EndDate</text>
-<rect x="3754.4" y="699" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3817.4" y="728.0" font-size="17" text-anchor="middle" fill="#111">UsageLimit</text>
-<rect x="3880.4" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3938.6" y="728.0" font-size="17" text-anchor="middle" fill="#111">UsedCount</text>
-<rect x="3996.8" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="4050.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">IsActive</text>
-<text x="521.2" y="977" font-size="22" font-weight="bold" fill="#111">Inventory</text>
-<rect x="521.2" y="989" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="589.0" y="1018.0" font-size="17" text-anchor="middle" fill="#111">InventoryID</text>
-<line x1="539.5" y1="1022.0" x2="638.5" y2="1022.0" stroke="#111" stroke-width="1.6"/>
-<rect x="656.8" y="989" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="715.0" y="1018.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
-<rect x="773.2" y="989" width="174.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="860.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">QuantityInStock</text>
-<rect x="947.2" y="989" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1015.0" y="1018.0" font-size="17" text-anchor="middle" fill="#111">LastUpdated</text>
-<text x="1152.8" y="977" font-size="22" font-weight="bold" fill="#111">CartItems</text>
-<rect x="1152.8" y="989" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1215.8" y="1018.0" font-size="17" text-anchor="middle" fill="#111">CartItemID</text>
-<line x1="1170.8" y1="1022.0" x2="1260.8" y2="1022.0" stroke="#111" stroke-width="1.6"/>
-<rect x="1278.8" y="989" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1322.6" y="1018.0" font-size="17" text-anchor="middle" fill="#111">CartID</text>
-<rect x="1366.4" y="989" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1424.6" y="1018.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
-<rect x="1482.8" y="989" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1536.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">Quantity</text>
-<text x="1659.6" y="977" font-size="22" font-weight="bold" fill="#111">Orders</text>
-<rect x="1659.6" y="989" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1708.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
-<line x1="1676.7" y1="1022.0" x2="1739.7" y2="1022.0" stroke="#111" stroke-width="1.6"/>
-<rect x="1756.8" y="989" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1819.8" y="1018.0" font-size="17" text-anchor="middle" fill="#111">CustomerID</text>
-<rect x="1882.8" y="989" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1941.0" y="1018.0" font-size="17" text-anchor="middle" fill="#111">AddressID</text>
-<rect x="1999.2" y="989" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2052.6" y="1018.0" font-size="17" text-anchor="middle" fill="#111">CouponID</text>
-<rect x="2106.0" y="989" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2164.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">OrderDate</text>
-<rect x="2222.4" y="989" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2266.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
-<rect x="2310.0" y="989" width="164.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2392.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">DiscountAmount</text>
-<rect x="2474.4" y="989" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2542.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">TotalAmount</text>
-<text x="2680.0" y="977" font-size="22" font-weight="bold" fill="#111">Reviews</text>
-<rect x="2680.0" y="989" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2733.4" y="1018.0" font-size="17" text-anchor="middle" fill="#111">ReviewID</text>
-<line x1="2697.4" y1="1022.0" x2="2769.4" y2="1022.0" stroke="#111" stroke-width="1.6"/>
-<rect x="2786.8" y="989" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2845.0" y="1018.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
-<rect x="2903.2" y="989" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2966.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">CustomerID</text>
-<rect x="3029.2" y="989" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3073.0" y="1018.0" font-size="17" text-anchor="middle" fill="#111">Rating</text>
-<rect x="3116.8" y="989" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3165.4" y="1018.0" font-size="17" text-anchor="middle" fill="#111">Comment</text>
-<rect x="3214.0" y="989" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3272.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">CreatedAt</text>
-<text x="3400.4" y="977" font-size="22" font-weight="bold" fill="#111">ShippingCompanies</text>
-<rect x="3400.4" y="989" width="193.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3497.0" y="1018.0" font-size="17" text-anchor="middle" fill="#111">ShippingCompanyID</text>
-<line x1="3420.5" y1="1022.0" x2="3573.5" y2="1022.0" stroke="#111" stroke-width="1.6"/>
-<rect x="3593.6" y="989" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3661.4" y="1018.0" font-size="17" text-anchor="middle" fill="#111">CompanyName</text>
-<rect x="3729.2" y="989" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3772.2" y="1018.0" font-size="17" text-anchor="middle" fill="#111">Phone</text>
-<rect x="3815.2" y="989" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3863.8" y="1018.0" font-size="17" text-anchor="middle" fill="#111">BaseFee</text>
-<text x="622.6" y="1222" font-size="22" font-weight="bold" fill="#111">OrderItems</text>
-<rect x="622.6" y="1234" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="690.4" y="1263.0" font-size="17" text-anchor="middle" fill="#111">OrderItemID</text>
-<line x1="640.9" y1="1267.0" x2="739.9" y2="1267.0" stroke="#111" stroke-width="1.6"/>
-<rect x="758.2" y="1234" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="806.8" y="1263.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
-<rect x="855.4" y="1234" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="913.6" y="1263.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
-<rect x="971.8" y="1234" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1025.2" y="1263.0" font-size="17" text-anchor="middle" fill="#111">Quantity</text>
-<rect x="1078.6" y="1234" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1136.8" y="1263.0" font-size="17" text-anchor="middle" fill="#111">UnitPrice</text>
-<text x="1265.0" y="1222" font-size="22" font-weight="bold" fill="#111">Payments</text>
-<rect x="1265.0" y="1234" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1323.2" y="1263.0" font-size="17" text-anchor="middle" fill="#111">PaymentID</text>
-<line x1="1282.7" y1="1267.0" x2="1363.7" y2="1267.0" stroke="#111" stroke-width="1.6"/>
-<rect x="1381.4" y="1234" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1430.0" y="1263.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
-<rect x="1478.6" y="1234" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1522.4" y="1263.0" font-size="17" text-anchor="middle" fill="#111">Method</text>
-<rect x="1566.2" y="1234" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1610.0" y="1263.0" font-size="17" text-anchor="middle" fill="#111">Amount</text>
-<rect x="1653.8" y="1234" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1697.6" y="1263.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
-<rect x="1741.4" y="1234" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1785.2" y="1263.0" font-size="17" text-anchor="middle" fill="#111">PaidAt</text>
-<text x="1899.0" y="1222" font-size="22" font-weight="bold" fill="#111">Shipments</text>
-<rect x="1899.0" y="1234" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="1962.0" y="1263.0" font-size="17" text-anchor="middle" fill="#111">ShipmentID</text>
-<line x1="1917.0" y1="1267.0" x2="2007.0" y2="1267.0" stroke="#111" stroke-width="1.6"/>
-<rect x="2025.0" y="1234" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2073.6" y="1263.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
-<rect x="2122.2" y="1234" width="193.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2218.8" y="1263.0" font-size="17" text-anchor="middle" fill="#111">ShippingCompanyID</text>
-<rect x="2315.4" y="1234" width="164.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2397.6" y="1263.0" font-size="17" text-anchor="middle" fill="#111">TrackingNumber</text>
-<rect x="2479.8" y="1234" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2523.6" y="1263.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
-<rect x="2567.4" y="1234" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2635.2" y="1263.0" font-size="17" text-anchor="middle" fill="#111">ShippedDate</text>
-<rect x="2703.0" y="1234" width="154.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2780.4" y="1263.0" font-size="17" text-anchor="middle" fill="#111">DeliveredDate</text>
-<text x="2927.8" y="1222" font-size="22" font-weight="bold" fill="#111">Returns</text>
-<rect x="2927.8" y="1234" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="2981.2" y="1263.0" font-size="17" text-anchor="middle" fill="#111">ReturnID</text>
-<line x1="2945.2" y1="1267.0" x2="3017.2" y2="1267.0" stroke="#111" stroke-width="1.6"/>
-<rect x="3034.6" y="1234" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3083.2" y="1263.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
-<rect x="3131.8" y="1234" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3190.0" y="1263.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
-<rect x="3248.2" y="1234" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3301.6" y="1263.0" font-size="17" text-anchor="middle" fill="#111">Quantity</text>
-<rect x="3355.0" y="1234" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3398.8" y="1263.0" font-size="17" text-anchor="middle" fill="#111">Reason</text>
-<rect x="3442.6" y="1234" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3486.4" y="1263.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
-<rect x="3530.2" y="1234" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3598.0" y="1263.0" font-size="17" text-anchor="middle" fill="#111">RequestDate</text>
-<rect x="3665.8" y="1234" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
-<text x="3738.4" y="1263.0" font-size="17" text-anchor="middle" fill="#111">RefundAmount</text>
-<polygon points="2163.4,190.0 2156.9,203.0 2169.9,203.0" fill="#222"/>
-<polygon points="1885.4,345.0 1878.9,358.0 1891.9,358.0" fill="#222"/>
-<polygon points="1899.4,345.0 1892.9,358.0 1905.9,358.0" fill="#222"/>
-<polygon points="1346.2,515.0 1339.7,528.0 1352.7,528.0" fill="#222"/>
-<polygon points="2066.8,515.0 2060.3,528.0 2073.3,528.0" fill="#222"/>
-<polygon points="2785.6,515.0 2779.1,528.0 2792.1,528.0" fill="#222"/>
-<polygon points="1914.2,745.0 1907.7,758.0 1920.7,758.0" fill="#222"/>
-<polygon points="1360.2,515.0 1353.7,528.0 1366.7,528.0" fill="#222"/>
-<polygon points="1440.2,745.0 1433.7,758.0 1446.7,758.0" fill="#222"/>
-<polygon points="1928.2,745.0 1921.7,758.0 1934.7,758.0" fill="#222"/>
-<polygon points="1374.2,515.0 1367.7,528.0 1380.7,528.0" fill="#222"/>
+<rect x="1326.4" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1379.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">IsActive</text>
+<text x="1503.2" y="687" font-size="22" font-weight="bold" fill="#111">Carts</text>
+<rect x="1503.2" y="699" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1547.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">CartID</text>
+<line x1="1520.0" y1="732.0" x2="1574.0" y2="732.0" stroke="#111" stroke-width="1.6"/>
+<rect x="1590.8" y="699" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1653.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">CustomerID</text>
+<rect x="1716.8" y="699" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1760.6" y="728.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
+<rect x="1804.4" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1862.6" y="728.0" font-size="17" text-anchor="middle" fill="#111">CreatedAt</text>
+<text x="1990.8" y="687" font-size="22" font-weight="bold" fill="#111">Products</text>
+<rect x="1990.8" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2049.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
+<line x1="2008.5" y1="732.0" x2="2089.5" y2="732.0" stroke="#111" stroke-width="1.6"/>
+<rect x="2107.2" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2160.6" y="728.0" font-size="17" text-anchor="middle" fill="#111">SellerID</text>
+<rect x="2214.0" y="699" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2277.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">CategoryID</text>
+<rect x="2340.0" y="699" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2407.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">ProductName</text>
+<rect x="2475.6" y="699" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2543.4" y="728.0" font-size="17" text-anchor="middle" fill="#111">Description</text>
+<rect x="2611.2" y="699" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2654.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">Price</text>
+<rect x="2697.2" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2750.6" y="728.0" font-size="17" text-anchor="middle" fill="#111">IsActive</text>
+<rect x="2804.0" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2862.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">CreatedAt</text>
+<text x="2990.4" y="687" font-size="22" font-weight="bold" fill="#111">Coupons</text>
+<rect x="2990.4" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3043.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">CouponID</text>
+<line x1="3007.8" y1="732.0" x2="3079.8" y2="732.0" stroke="#111" stroke-width="1.6"/>
+<rect x="3097.2" y="699" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3140.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">Code</text>
+<rect x="3183.2" y="699" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3255.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">DiscountType</text>
+<rect x="3328.4" y="699" width="154.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3405.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">DiscountValue</text>
+<rect x="3483.2" y="699" width="164.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3565.4" y="728.0" font-size="17" text-anchor="middle" fill="#111">MinOrderAmount</text>
+<rect x="3647.6" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3705.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">StartDate</text>
+<rect x="3764.0" y="699" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3812.6" y="728.0" font-size="17" text-anchor="middle" fill="#111">EndDate</text>
+<rect x="3861.2" y="699" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3924.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">UsageLimit</text>
+<rect x="3987.2" y="699" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4045.4" y="728.0" font-size="17" text-anchor="middle" fill="#111">UsedCount</text>
+<rect x="4103.6" y="699" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4157.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">IsActive</text>
+<text x="4280.4" y="687" font-size="22" font-weight="bold" fill="#111">ShippingCompanies</text>
+<rect x="4280.4" y="699" width="193.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4377.0" y="728.0" font-size="17" text-anchor="middle" fill="#111">ShippingCompanyID</text>
+<line x1="4300.5" y1="732.0" x2="4453.5" y2="732.0" stroke="#111" stroke-width="1.6"/>
+<rect x="4473.6" y="699" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4541.4" y="728.0" font-size="17" text-anchor="middle" fill="#111">CompanyName</text>
+<rect x="4609.2" y="699" width="86.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4652.2" y="728.0" font-size="17" text-anchor="middle" fill="#111">Phone</text>
+<rect x="4695.2" y="699" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4743.8" y="728.0" font-size="17" text-anchor="middle" fill="#111">BaseFee</text>
+<text x="992.2" y="1007" font-size="22" font-weight="bold" fill="#111">Inventory</text>
+<rect x="992.2" y="1019" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1060.0" y="1048.0" font-size="17" text-anchor="middle" fill="#111">InventoryID</text>
+<line x1="1010.5" y1="1052.0" x2="1109.5" y2="1052.0" stroke="#111" stroke-width="1.6"/>
+<rect x="1127.8" y="1019" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1186.0" y="1048.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
+<rect x="1244.2" y="1019" width="174.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1331.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">QuantityInStock</text>
+<rect x="1418.2" y="1019" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1486.0" y="1048.0" font-size="17" text-anchor="middle" fill="#111">LastUpdated</text>
+<text x="1623.8" y="1007" font-size="22" font-weight="bold" fill="#111">CartItems</text>
+<rect x="1623.8" y="1019" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1686.8" y="1048.0" font-size="17" text-anchor="middle" fill="#111">CartItemID</text>
+<line x1="1641.8" y1="1052.0" x2="1731.8" y2="1052.0" stroke="#111" stroke-width="1.6"/>
+<rect x="1749.8" y="1019" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1793.6" y="1048.0" font-size="17" text-anchor="middle" fill="#111">CartID</text>
+<rect x="1837.4" y="1019" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1895.6" y="1048.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
+<rect x="1953.8" y="1019" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2007.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">Quantity</text>
+<text x="2130.6" y="1007" font-size="22" font-weight="bold" fill="#111">Orders</text>
+<rect x="2130.6" y="1019" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2179.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
+<line x1="2147.7" y1="1052.0" x2="2210.7" y2="1052.0" stroke="#111" stroke-width="1.6"/>
+<rect x="2227.8" y="1019" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2290.8" y="1048.0" font-size="17" text-anchor="middle" fill="#111">CustomerID</text>
+<rect x="2353.8" y="1019" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2412.0" y="1048.0" font-size="17" text-anchor="middle" fill="#111">AddressID</text>
+<rect x="2470.2" y="1019" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2523.6" y="1048.0" font-size="17" text-anchor="middle" fill="#111">CouponID</text>
+<rect x="2577.0" y="1019" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2635.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">OrderDate</text>
+<rect x="2693.4" y="1019" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2737.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
+<rect x="2781.0" y="1019" width="164.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2863.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">DiscountAmount</text>
+<rect x="2945.4" y="1019" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3013.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">TotalAmount</text>
+<rect x="3081.0" y="1019" width="193.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3177.6" y="1048.0" font-size="17" text-anchor="middle" fill="#111">ShippingCompanyID</text>
+<rect x="3274.2" y="1019" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3342.0" y="1048.0" font-size="17" text-anchor="middle" fill="#111">ShippingFee</text>
+<text x="3479.8" y="1007" font-size="22" font-weight="bold" fill="#111">Reviews</text>
+<rect x="3479.8" y="1019" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3533.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">ReviewID</text>
+<line x1="3497.2" y1="1052.0" x2="3569.2" y2="1052.0" stroke="#111" stroke-width="1.6"/>
+<rect x="3586.6" y="1019" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3644.8" y="1048.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
+<rect x="3703.0" y="1019" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3766.0" y="1048.0" font-size="17" text-anchor="middle" fill="#111">CustomerID</text>
+<rect x="3829.0" y="1019" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3872.8" y="1048.0" font-size="17" text-anchor="middle" fill="#111">Rating</text>
+<rect x="3916.6" y="1019" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3965.2" y="1048.0" font-size="17" text-anchor="middle" fill="#111">Comment</text>
+<rect x="4013.8" y="1019" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4072.0" y="1048.0" font-size="17" text-anchor="middle" fill="#111">CreatedAt</text>
+<text x="894.4" y="1252" font-size="22" font-weight="bold" fill="#111">OrderItems</text>
+<rect x="894.4" y="1264" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="962.2" y="1293.0" font-size="17" text-anchor="middle" fill="#111">OrderItemID</text>
+<line x1="912.7" y1="1297.0" x2="1011.7" y2="1297.0" stroke="#111" stroke-width="1.6"/>
+<rect x="1030.0" y="1264" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1078.6" y="1293.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
+<rect x="1127.2" y="1264" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1185.4" y="1293.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
+<rect x="1243.6" y="1264" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1297.0" y="1293.0" font-size="17" text-anchor="middle" fill="#111">Quantity</text>
+<rect x="1350.4" y="1264" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1408.6" y="1293.0" font-size="17" text-anchor="middle" fill="#111">UnitPrice</text>
+<text x="1536.8" y="1252" font-size="22" font-weight="bold" fill="#111">Payments</text>
+<rect x="1536.8" y="1264" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1595.0" y="1293.0" font-size="17" text-anchor="middle" fill="#111">PaymentID</text>
+<line x1="1554.5" y1="1297.0" x2="1635.5" y2="1297.0" stroke="#111" stroke-width="1.6"/>
+<rect x="1653.2" y="1264" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1701.8" y="1293.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
+<rect x="1750.4" y="1264" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1794.2" y="1293.0" font-size="17" text-anchor="middle" fill="#111">Method</text>
+<rect x="1838.0" y="1264" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1881.8" y="1293.0" font-size="17" text-anchor="middle" fill="#111">Amount</text>
+<rect x="1925.6" y="1264" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="1969.4" y="1293.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
+<rect x="2013.2" y="1264" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2057.0" y="1293.0" font-size="17" text-anchor="middle" fill="#111">PaidAt</text>
+<text x="2170.8" y="1252" font-size="22" font-weight="bold" fill="#111">Shipments</text>
+<rect x="2170.8" y="1264" width="126.0" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2233.8" y="1293.0" font-size="17" text-anchor="middle" fill="#111">ShipmentID</text>
+<line x1="2188.8" y1="1297.0" x2="2278.8" y2="1297.0" stroke="#111" stroke-width="1.6"/>
+<rect x="2296.8" y="1264" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2345.4" y="1293.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
+<rect x="2394.0" y="1264" width="193.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2490.6" y="1293.0" font-size="17" text-anchor="middle" fill="#111">ShippingCompanyID</text>
+<rect x="2587.2" y="1264" width="164.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2669.4" y="1293.0" font-size="17" text-anchor="middle" fill="#111">TrackingNumber</text>
+<rect x="2751.6" y="1264" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2795.4" y="1293.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
+<rect x="2839.2" y="1264" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="2907.0" y="1293.0" font-size="17" text-anchor="middle" fill="#111">ShippedDate</text>
+<rect x="2974.8" y="1264" width="154.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3052.2" y="1293.0" font-size="17" text-anchor="middle" fill="#111">DeliveredDate</text>
+<text x="3199.6" y="1252" font-size="22" font-weight="bold" fill="#111">Returns</text>
+<rect x="3199.6" y="1264" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3253.0" y="1293.0" font-size="17" text-anchor="middle" fill="#111">ReturnID</text>
+<line x1="3217.0" y1="1297.0" x2="3289.0" y2="1297.0" stroke="#111" stroke-width="1.6"/>
+<rect x="3306.4" y="1264" width="97.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3355.0" y="1293.0" font-size="17" text-anchor="middle" fill="#111">OrderID</text>
+<rect x="3403.6" y="1264" width="116.4" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3461.8" y="1293.0" font-size="17" text-anchor="middle" fill="#111">ProductID</text>
+<rect x="3520.0" y="1264" width="106.8" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3573.4" y="1293.0" font-size="17" text-anchor="middle" fill="#111">Quantity</text>
+<rect x="3626.8" y="1264" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3670.6" y="1293.0" font-size="17" text-anchor="middle" fill="#111">Reason</text>
+<rect x="3714.4" y="1264" width="87.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3758.2" y="1293.0" font-size="17" text-anchor="middle" fill="#111">Status</text>
+<rect x="3802.0" y="1264" width="135.6" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="3869.8" y="1293.0" font-size="17" text-anchor="middle" fill="#111">RequestDate</text>
+<rect x="3937.6" y="1264" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4010.2" y="1293.0" font-size="17" text-anchor="middle" fill="#111">RefundAmount</text>
+<rect x="4082.8" y="1264" width="145.2" height="46" fill="white" stroke="#222" stroke-width="1.8"/>
+<text x="4155.4" y="1293.0" font-size="17" text-anchor="middle" fill="#111">RejectReason</text>
+<polygon points="2507.8,190.0 2501.3,203.0 2514.3,203.0" fill="#222"/>
+<polygon points="2229.8,345.0 2223.3,358.0 2236.3,358.0" fill="#222"/>
+<polygon points="2243.8,345.0 2237.3,358.0 2250.3,358.0" fill="#222"/>
+<polygon points="1690.6,515.0 1684.1,528.0 1697.1,528.0" fill="#222"/>
+<polygon points="2411.2,515.0 2404.7,528.0 2417.7,528.0" fill="#222"/>
+<polygon points="3130.0,515.0 3123.5,528.0 3136.5,528.0" fill="#222"/>
+<polygon points="2021.0,745.0 2014.5,758.0 2027.5,758.0" fill="#222"/>
+<polygon points="1704.6,515.0 1698.1,528.0 1711.1,528.0" fill="#222"/>
+<polygon points="1547.0,745.0 1540.5,758.0 1553.5,758.0" fill="#222"/>
+<polygon points="2035.0,745.0 2028.5,758.0 2041.5,758.0" fill="#222"/>
+<polygon points="1718.6,515.0 1712.1,528.0 1725.1,528.0" fill="#222"/>
 <polygon points="388.2,745.0 381.7,758.0 394.7,758.0" fill="#222"/>
-<polygon points="2937.0,745.0 2930.5,758.0 2943.5,758.0" fill="#222"/>
-<polygon points="1687.2,1035.0 1680.7,1048.0 1693.7,1048.0" fill="#222"/>
-<polygon points="1942.2,745.0 1935.7,758.0 1948.7,758.0" fill="#222"/>
-<polygon points="1701.2,1035.0 1694.7,1048.0 1707.7,1048.0" fill="#222"/>
-<polygon points="1715.2,1035.0 1708.7,1048.0 1721.7,1048.0" fill="#222"/>
-<polygon points="3497.0,1035.0 3490.5,1048.0 3503.5,1048.0" fill="#222"/>
-<polygon points="1956.2,745.0 1949.7,758.0 1962.7,758.0" fill="#222"/>
-<polygon points="1388.2,515.0 1381.7,528.0 1394.7,528.0" fill="#222"/>
-<polygon points="1729.2,1035.0 1722.7,1048.0 1735.7,1048.0" fill="#222"/>
-<polygon points="1970.2,745.0 1963.7,758.0 1976.7,758.0" fill="#222"/>
-<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpjZjZmZDMyNy05NzhmLTQwNTktYjNlNC0zMWI2ZDcxZmVjYTUAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAEYOe0MOhpI4V3yMNDhccEAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDowMDExZjM0MS05MmZmLTQyMmEtOGNlMS01YjI5MGNmOTdjMTdscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoGKkW/ybsTtiwLW/gPkq67AAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggE/d44xtlCBgs1SR+v2WaQNp57BvXU7VMaZjgVb1WSRSkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaLTOOxV4mK2vXhL1aMfDr/cAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYILzT1flmxUgI0BUKW9D6err9SBMhjSGknVC2R8ilCCFzZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GW5eZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmNmNmZkMzI3LTk3OGYtNDA1OS1iM2U0LTMxYjZkNzFmZWNhNS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmEwYTI3Mjg3LTIxMzQtNDY5ZS1iYmJjLTJjZWNlZTU2ZGE5YnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAT93jjG2UIGCzVJH6/ZZpA2nnsG9dTtUxpmOBVvVZJFKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgghKxBahIgyAxIksmnM4TDEVh0OJt8eth4aUl43FAkP0uiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg+6SjzmjPNgqvq1wSfY3tPobgUmdRAGPPWX9R1jdwYY50Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQISBM8LNwwLvudeJzCZF2daCAlkDxfgcHPWtrg77uL96kAoMf5L2aHDPBB3mBpK2HMQazgxnPnGzs/TpeJLPXzo=</c2pa:manifest></metadata></svg>
+<polygon points="3043.8,745.0 3037.3,758.0 3050.3,758.0" fill="#222"/>
+<polygon points="4370.0,745.0 4363.5,758.0 4376.5,758.0" fill="#222"/>
+<polygon points="2158.2,1065.0 2151.7,1078.0 2164.7,1078.0" fill="#222"/>
+<polygon points="2049.0,745.0 2042.5,758.0 2055.5,758.0" fill="#222"/>
+<polygon points="2172.2,1065.0 2165.7,1078.0 2178.7,1078.0" fill="#222"/>
+<polygon points="2186.2,1065.0 2179.7,1078.0 2192.7,1078.0" fill="#222"/>
+<polygon points="4384.0,745.0 4377.5,758.0 4390.5,758.0" fill="#222"/>
+<polygon points="2063.0,745.0 2056.5,758.0 2069.5,758.0" fill="#222"/>
+<polygon points="1732.6,515.0 1726.1,528.0 1739.1,528.0" fill="#222"/>
+<polygon points="2200.2,1065.0 2193.7,1078.0 2206.7,1078.0" fill="#222"/>
+<polygon points="2077.0,745.0 2070.5,758.0 2083.5,758.0" fill="#222"/>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpiNmU3ZDE3My1hZjBlLTRlY2MtYWI5OC05NDEyN2RlZDZkM2EAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaEFC3Q1b1otyesqyYlTgL6wAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDozYjFhNTYyNS05YzYzLTQ2N2YtYjE2Zi0wMDlmZjk2OTc3ZWVscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo0kl6NfJYHkgygl7QZwms1QAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggL8oqoa5IbWyf5xi72Mtj5EV1QRgrjBWL7l9hcLouMwukZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaHBA+tmglRvQe2EU5g/kyg4AAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIJ6Yg7qJ+lfWyR8GU1pm/hW/6XG9NhFRYLCnBpcllqySZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GXJyZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmI2ZTdkMTczLWFmMGUtNGVjYy1hYjk4LTk0MTI3ZGVkNmQzYS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjg5MDYzZWY4LWY0MGYtNDVlYy1hNzE1LWRhODVlNmYyMzM3OHJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAvyiqhrkhtbJ/nGLvYy2PkRXVBGCuMFYvuX2Fwui4zC6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg0fqJCFrLUA261X2JqDaXyR9NN02RoHOcQE8DWSWT1I+iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggNgTN1534/ee7ySGEjKydmRDG8TtrW2MTdmk0fUtdXet0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQBgEfKzaFJOJ5io6vg0HXQk8VwVZX1CfVAP8tftj+H/OOEVfi3q7I0UewMfFxR8tCYlnuB33yuBY4+4DjXKVBnE=</c2pa:manifest></metadata></svg>
