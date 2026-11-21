@@ -121,7 +121,7 @@ public class OrderService {
         // Step 3
         Integer couponId = coupon == null ? null : coupon.couponId();
         int orderId = orderRepository.insertOrder(customerId, addressId, couponId, company.shippingCompanyId(),
-                discount, total);
+                company.baseFee(), discount, total);
 
         for (CartItemView item : items) {
             // Step 4

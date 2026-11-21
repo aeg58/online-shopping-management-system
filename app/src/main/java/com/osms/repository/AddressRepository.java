@@ -36,18 +36,19 @@ public class AddressRepository {
     }
 
     public List<AddressView> findByCustomer(int customerId) {
-        return jdbcTemplate.query(SELECT_ADDRESS + " WHERE a.CustomerID = ? ORDER BY a.IsDefault DESC, a.AddressID",
+        return jdbcTemplate.query(SELECT_ADDRESS + " WHERE a.CustomerID = ? AND a.IsActive = 1"
+                        + " ORDER BY a.IsDefault DESC, a.AddressID",
                 ADDRESS_MAPPER, customerId);
     }
 
     public Optional<AddressView> findForCustomer(int addressId, int customerId) {
-        return jdbcTemplate.query(SELECT_ADDRESS + " WHERE a.AddressID = ? AND a.CustomerID = ?",
+        return jdbcTemplate.query(SELECT_ADDRESS + " WHERE a.AddressID = ? AND a.CustomerID = ? AND a.IsActive = 1",
                 ADDRESS_MAPPER, addressId, customerId).stream().findFirst();
     }
 
     public boolean belongsToCustomer(int addressId, int customerId) {
         Integer count = jdbcTemplate.queryForObject(
-                "SELECT COUNT(*) FROM Addresses WHERE AddressID = ? AND CustomerID = ?",
+                "SELECT COUNT(*) FROM Addresses WHERE AddressID = ? AND CustomerID = ? AND IsActive = 1",
                 Integer.class, addressId, customerId);
         return count != null && count > 0;
     }
@@ -67,6 +68,18 @@ public class AddressRepository {
                 SET Title = ?, Country = ?, City = ?, District = ?, AddressLine = ?, PostalCode = ?, IsDefault = ?
                 WHERE AddressID = ? AND CustomerID = ?
                 """, title, country, city, district, addressLine, postalCode, defaultAddress, addressId, customerId);
+    }
+
+    public boolean isUsedByOrder(int addressId) {
+        Integer count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM Orders WHERE AddressID = ?",
+                Integer.class, addressId);
+        return count != null && count > 0;
+    }
+
+    /** The row stays for the orders that use it but is no longer shown or offered at checkout. */
+    public void deactivate(int addressId, int customerId) {
+        jdbcTemplate.update("UPDATE Addresses SET IsActive = 0, IsDefault = 0 WHERE AddressID = ? AND CustomerID = ?",
+                addressId, customerId);
     }
 
     /** Only one default address per customer: the others lose the mark. */

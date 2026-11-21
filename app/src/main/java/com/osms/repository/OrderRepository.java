@@ -20,14 +20,15 @@ import java.util.Optional;
 public class OrderRepository {
 
     private static final String INSERT_ORDER = """
-            INSERT INTO Orders (CustomerID, AddressID, CouponID, ShippingCompanyID, Status, DiscountAmount, TotalAmount)
-            VALUES (?, ?, ?, ?, 'Pending', ?, ?)
+            INSERT INTO Orders (CustomerID, AddressID, CouponID, ShippingCompanyID, ShippingFee, Status,
+                                DiscountAmount, TotalAmount)
+            VALUES (?, ?, ?, ?, ?, 'Pending', ?, ?)
             """;
 
     private static final String SELECT_ORDER = """
             SELECT o.OrderID, o.OrderDate, o.Status, o.DiscountAmount, o.TotalAmount,
                    a.Title, a.City, a.District, a.AddressLine, c.Code,
-                   o.ShippingCompanyID, sc.CompanyName, sc.BaseFee
+                   o.ShippingCompanyID, sc.CompanyName, o.ShippingFee
             FROM Orders o
             JOIN Addresses a ON a.AddressID = o.AddressID
             LEFT JOIN Coupons c ON c.CouponID = o.CouponID
@@ -47,7 +48,7 @@ public class OrderRepository {
             rs.getString("Code"),
             rs.getObject("ShippingCompanyID", Integer.class),
             rs.getString("CompanyName"),
-            rs.getBigDecimal("BaseFee")
+            rs.getBigDecimal("ShippingFee")
     );
 
     private static final String FIND_BY_CUSTOMER = """
@@ -86,7 +87,7 @@ public class OrderRepository {
     }
 
     public int insertOrder(int customerId, int addressId, Integer couponId, int shippingCompanyId,
-                           BigDecimal discount, BigDecimal total) {
+                           BigDecimal shippingFee, BigDecimal discount, BigDecimal total) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection.prepareStatement(INSERT_ORDER, Statement.RETURN_GENERATED_KEYS);
@@ -94,8 +95,9 @@ public class OrderRepository {
             statement.setInt(2, addressId);
             statement.setObject(3, couponId, Types.INTEGER);
             statement.setInt(4, shippingCompanyId);
-            statement.setBigDecimal(5, discount);
-            statement.setBigDecimal(6, total);
+            statement.setBigDecimal(5, shippingFee);
+            statement.setBigDecimal(6, discount);
+            statement.setBigDecimal(7, total);
             return statement;
         }, keyHolder);
         return keyHolder.getKey().intValue();

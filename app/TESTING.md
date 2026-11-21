@@ -38,6 +38,7 @@ Log in as `ali_yilmaz`.
 8. **Cancel an order:** Open the order from step 5 (Paid, not shipped) and click Cancel order, then confirm → "Your order was cancelled", the stock comes back and the payment becomes Refunded. Order #1 (Delivered) has no Cancel order button.
 9. **Order history:** Open Orders → the newest order is at the top. Open order #1 → items, payment, shipment (Yurtici Kargo) and address are shown.
 10. **Addresses:** Open Addresses → Home (Default) and Office are listed; both are used by an order, so they have no Delete button. Add an address and tick "Use as my default address" → it becomes the default and is selected at checkout. Edit it and save, then delete it → "Address deleted".
+    Edit Home (used by order #1) and change the street → "Your earlier orders keep the address they were sent to"; the list shows the new street, while order #1 still shows Ataturk Cad. No:12 D:3.
 11. **Return request:** In order #1 (Delivered), request a return of 1 Wireless Mouse with a reason → "Your return request was sent", the request is listed as Requested and the item shows a "Return requested" label. Requesting the same item again → "You can return at most 0 of this product".
 12. **Review:** Log in as `can_ozturk`, open Yoga Mat (order #5, Delivered), choose 4 and submit → the review is listed and the form disappears. Log in as `elif_sahin` and open Bluetooth Headphones (order #6, still shipping) → there is no review form, because reviews open after delivery.
 

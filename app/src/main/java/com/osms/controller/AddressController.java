@@ -83,8 +83,10 @@ public class AddressController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         try {
-            addressService.updateAddress(user.getCustomerId(), id, form);
-            redirectAttributes.addFlashAttribute("successMessage", "Address saved");
+            boolean newRow = addressService.updateAddress(user.getCustomerId(), id, form);
+            redirectAttributes.addFlashAttribute("successMessage", newRow
+                    ? "Address saved. Your earlier orders keep the address they were sent to."
+                    : "Address saved");
             return REDIRECT_TO_LIST;
         } catch (CustomerRequestException e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());

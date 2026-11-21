@@ -25,8 +25,13 @@ public class AddressService {
                 makeDefault);
     }
 
+    /**
+     * An address that no order uses is changed in place. If an order already ships to it, the old row is kept
+     * for that order and hidden, and the edited address is saved as a new row, so old orders keep their address.
+     * Returns true when a new row was created.
+     */
     @Transactional
-    public void updateAddress(int customerId, int addressId, AddressForm form) {
+    public boolean updateAddress(int customerId, int addressId, AddressForm form) {
         Values v = clean(form);
         if (!addressRepository.belongsToCustomer(addressId, customerId)) {
             throw new CustomerRequestException("This address was not found");
@@ -34,8 +39,15 @@ public class AddressService {
         if (form.isDefaultAddress()) {
             addressRepository.clearDefault(customerId);
         }
-        addressRepository.update(addressId, customerId, v.title, v.country, v.city, v.district, v.addressLine,
-                v.postalCode, form.isDefaultAddress());
+        if (!addressRepository.isUsedByOrder(addressId)) {
+            addressRepository.update(addressId, customerId, v.title, v.country, v.city, v.district, v.addressLine,
+                    v.postalCode, form.isDefaultAddress());
+            return false;
+        }
+        addressRepository.deactivate(addressId, customerId);
+        addressRepository.insert(customerId, v.title, v.country, v.city, v.district, v.addressLine, v.postalCode,
+                form.isDefaultAddress());
+        return true;
     }
 
     /** An address that an order ships to cannot be deleted (the Orders table refers to it). */
