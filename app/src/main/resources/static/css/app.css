@@ -75,7 +75,7 @@ body {
     aspect-ratio: 4 / 3;
     background: var(--bs-tertiary-bg);
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
 }
 
@@ -85,7 +85,7 @@ body {
     border-radius: var(--bs-border-radius-lg);
     height: auto;
     max-width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     width: 28rem;
 }
 
@@ -101,7 +101,7 @@ body {
     border-radius: var(--bs-border-radius);
     flex: 0 0 auto;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     width: 64px;
 }
 
