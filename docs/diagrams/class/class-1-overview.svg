@@ -20,7 +20,7 @@
       <path d="M 320,92 L 400,92" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
       <path d="M 760,132 L 840,132" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
       <path d="M 580,224 L 580,280" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
-      <path d="M 580,444 L 580,500" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
+      <path d="M 580,464 L 580,500" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
       <path d="M 760,582 L 840,582" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
       <path d="M 580,664 L 580,720" fill="none" stroke="#495057" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#uml-open)"/>
       <rect x="335.8" y="70" width="48.400000000000006" height="14" rx="2" fill="#ffffff"/>
@@ -43,7 +43,7 @@
       <text x="580.0" y="59" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package»</text>
       <text x="580.0" y="78" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">controller</text>
       <line x1="400" y1="92" x2="760" y2="92" stroke="rgba(33,37,41,0.18)" stroke-width="1"/>
-      <text x="414" y="113" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">12 controllers, 3 helpers</text>
+      <text x="414" y="113" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">12 controllers, 4 helpers</text>
       <text x="414" y="133" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">LoginController · SignupController</text>
       <text x="414" y="153" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ShopController · CartController</text>
       <text x="414" y="173" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CheckoutController · OrderController</text>
@@ -60,18 +60,19 @@
       <text x="854" y="173" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">seller/ (4 pages)</text>
       <text x="854" y="193" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">admin/ (10 pages)</text>
       <text x="854" y="213" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">fragments/ (layout, signup)</text>
-      <rect x="400" y="280" width="360" height="164" rx="6" fill="#ffffff"/>
-      <rect x="400" y="280" width="360" height="164" rx="6" fill="#f1f8f7" stroke="#0f766e" stroke-width="1"/>
+      <rect x="400" y="280" width="360" height="184" rx="6" fill="#ffffff"/>
+      <rect x="400" y="280" width="360" height="184" rx="6" fill="#f1f8f7" stroke="#0f766e" stroke-width="1"/>
       <rect x="400" y="280" width="360" height="52" rx="6" fill="#dcedeb"/>
       <rect x="400" y="324" width="360" height="8" fill="#dcedeb"/>
       <text x="580.0" y="299" fill="#0f766e" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package» · @Transactional</text>
       <text x="580.0" y="318" fill="#212529" font-size="14" font-weight="600" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">service</text>
       <line x1="400" y1="332" x2="760" y2="332" stroke="rgba(15,118,110,0.40)" stroke-width="1"/>
-      <text x="414" y="353" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">10 services, 8 helper classes</text>
+      <text x="414" y="353" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">12 services, 8 helper classes</text>
       <text x="414" y="373" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">AuthService · SignupService · PasswordService</text>
       <text x="414" y="393" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CartService · OrderService · AddressService</text>
-      <text x="414" y="413" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ReviewService · ReturnService</text>
-      <text x="414" y="433" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">SellerProductService · AdminService</text>
+      <text x="414" y="413" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ReviewService · ReturnService · AdminService</text>
+      <text x="414" y="433" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">SellerProductService · ProductImageService</text>
+      <text x="414" y="453" fill="#212529" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">TurkeyAddressService</text>
       <rect x="400" y="500" width="360" height="164" rx="6" fill="#ffffff"/>
       <rect x="400" y="500" width="360" height="164" rx="6" fill="#ffffff" stroke="#212529" stroke-width="1"/>
       <text x="580.0" y="519" fill="#5c636a" font-size="10" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.04em">«package»</text>
