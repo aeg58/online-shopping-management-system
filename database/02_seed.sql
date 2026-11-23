@@ -189,13 +189,13 @@ INSERT INTO Payments (OrderID, Method, Amount, Status, PaidAt) VALUES
 
 /* ========================== 16. Shipments ========================= */
 INSERT INTO Shipments (OrderID, ShippingCompanyID, TrackingNumber, Status, ShippedDate, DeliveredDate) VALUES
-(1,  1, 'YK1000000001', 'Delivered', '2026-10-02', '2026-10-04'),
-(2,  2, 'AR2000000002', 'Delivered', '2026-10-06', '2026-10-08'),
-(3,  1, 'YK1000000003', 'Delivered', '2026-10-11', '2026-10-13'),
-(5,  3, 'MN3000000004', 'Delivered', '2026-10-21', '2026-10-24'),
-(6,  2, 'AR2000000005', 'InTransit', '2026-10-26', NULL),
-(8,  3, 'MN3000000006', 'Delivered', '2026-11-06', '2026-11-09'),
-(10, 1, 'YK1000000007', 'Delivered', '2026-11-13', '2026-11-15');
+(1,  1, '100000000001', 'Delivered', '2026-10-02', '2026-10-04'),
+(2,  2, '200000000002', 'Delivered', '2026-10-06', '2026-10-08'),
+(3,  1, '100000000003', 'Delivered', '2026-10-11', '2026-10-13'),
+(5,  3, '300000000004', 'Delivered', '2026-10-21', '2026-10-24'),
+(6,  2, '200000000005', 'InTransit', '2026-10-26', NULL),
+(8,  3, '300000000006', 'Delivered', '2026-11-06', '2026-11-09'),
+(10, 1, '100000000007', 'Delivered', '2026-11-13', '2026-11-15');
 
 /* ============================ 17. Reviews ========================= */
 INSERT INTO Reviews (ProductID, CustomerID, Rating, Comment, CreatedAt) VALUES
