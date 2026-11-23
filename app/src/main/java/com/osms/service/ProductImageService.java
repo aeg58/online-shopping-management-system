@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Finds the picture of a product and saves photos uploaded by sellers.
  * The database has no image column: a photo is found by the product id.
- * Order: an uploaded photo, then a bundled drawing (sample products), then a placeholder.
+ * Order: an uploaded photo, then a bundled photo (sample products), then a placeholder.
  */
 @Service("productImages")
 public class ProductImageService {
@@ -43,8 +43,9 @@ public class ProductImageService {
                 return "/uploads/products/" + productId + "." + ext + "?v=" + version;
             }
         }
-        if (new ClassPathResource("static/images/products/" + productId + ".svg").exists()) {
-            return "/images/products/" + productId + ".svg";
+        String bundledPhoto = "/images/products/" + productId + ".webp";
+        if (new ClassPathResource("static" + bundledPhoto).exists()) {
+            return bundledPhoto;
         }
         return PLACEHOLDER;
     }
