@@ -70,6 +70,41 @@ body {
     max-width: 40rem;
 }
 
+/* Product pictures */
+.product-card-img {
+    aspect-ratio: 4 / 3;
+    background: var(--bs-tertiary-bg);
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+}
+
+.product-hero {
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius-lg);
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    width: 28rem;
+}
+
+.product-line {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.product-thumb {
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    flex: 0 0 auto;
+    height: auto;
+    object-fit: cover;
+    width: 64px;
+}
+
 .cart-quantity {
     min-width: 11rem;
 }

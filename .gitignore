@@ -21,3 +21,5 @@ application-local.properties
 appsettings.Development.json
 # Office temp files
 ~$*
+# Product photos uploaded while testing the app
+app/uploads/

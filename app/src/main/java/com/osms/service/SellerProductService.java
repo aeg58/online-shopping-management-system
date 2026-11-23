@@ -25,9 +25,9 @@ public class SellerProductService {
         this.sellerRepository = sellerRepository;
     }
 
-    /** Inserts the product and its inventory row in one transaction. */
+    /** Inserts the product and its inventory row in one transaction, returns the new ProductID. */
     @Transactional
-    public void addProduct(int sellerId, ProductForm form) {
+    public int addProduct(int sellerId, ProductForm form) {
         int categoryId = parseCategory(form.getCategoryId());
         String name = form.getProductName().trim();
         if (name.isEmpty()) {
@@ -42,6 +42,7 @@ public class SellerProductService {
 
         int productId = sellerRepository.insertProduct(sellerId, categoryId, name, description, price);
         sellerRepository.insertInventory(productId, stock);
+        return productId;
     }
 
     /** Updates the product and its stock in one transaction. */

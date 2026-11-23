@@ -6,6 +6,7 @@ import com.osms.model.SessionUser;
 import com.osms.repository.CategoryRepository;
 import com.osms.repository.SellerRepository;
 import com.osms.service.DatabaseErrors;
+import com.osms.service.ProductImageService;
 import com.osms.service.ProductFormException;
 import com.osms.service.SellerProductService;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,10 +19,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
 
 /** The SellerID always comes from the session, never from a request parameter. */
 @Controller
@@ -34,12 +39,14 @@ public class SellerController {
     private final SellerRepository sellerRepository;
     private final CategoryRepository categoryRepository;
     private final SellerProductService sellerProductService;
+    private final ProductImageService productImages;
 
     public SellerController(SellerRepository sellerRepository, CategoryRepository categoryRepository,
-                            SellerProductService sellerProductService) {
+                            SellerProductService sellerProductService, ProductImageService productImages) {
         this.sellerRepository = sellerRepository;
         this.categoryRepository = categoryRepository;
         this.sellerProductService = sellerProductService;
+        this.productImages = productImages;
     }
 
     @GetMapping
@@ -67,10 +74,22 @@ public class SellerController {
     @PostMapping("/products")
     public String addProduct(@SessionAttribute(SessionUser.SESSION_KEY) SessionUser user,
                              @ModelAttribute("form") ProductForm form,
+                             @RequestParam(value = "photo", required = false) MultipartFile photo,
                              Model model,
                              RedirectAttributes redirectAttributes) {
         try {
-            sellerProductService.addProduct(user.getSellerId(), form);
+            // The photo is checked first, so a wrong file does not leave a product without it
+            String photoExtension = productImages.check(photo);
+            int productId = sellerProductService.addProduct(user.getSellerId(), form);
+            if (photoExtension != null) {
+                try {
+                    productImages.save(productId, photo, photoExtension);
+                } catch (IOException e) {
+                    redirectAttributes.addFlashAttribute("errorMessage",
+                            "The product was added, but the photo could not be saved");
+                    return REDIRECT_TO_PRODUCTS;
+                }
+            }
             redirectAttributes.addFlashAttribute("successMessage", "Product added");
             return REDIRECT_TO_PRODUCTS;
         } catch (ProductFormException e) {

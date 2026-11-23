@@ -11,12 +11,15 @@
         <p><a th:href="@{/seller/products}">Back to my products</a></p>
         <h1 class="h3 mb-3" th:text="${product != null ? 'Edit product' : 'Add product'}">Add product</h1>
 
-        <form method="post"
+        <form method="post" enctype="multipart/form-data"
               th:action="${product != null} ? @{/seller/products/{id}(id=${product.productId})} : @{/seller/products}">
 
-            <div class="mb-3" th:if="${product != null}">
+            <div class="mb-3 product-line" th:if="${product != null}">
+                <img class="product-thumb" th:src="${productImages.url(product.productId)}" alt="" width="64" height="48">
+                <div>
                 <p class="fw-semibold mb-0" th:text="${product.productName}">Product</p>
                 <p class="small text-secondary mb-0" th:text="${product.categoryName}">Category</p>
+                </div>
             </div>
 
             <th:block th:if="${product == null}">
@@ -32,6 +35,12 @@
                     <label class="form-label" for="productName">Product name</label>
                     <input class="form-control" type="text" id="productName" name="productName" maxlength="150"
                            th:value="${form.productName}" autocomplete="off" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="photo">Photo (optional)</label>
+                    <input class="form-control" type="file" id="photo" name="photo"
+                           accept="image/jpeg,image/png,image/webp" aria-describedby="photoHelp">
+                    <div class="form-text" id="photoHelp">JPG, PNG or WebP, up to 2 MB. Without a photo the shop shows a placeholder.</div>
                 </div>
             </th:block>
 

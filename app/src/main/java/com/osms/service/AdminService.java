@@ -91,27 +91,27 @@ public class AdminService {
                 .orElseThrow(() -> new AdminRequestException("This order was not found"));
     }
 
+    /**
+     * Cancels an order in one transaction: stock, coupon use and payment are given back.
+     * The admin cannot set other statuses by hand: an order becomes Shipped and Delivered only
+     * through the shipment, so a paid order can never be moved back to Pending.
+     */
     @Transactional
-    public void changeOrderStatus(int orderId, String status) {
+    public void cancelOrder(int orderId) {
         String currentStatus = adminRepository.lockOrderStatus(orderId)
                 .orElseThrow(() -> new AdminRequestException("This order was not found"));
 
         if (CANCELLED.equals(currentStatus)) {
-            if (!CANCELLED.equals(status)) {
-                throw new AdminRequestException("A cancelled order cannot be reopened");
-            }
-            return;
+            throw new AdminRequestException("This order is already cancelled");
         }
-        if (CANCELLED.equals(status)) {
-            if (DELIVERED.equals(currentStatus)) {
-                throw new AdminRequestException("A delivered order cannot be cancelled. Use a return request instead");
-            }
-            adminRepository.restoreStock(orderId);
-            adminRepository.releaseCoupon(orderId);
-            adminRepository.cancelPayments(orderId);
-            shipmentRepository.markReturned(orderId);
+        if (DELIVERED.equals(currentStatus)) {
+            throw new AdminRequestException("A delivered order cannot be cancelled. Use a return request instead");
         }
-        adminRepository.updateOrderStatus(orderId, status);
+        adminRepository.restoreStock(orderId);
+        adminRepository.releaseCoupon(orderId);
+        adminRepository.cancelPayments(orderId);
+        shipmentRepository.markReturned(orderId);
+        adminRepository.updateOrderStatus(orderId, CANCELLED);
     }
 
     /** Creates the shipment and marks the order as shipped in one transaction. */
@@ -121,8 +121,8 @@ public class AdminService {
         if (tracking.isEmpty()) {
             throw new AdminRequestException("Tracking number is required");
         }
-        if (tracking.length() > 50) {
-            throw new AdminRequestException("Tracking number can have at most 50 characters");
+        if (!tracking.matches("\\d{12}")) {
+            throw new AdminRequestException("Tracking number must be exactly 12 digits");
         }
         String status = adminRepository.lockOrderStatus(orderId)
                 .orElseThrow(() -> new AdminRequestException("This order was not found"));

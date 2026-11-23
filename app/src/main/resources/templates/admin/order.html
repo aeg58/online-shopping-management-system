@@ -89,14 +89,13 @@
                 <p class="small text-secondary" th:if="${order.status == 'Delivered'}">
                     A delivered order can only be returned with a return request.
                 </p>
-                <form class="d-flex gap-2" method="post" th:action="@{/admin/orders/{id}/status(id=${order.orderId})}"
-                      th:unless="${order.status == 'Cancelled'}">
-                    <label class="visually-hidden" for="status">Order status</label>
-                    <select class="form-select" id="status" name="status">
-                        <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"
-                                th:selected="${s == order.status}">Pending</option>
-                    </select>
-                    <button class="btn btn-outline-secondary" type="submit">Save</button>
+                <p class="small text-secondary" th:unless="${order.status == 'Cancelled' or order.status == 'Delivered'}">
+                    The status changes with the shipment: creating it marks the order as shipped,
+                    marking it as delivered completes the order.
+                </p>
+                <form method="post" th:action="@{/admin/orders/{id}/cancel(id=${order.orderId})}"
+                      th:unless="${order.status == 'Cancelled' or order.status == 'Delivered'}">
+                    <button class="btn btn-outline-danger w-100" type="submit">Cancel order</button>
                 </form>
             </section>
 
@@ -142,7 +141,9 @@
                         <div class="mb-3">
                             <label class="form-label" for="trackingNumber">Tracking number</label>
                             <input class="form-control" type="text" id="trackingNumber" name="trackingNumber"
-                                   maxlength="50" autocomplete="off" spellcheck="false" required>
+                                   inputmode="numeric" pattern="[0-9]{12}" minlength="12" maxlength="12"
+                                   autocomplete="off" spellcheck="false" aria-describedby="trackingHelp" required>
+                            <div class="form-text" id="trackingHelp">12 digits, for example 123456789012.</div>
                         </div>
                         <button class="btn btn-primary w-100" type="submit">Create shipment</button>
                     </form>

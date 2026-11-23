@@ -19,13 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminOrderController {
-
-    private static final List<String> ORDER_STATUSES = List.of("Pending", "Paid", "Shipped", "Delivered", "Cancelled");
 
     private final AdminRepository adminRepository;
     private final OrderRepository orderRepository;
@@ -65,16 +62,12 @@ public class AdminOrderController {
         model.addAttribute("shipment", shipmentRepository.findByOrder(id).orElse(null));
         model.addAttribute("returns", returnRepository.findByOrder(id));
         model.addAttribute("companies", shipmentRepository.findCompanies());
-        model.addAttribute("statuses", ORDER_STATUSES);
         return "admin/order";
     }
 
-    @PostMapping("/orders/{id}/status")
-    public String changeStatus(@PathVariable int id,
-                               @RequestParam String status,
-                               RedirectAttributes redirectAttributes) {
-        AdminActions.perform(redirectAttributes, "Order status changed",
-                () -> adminService.changeOrderStatus(id, status));
+    @PostMapping("/orders/{id}/cancel")
+    public String cancelOrder(@PathVariable int id, RedirectAttributes redirectAttributes) {
+        AdminActions.perform(redirectAttributes, "Order cancelled", () -> adminService.cancelOrder(id));
         return "redirect:/admin/orders/" + id;
     }
 

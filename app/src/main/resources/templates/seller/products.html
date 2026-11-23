@@ -29,9 +29,14 @@
             <tbody>
             <tr th:each="p : ${products}">
                 <th scope="row" class="fw-normal">
+                    <div class="product-line">
+                    <img class="product-thumb" th:src="${productImages.url(p.productId)}" alt="" width="64" height="48">
+                    <div>
                     <span th:text="${p.productName}">Product</span>
                     <span class="d-block d-md-none small text-secondary"
                           th:text="${p.categoryName + ' · ' + (p.active ? 'Active' : 'Inactive')}">Category · Active</span>
+                    </div>
+                    </div>
                 </th>
                 <td class="d-none d-md-table-cell" th:text="${p.categoryName}">Category</td>
                 <td class="text-end text-nowrap"

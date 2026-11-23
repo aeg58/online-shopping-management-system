@@ -28,12 +28,17 @@
             <tbody>
             <tr th:each="item : ${items}">
                 <th scope="row" class="fw-normal">
+                    <div class="product-line">
+                    <img class="product-thumb" th:src="${productImages.url(item.productId)}" alt="" width="64" height="48">
+                    <div>
                     <a th:href="@{/shop/product/{id}(id=${item.productId})}" th:if="${item.productActive}"
                        th:text="${item.productName}">Product</a>
                     <span th:unless="${item.productActive}" th:text="${item.productName}">Product</span>
                     <div class="small text-danger" th:unless="${item.productActive}">No longer available</div>
                     <div class="small text-danger" th:if="${item.productActive and item.quantity > item.quantityInStock}"
                          th:text="'Only ' + ${item.quantityInStock} + ' left in stock'">Only 1 left in stock</div>
+                    </div>
+                    </div>
                 </th>
                 <td class="text-end text-nowrap"
                     th:text="${#numbers.formatDecimal(item.price, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>

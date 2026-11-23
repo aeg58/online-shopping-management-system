@@ -62,7 +62,7 @@ public class OrderService {
         if (!"Pending".equals(status) && !"Paid".equals(status)) {
             throw new CustomerRequestException("Only orders that are not shipped yet can be cancelled");
         }
-        adminService.changeOrderStatus(orderId, "Cancelled");
+        adminService.cancelOrder(orderId);
     }
 
     /**

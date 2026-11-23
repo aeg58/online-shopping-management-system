@@ -4,6 +4,7 @@ import com.osms.model.AddressForm;
 import com.osms.model.SessionUser;
 import com.osms.repository.AddressRepository;
 import com.osms.service.AddressService;
+import com.osms.service.TurkeyAddressService;
 import com.osms.service.CustomerRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -25,10 +26,13 @@ public class AddressController {
 
     private final AddressRepository addressRepository;
     private final AddressService addressService;
+    private final TurkeyAddressService turkey;
 
-    public AddressController(AddressRepository addressRepository, AddressService addressService) {
+    public AddressController(AddressRepository addressRepository, AddressService addressService,
+                             TurkeyAddressService turkey) {
         this.addressRepository = addressRepository;
         this.addressService = addressService;
+        this.turkey = turkey;
     }
 
     @GetMapping
@@ -43,7 +47,19 @@ public class AddressController {
             model.addAttribute("form", new AddressForm());
         }
         model.addAttribute("addressId", null);
+        addChoices(model);
         return "shop/address-form";
+    }
+
+    /** The lists of the form: all provinces, and the districts and places of the chosen ones. */
+    private void addChoices(Model model) {
+        AddressForm form = (AddressForm) model.getAttribute("form");
+        addressService.prepare(form);
+        model.addAttribute("provinces", turkey.provinces());
+        model.addAttribute("districts", turkey.districts(form.getCity()));
+        model.addAttribute("places", turkey.places(form.getCity(), form.getDistrict()));
+        model.addAttribute("postalCode", turkey.place(form.getCity(), form.getDistrict(), form.getNeighborhood())
+                .map(TurkeyAddressService.Place::postalCode).orElse(""));
     }
 
     @PostMapping
@@ -71,6 +87,7 @@ public class AddressController {
             model.addAttribute("form", AddressForm.from(address));
         }
         model.addAttribute("addressId", id);
+        addChoices(model);
         return "shop/address-form";
     }
 

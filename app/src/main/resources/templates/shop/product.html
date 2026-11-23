@@ -11,6 +11,8 @@
 
     <div class="row g-4">
         <div class="col-12 col-lg-7">
+            <img class="product-hero mb-3" th:src="${productImages.url(product.productId)}"
+                 th:alt="${product.productName}" width="400" height="300">
             <h1 class="h3" th:text="${product.productName}">Product</h1>
             <p class="text-secondary">
                 <span th:text="${product.categoryName}">Category</span> ·

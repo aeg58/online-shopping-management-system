@@ -8,6 +8,10 @@ public class AddressForm {
     private String city = "";
     private String district = "";
     private String addressLine = "";
+    /** Neighborhood or village label chosen from the list, for example "Özlüce Mah.". */
+    private String neighborhood = "";
+    /** Street, building and flat number typed by the customer. */
+    private String street = "";
     private String postalCode = "";
     private boolean defaultAddress;
 
@@ -18,6 +22,7 @@ public class AddressForm {
         form.city = address.city();
         form.district = address.district();
         form.addressLine = address.addressLine();
+        form.street = address.addressLine();
         form.postalCode = address.postalCode() == null ? "" : address.postalCode();
         form.defaultAddress = address.defaultAddress();
         return form;
@@ -33,6 +38,10 @@ public class AddressForm {
     public void setDistrict(String district) { this.district = district; }
     public String getAddressLine() { return addressLine; }
     public void setAddressLine(String addressLine) { this.addressLine = addressLine; }
+    public String getNeighborhood() { return neighborhood; }
+    public void setNeighborhood(String neighborhood) { this.neighborhood = neighborhood; }
+    public String getStreet() { return street; }
+    public void setStreet(String street) { this.street = street; }
     public String getPostalCode() { return postalCode; }
     public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
     public boolean isDefaultAddress() { return defaultAddress; }

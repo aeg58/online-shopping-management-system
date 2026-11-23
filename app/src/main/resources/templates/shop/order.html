@@ -36,6 +36,9 @@
                     <tbody>
                     <tr th:each="item : ${items}">
                         <th scope="row" class="fw-normal">
+                            <div class="product-line">
+                            <img class="product-thumb" th:src="${productImages.url(item.productId)}" alt="" width="64" height="48">
+                            <div>
                             <span th:text="${item.productName}">Product</span>
                             <span class="badge return-badge d-table mt-1" th:if="${item.returnStatus != null}"
                                   th:classappend="${'return-' + #strings.toLowerCase(item.returnStatus)}"
@@ -43,6 +46,8 @@
                                           : item.returnStatus == 'Approved' ? 'Return approved'
                                           : item.returnStatus == 'Refunded' ? 'Refunded'
                                           : 'Return rejected'}">Return requested</span>
+                            </div>
+                            </div>
                         </th>
                         <td class="text-end text-nowrap"
                             th:text="${#numbers.formatDecimal(item.unitPrice, 1, 'COMMA', 2, 'POINT')} + ' ₺'">0.00 ₺</td>
