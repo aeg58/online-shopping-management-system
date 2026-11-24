@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-/** A very large file is refused before it reaches the controller; send the seller back with a message. */
 @ControllerAdvice
 public class UploadLimitAdvice {
 

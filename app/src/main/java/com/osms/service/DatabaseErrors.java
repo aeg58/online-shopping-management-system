@@ -34,18 +34,15 @@ public final class DatabaseErrors {
     private DatabaseErrors() {
     }
 
-    /** Returns the name of the database constraint which rejected the value. */
     public static String constraintName(DataIntegrityViolationException exception) {
         Matcher matcher = CONSTRAINT_NAME.matcher(exception.getMostSpecificCause().getMessage());
         return matcher.find() ? matcher.group(1) : "unknown";
     }
 
-    /** Builds a readable message that names the database constraint which rejected the value. */
     public static String message(DataIntegrityViolationException exception) {
         return "The value breaks a database rule: " + constraintName(exception);
     }
 
-    /** Explains the broken rule in plain words and keeps the constraint name visible. */
     public static String readableMessage(DataIntegrityViolationException exception) {
         String constraint = constraintName(exception);
         String text = READABLE_MESSAGES.get(constraint);

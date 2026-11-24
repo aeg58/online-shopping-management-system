@@ -29,7 +29,6 @@ import java.util.regex.Pattern;
 public class CartController {
 
     private static final String REDIRECT_TO_CART = "redirect:/shop/cart";
-    /** Pages the customer may come back to after adding a product: the shop list or a product page. */
     private static final Pattern SHOP_PAGE = Pattern.compile("/shop(/product/\\d+)?(\\?[\\w=&%+.-]*)?");
 
     private final CartService cartService;
@@ -58,7 +57,6 @@ public class CartController {
         } catch (CartException e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
-        // The customer stays on the page they were on; only shop pages are accepted
         return "redirect:" + (SHOP_PAGE.matcher(returnTo).matches() ? returnTo : "/shop");
     }
 
@@ -76,7 +74,6 @@ public class CartController {
         return REDIRECT_TO_CART;
     }
 
-    /** Called by the cart page script when a quantity changes, so the totals update without the Update button. */
     @PostMapping(value = "/update", headers = "X-Requested-With=fetch")
     @ResponseBody
     public ResponseEntity<Map<String, String>> updateLive(@SessionAttribute(SessionUser.SESSION_KEY) SessionUser user,

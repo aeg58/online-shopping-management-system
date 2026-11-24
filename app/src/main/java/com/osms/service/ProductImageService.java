@@ -12,11 +12,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 
-/**
- * Finds the picture of a product and saves photos uploaded by sellers.
- * The database has no image column: a photo is found by the product id.
- * Order: an uploaded photo, then a bundled photo (sample products), then a placeholder.
- */
 @Service("productImages")
 public class ProductImageService {
 
@@ -34,7 +29,6 @@ public class ProductImageService {
         return uploadDir;
     }
 
-    /** URL of the picture to show for this product. */
     public String url(int productId) {
         for (String ext : EXTENSIONS) {
             Path file = uploadDir.resolve(productId + "." + ext);
@@ -50,10 +44,6 @@ public class ProductImageService {
         return PLACEHOLDER;
     }
 
-    /**
-     * Checks an uploaded photo before the product is saved.
-     * Returns the file extension to use, or null when no photo was chosen.
-     */
     public String check(MultipartFile photo) {
         if (photo == null || photo.isEmpty()) {
             return null;
@@ -75,7 +65,6 @@ public class ProductImageService {
         return ext;
     }
 
-    /** Saves the photo as {productId}.{ext} and removes an older photo of the same product. */
     public void save(int productId, MultipartFile photo, String ext) throws IOException {
         Files.createDirectories(uploadDir);
         Path target = uploadDir.resolve(productId + "." + ext);
@@ -93,7 +82,6 @@ public class ProductImageService {
         }
     }
 
-    /** Looks at the first bytes of the file, so a renamed file of another type is refused. */
     private static String detect(byte[] b, int n) {
         if (n >= 3 && (b[0] & 0xFF) == 0xFF && (b[1] & 0xFF) == 0xD8 && (b[2] & 0xFF) == 0xFF) {
             return "jpg";

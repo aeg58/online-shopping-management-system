@@ -19,7 +19,6 @@ public class WebConfig implements WebMvcConfigurer {
         this.productImages = productImages;
     }
 
-    /** Photos uploaded by sellers are served from the upload folder, outside the application jar. */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/uploads/products/**")

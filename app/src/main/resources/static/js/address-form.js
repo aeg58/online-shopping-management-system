@@ -1,5 +1,3 @@
-// Address form: the district list follows the city, the neighborhood list follows the district,
-// and the postal code follows the neighborhood. The data files come from static/data/tr (TurkiyeAPI, MIT).
 (function () {
     const city = document.querySelector('[data-address-city]');
     const district = document.querySelector('[data-address-district]');

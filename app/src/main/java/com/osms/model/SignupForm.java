@@ -1,9 +1,5 @@
 package com.osms.model;
 
-/**
- * Values typed into the sign up forms. The customer form uses the name, phone and birth date fields,
- * the seller form uses the store fields. Lengths follow the Users, Customers and Sellers tables.
- */
 public class SignupForm {
 
     private String username = "";
@@ -17,7 +13,6 @@ public class SignupForm {
     private String storeName = "";
     private String taxNumber = "";
 
-    /** A copy without the passwords, so they are never sent back to the page. */
     public SignupForm withoutPasswords() {
         SignupForm copy = new SignupForm();
         copy.username = username;

@@ -1,5 +1,3 @@
-// Small page scripts: totals update while the customer changes a quantity, coupon or shipping company.
-// Every amount is checked again by the server when the form is sent.
 (function () {
     'use strict';
 
@@ -11,7 +9,6 @@
         return Math.round(parseFloat(value) * 100);
     }
 
-    // Forms that need a second click to be sure, for example cancelling an order
     document.querySelectorAll('form[data-confirm]').forEach(function (form) {
         form.addEventListener('submit', function (event) {
             if (!window.confirm(form.dataset.confirm)) {
@@ -20,7 +17,6 @@
         });
     });
 
-    // Product page: price x quantity
     document.querySelectorAll('[data-live-quantity]').forEach(function (input) {
         var total = input.form.querySelector('[data-live-total]');
         var unitCents = toCents(input.dataset.unitPrice);
@@ -30,7 +26,6 @@
         });
     });
 
-    // Cart page: save the new quantity and show the totals from the server
     document.querySelectorAll('form[data-live-cart]').forEach(function (form) {
         var row = form.closest('tr');
         var input = form.querySelector('input[name="quantity"]');
@@ -72,7 +67,6 @@
         });
     });
 
-    // Checkout page: order summary follows the coupon code and the shipping company
     document.querySelectorAll('form[data-live-checkout]').forEach(function (form) {
         var coupon = form.querySelector('[name="couponCode"]');
         var company = form.querySelector('[name="shippingCompanyId"]');

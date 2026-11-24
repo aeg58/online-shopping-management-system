@@ -1,6 +1,5 @@
 package com.osms.model;
 
-/** Values typed into the address form. Lengths follow the Addresses table. */
 public class AddressForm {
 
     private String title = "";
@@ -8,9 +7,7 @@ public class AddressForm {
     private String city = "";
     private String district = "";
     private String addressLine = "";
-    /** Neighborhood or village label chosen from the list, for example "Özlüce Mah.". */
     private String neighborhood = "";
-    /** Street, building and flat number typed by the customer. */
     private String street = "";
     private String postalCode = "";
     private boolean defaultAddress;

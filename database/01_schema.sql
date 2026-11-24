@@ -4,7 +4,6 @@ GO
 USE shoppingmngmntsystem;
 GO
 
-/* ============================ 1. Roles ============================ */
 CREATE TABLE Roles (
     RoleID    INT IDENTITY(1,1),
     RoleName  VARCHAR(20) NOT NULL,
@@ -14,7 +13,6 @@ CREATE TABLE Roles (
     CONSTRAINT CK_Roles_RoleName CHECK (RoleName IN ('Admin', 'Seller', 'Customer'))
 );
 
-/* ============================ 2. Users ============================ */
 CREATE TABLE Users (
     UserID        INT IDENTITY(1,1),
     RoleID        INT NOT NULL,
@@ -31,7 +29,6 @@ CREATE TABLE Users (
     CONSTRAINT CK_Users_Email CHECK (Email LIKE '%@%')
 );
 
-/* ========================== 3. Customers ========================== */
 CREATE TABLE Customers (
     CustomerID  INT IDENTITY(1,1),
     UserID      INT NOT NULL,
@@ -46,7 +43,6 @@ CREATE TABLE Customers (
     CONSTRAINT CK_Customers_BirthDate CHECK (BirthDate < GETDATE())
 );
 
-/* ========================== 4. Addresses ========================== */
 CREATE TABLE Addresses (
     AddressID    INT IDENTITY(1,1),
     CustomerID   INT NOT NULL,
@@ -62,7 +58,6 @@ CREATE TABLE Addresses (
     CONSTRAINT FK_Addresses_Customers FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
-/* =========================== 5. Sellers =========================== */
 CREATE TABLE Sellers (
     SellerID    INT IDENTITY(1,1),
     UserID      INT NOT NULL,
@@ -78,7 +73,6 @@ CREATE TABLE Sellers (
     CONSTRAINT UQ_Sellers_TaxNumber UNIQUE (TaxNumber)
 );
 
-/* ========================= 6. Categories ========================== */
 CREATE TABLE Categories (
     CategoryID    INT IDENTITY(1,1),
     CategoryName  VARCHAR(100) NOT NULL,
@@ -88,7 +82,6 @@ CREATE TABLE Categories (
     CONSTRAINT UQ_Categories_CategoryName UNIQUE (CategoryName)
 );
 
-/* ========================== 7. Products =========================== */
 CREATE TABLE Products (
     ProductID    INT IDENTITY(1,1),
     SellerID     INT NOT NULL,
@@ -105,7 +98,6 @@ CREATE TABLE Products (
     CONSTRAINT CK_Products_Price CHECK (Price >= 0)
 );
 
-/* ========================== 8. Inventory ========================== */
 CREATE TABLE Inventory (
     InventoryID      INT IDENTITY(1,1),
     ProductID        INT NOT NULL,
@@ -118,7 +110,6 @@ CREATE TABLE Inventory (
     CONSTRAINT CK_Inventory_Quantity CHECK (QuantityInStock >= 0)
 );
 
-/* ============================ 9. Carts ============================ */
 CREATE TABLE Carts (
     CartID      INT IDENTITY(1,1),
     CustomerID  INT NOT NULL,
@@ -130,7 +121,6 @@ CREATE TABLE Carts (
     CONSTRAINT CK_Carts_Status CHECK (Status IN ('Active', 'CheckedOut', 'Abandoned'))
 );
 
-/* ========================== 10. CartItems ========================= */
 CREATE TABLE CartItems (
     CartItemID  INT IDENTITY(1,1),
     CartID      INT NOT NULL,
@@ -144,7 +134,6 @@ CREATE TABLE CartItems (
     CONSTRAINT CK_CartItems_Quantity CHECK (Quantity > 0)
 );
 
-/* =========================== 11. Coupons ========================== */
 CREATE TABLE Coupons (
     CouponID        INT IDENTITY(1,1),
     Code            VARCHAR(30) NOT NULL,
@@ -167,7 +156,6 @@ CREATE TABLE Coupons (
     CONSTRAINT CK_Coupons_Usage CHECK (UsageLimit > 0 AND UsedCount >= 0 AND UsedCount <= UsageLimit)
 );
 
-/* ============================ 12. Orders ========================== */
 CREATE TABLE Orders (
     OrderID         INT IDENTITY(1,1),
     CustomerID      INT NOT NULL,
@@ -187,7 +175,6 @@ CREATE TABLE Orders (
     CONSTRAINT CK_Orders_TotalAmount CHECK (TotalAmount >= 0)
 );
 
-/* ========================== 13. OrderItems ======================== */
 CREATE TABLE OrderItems (
     OrderItemID  INT IDENTITY(1,1),
     OrderID      INT NOT NULL,
@@ -203,7 +190,6 @@ CREATE TABLE OrderItems (
     CONSTRAINT CK_OrderItems_UnitPrice CHECK (UnitPrice >= 0)
 );
 
-/* =========================== 14. Payments ========================= */
 CREATE TABLE Payments (
     PaymentID  INT IDENTITY(1,1),
     OrderID    INT NOT NULL,
@@ -219,7 +205,6 @@ CREATE TABLE Payments (
     CONSTRAINT CK_Payments_Amount CHECK (Amount > 0)
 );
 
-/* ====================== 15. ShippingCompanies ===================== */
 CREATE TABLE ShippingCompanies (
     ShippingCompanyID  INT IDENTITY(1,1),
     CompanyName        VARCHAR(100) NOT NULL,
@@ -231,7 +216,6 @@ CREATE TABLE ShippingCompanies (
     CONSTRAINT CK_ShippingCompanies_BaseFee CHECK (BaseFee >= 0)
 );
 
-/* =========================== 16. Shipments ======================== */
 CREATE TABLE Shipments (
     ShipmentID         INT IDENTITY(1,1),
     OrderID            INT NOT NULL,
@@ -250,7 +234,6 @@ CREATE TABLE Shipments (
     CONSTRAINT CK_Shipments_Dates CHECK (DeliveredDate >= ShippedDate)
 );
 
-/* ============================ 17. Reviews ========================= */
 CREATE TABLE Reviews (
     ReviewID    INT IDENTITY(1,1),
     ProductID   INT NOT NULL,
@@ -266,7 +249,6 @@ CREATE TABLE Reviews (
     CONSTRAINT CK_Reviews_Rating CHECK (Rating BETWEEN 1 AND 5)
 );
 
-/* ============================ 18. Returns ========================= */
 CREATE TABLE Returns (
     ReturnID      INT IDENTITY(1,1),
     OrderID       INT NOT NULL,
@@ -280,27 +262,19 @@ CREATE TABLE Returns (
     CONSTRAINT PK_Returns PRIMARY KEY (ReturnID),
     CONSTRAINT FK_Returns_Orders FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     CONSTRAINT FK_Returns_Products FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
-    -- the product must really be part of that order (BR11)
     CONSTRAINT FK_Returns_OrderItems FOREIGN KEY (OrderID, ProductID) REFERENCES OrderItems(OrderID, ProductID),
     CONSTRAINT CK_Returns_Quantity CHECK (Quantity > 0),
     CONSTRAINT CK_Returns_Status CHECK (Status IN ('Requested', 'Approved', 'Rejected', 'Refunded')),
     CONSTRAINT CK_Returns_RefundAmount CHECK (RefundAmount >= 0)
 );
 
-/* ==================== Additions for the interface ==================== */
--- The admin writes why a return request was rejected; the customer sees it.
 ALTER TABLE Returns ADD RejectReason VARCHAR(255) NULL;
 
--- The customer picks the shipping company at checkout; its BaseFee is added
--- to the order total and the admin ships the order with this company.
 ALTER TABLE Orders ADD ShippingCompanyID INT NULL;
 ALTER TABLE Orders ADD CONSTRAINT FK_Orders_ShippingCompanies
     FOREIGN KEY (ShippingCompanyID) REFERENCES ShippingCompanies(ShippingCompanyID);
 
--- The shipping fee is kept on the order, so a later change of BaseFee does not change old orders.
 ALTER TABLE Orders ADD ShippingFee DECIMAL(10,2) NOT NULL DEFAULT 0;
 ALTER TABLE Orders ADD CONSTRAINT CK_Orders_ShippingFee CHECK (ShippingFee >= 0);
 
--- When a customer edits an address that an order already uses, the old row is kept for that
--- order (IsActive = 0) and the edited address is saved as a new row.
 ALTER TABLE Addresses ADD IsActive BIT NOT NULL DEFAULT 1;

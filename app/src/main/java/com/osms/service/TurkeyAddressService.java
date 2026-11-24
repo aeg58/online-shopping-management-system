@@ -14,17 +14,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
-/**
- * Province, district and neighborhood/village names of Türkiye (static/data/tr, from TurkiyeAPI, MIT).
- * Address forms offer only these places, and the server checks every submitted address against them.
- * The Addresses columns are VARCHAR, so names are saved without Turkish letters, like the sample data
- * ("Cankaya", "Istanbul"); matching ignores those letters too.
- */
 @Service
 public class TurkeyAddressService {
 
     public record Place(String name, String postalCode, boolean village) {
-        /** The text written at the start of AddressLine, for example "Ozluce Mah." or "Akdurak Koyu". */
         public String label() {
             return name + (village ? " Köyü" : " Mah.");
         }
@@ -36,7 +29,6 @@ public class TurkeyAddressService {
     public record Province(int id, String name, List<District> districts) {
     }
 
-    /** A checked address with the official names and the postal code of the chosen place. */
     public record Match(Province province, District district, Place place) {
     }
 
@@ -92,7 +84,6 @@ public class TurkeyAddressService {
         return district(provinceName, districtName).map(District::places).orElse(Collections.emptyList());
     }
 
-    /** Finds a place by its label ("Ozluce Mah.") or by its name alone. */
     public Optional<Place> place(String provinceName, String districtName, String placeLabel) {
         String key = key(placeLabel);
         return places(provinceName, districtName).stream()
@@ -110,10 +101,6 @@ public class TurkeyAddressService {
         return Optional.of(new Match(province.get(), district.get(), place.get()));
     }
 
-    /**
-     * Splits a saved AddressLine such as "Ozluce Mah., 15. Sk. No:9" into the place and the rest.
-     * Returns empty when the line does not start with a place of that district (older addresses).
-     */
     public Optional<String[]> splitLine(String provinceName, String districtName, String addressLine) {
         if (addressLine == null) {
             return Optional.empty();
@@ -127,7 +114,6 @@ public class TurkeyAddressService {
         return place(provinceName, districtName, head).map(p -> new String[] {p.label(), rest});
     }
 
-    /** "Şişli" becomes "Sisli": the form the VARCHAR columns keep. */
     public static String plain(String text) {
         StringBuilder out = new StringBuilder(text.length());
         for (char c : text.toCharArray()) {
@@ -143,7 +129,6 @@ public class TurkeyAddressService {
         return out.toString();
     }
 
-    /** Comparison key: no Turkish letters, no case, single spaces. */
     public static String key(String text) {
         if (text == null) {
             return "";

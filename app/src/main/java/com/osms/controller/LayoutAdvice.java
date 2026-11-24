@@ -16,7 +16,6 @@ public class LayoutAdvice {
         this.productImages = productImages;
     }
 
-    /** Lets every page ask for a product picture: ${productImages.url(productId)}. */
     @ModelAttribute("productImages")
     public ProductImageService productImages() {
         return productImages;

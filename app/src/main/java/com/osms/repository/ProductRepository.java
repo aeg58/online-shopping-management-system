@@ -47,7 +47,6 @@ public class ProductRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    /** A categoryId of 0 means all categories. */
     public List<ProductView> findActive(int categoryId, String search) {
         return jdbcTemplate.query(FIND_ACTIVE, PRODUCT_MAPPER, categoryId, categoryId, "%" + search + "%");
     }

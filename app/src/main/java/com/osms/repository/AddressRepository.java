@@ -76,18 +76,15 @@ public class AddressRepository {
         return count != null && count > 0;
     }
 
-    /** The row stays for the orders that use it but is no longer shown or offered at checkout. */
     public void deactivate(int addressId, int customerId) {
         jdbcTemplate.update("UPDATE Addresses SET IsActive = 0, IsDefault = 0 WHERE AddressID = ? AND CustomerID = ?",
                 addressId, customerId);
     }
 
-    /** Only one default address per customer: the others lose the mark. */
     public void clearDefault(int customerId) {
         jdbcTemplate.update("UPDATE Addresses SET IsDefault = 0 WHERE CustomerID = ?", customerId);
     }
 
-    /** Deletes the address only if no order ships to it. Returns the number of deleted rows. */
     public int deleteUnused(int addressId, int customerId) {
         return jdbcTemplate.update("""
                 DELETE FROM Addresses

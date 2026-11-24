@@ -22,8 +22,6 @@ public class CartRepository {
             ORDER BY CartID
             """;
 
-    /* The locks are held until the transaction ends, so two requests of the same
-       customer cannot create two active carts at the same time (business rule BR6). */
     private static final String LOCK_ACTIVE_CART = """
             SELECT TOP 1 CartID
             FROM Carts WITH (UPDLOCK, HOLDLOCK)

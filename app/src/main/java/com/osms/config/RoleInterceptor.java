@@ -29,7 +29,6 @@ public class RoleInterceptor implements HandlerInterceptor {
             response.sendRedirect(request.getContextPath() + "/login");
             return false;
         }
-        // An account disabled by the admin loses access immediately
         if (!userRepository.isActive(user.getUserId())) {
             session.invalidate();
             response.sendRedirect(request.getContextPath() + "/login");

@@ -58,7 +58,6 @@ public class UserRepository {
                 .stream().findFirst();
     }
 
-    /* UQ_Users_Username, UQ_Users_Email and CK_Users_Email reject a taken or invalid value. */
     public int insertUser(int roleId, String username, String email, String passwordHash) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
@@ -81,7 +80,6 @@ public class UserRepository {
                 """, userId, firstName, lastName, phone, birthDate == null ? null : Date.valueOf(birthDate));
     }
 
-    /* A new store starts with IsApproved = 0 (the column default) and waits for the admin. */
     public void insertSeller(int userId, String storeName, String taxNumber, String phone) {
         jdbcTemplate.update("INSERT INTO Sellers (UserID, StoreName, TaxNumber, Phone) VALUES (?, ?, ?, ?)",
                 userId, storeName, taxNumber, phone);

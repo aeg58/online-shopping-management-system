@@ -51,7 +51,6 @@ public class AddressController {
         return "shop/address-form";
     }
 
-    /** The lists of the form: all provinces, and the districts and places of the chosen ones. */
     private void addChoices(Model model) {
         AddressForm form = (AddressForm) model.getAttribute("form");
         addressService.prepare(form);

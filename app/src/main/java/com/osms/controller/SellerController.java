@@ -28,7 +28,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 
-/** The SellerID always comes from the session, never from a request parameter. */
 @Controller
 @RequestMapping("/seller")
 public class SellerController {
@@ -78,7 +77,6 @@ public class SellerController {
                              Model model,
                              RedirectAttributes redirectAttributes) {
         try {
-            // The photo is checked first, so a wrong file does not leave a product without it
             String photoExtension = productImages.check(photo);
             int productId = sellerProductService.addProduct(user.getSellerId(), form);
             if (photoExtension != null) {

@@ -18,10 +18,6 @@ public class AddressService {
         this.turkey = turkey;
     }
 
-    /**
-     * Prepares a form for the page: city, district and neighborhood get their official names so the
-     * lists can select them, and a saved AddressLine is split into the neighborhood and the street.
-     */
     public void prepare(AddressForm form) {
         turkey.province(form.getCity()).ifPresent(p -> form.setCity(p.name()));
         turkey.district(form.getCity(), form.getDistrict()).ifPresent(d -> form.setDistrict(d.name()));
@@ -47,11 +43,6 @@ public class AddressService {
                 makeDefault);
     }
 
-    /**
-     * An address that no order uses is changed in place. If an order already ships to it, the old row is kept
-     * for that order and hidden, and the edited address is saved as a new row, so old orders keep their address.
-     * Returns true when a new row was created.
-     */
     @Transactional
     public boolean updateAddress(int customerId, int addressId, AddressForm form) {
         Values v = clean(form);
@@ -72,7 +63,6 @@ public class AddressService {
         return true;
     }
 
-    /** An address that an order ships to cannot be deleted (the Orders table refers to it). */
     @Transactional
     public void deleteAddress(int customerId, int addressId) {
         if (!addressRepository.belongsToCustomer(addressId, customerId)) {
@@ -87,10 +77,6 @@ public class AddressService {
                           String postalCode) {
     }
 
-    /**
-     * The city, district and neighborhood must come from the official lists; the customer types only the
-     * street and building. Names are saved without Turkish letters because the columns are VARCHAR.
-     */
     private Values clean(AddressForm form) {
         String title = text(form.getTitle(), "Title", 50, true);
         TurkeyAddressService.Match match = turkey.match(form.getCity(), form.getDistrict(), form.getNeighborhood())

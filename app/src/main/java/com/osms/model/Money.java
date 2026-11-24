@@ -5,7 +5,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-/** Formats amounts the same way as the templates: 1,234.50 ₺ */
 public final class Money {
 
     private Money() {

@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
-/** Sign up for new customers and sellers. A signed-in user is sent to their own home page. */
 @Controller
 @RequestMapping("/signup")
 public class SignupController {

@@ -30,8 +30,6 @@ public class ReturnRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    /* UPDLOCK makes two return requests for the same order item wait for each other,
-       so together they can never be more than the ordered quantity. */
     public Optional<Integer> lockOrderedQuantity(int orderId, int productId) {
         return jdbcTemplate.queryForList(
                 "SELECT Quantity FROM OrderItems WITH (UPDLOCK, ROWLOCK) WHERE OrderID = ? AND ProductID = ?",

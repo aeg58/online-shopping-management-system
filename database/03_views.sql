@@ -1,7 +1,6 @@
 USE shoppingmngmntsystem
 GO
 
-/* 1. User accounts with their role name  (Users + Roles) */
 SELECT u.UserID,
        u.Username,
        u.Email,
@@ -11,8 +10,6 @@ SELECT u.UserID,
 FROM Users u
 JOIN Roles r ON r.RoleID = u.RoleID;
 
-/* 2. Product catalog: product + category + seller store + stock
-      (Products + Categories + Sellers + Inventory) */
 SELECT p.ProductID,
        p.ProductName,
        p.Price,
@@ -25,8 +22,6 @@ JOIN Categories c ON c.CategoryID = p.CategoryID
 JOIN Sellers    s ON s.SellerID   = p.SellerID
 JOIN Inventory  i ON i.ProductID  = p.ProductID;
 
-/* 3. One row per order: who ordered, ship-to city, coupon used
-      (Orders + Customers + Addresses + Coupons) */
 SELECT o.OrderID,
        o.OrderDate,
        o.Status AS OrderStatus,
@@ -41,8 +36,6 @@ JOIN Customers c  ON c.CustomerID = o.CustomerID
 JOIN Addresses a  ON a.AddressID  = o.AddressID
 LEFT JOIN Coupons cp ON cp.CouponID = o.CouponID;
 
-/* 4. One row per item inside an order, with the line total
-      (OrderItems + Orders + Customers + Products) */
 SELECT oi.OrderItemID,
        oi.OrderID,
        o.OrderDate,
@@ -58,7 +51,6 @@ JOIN Orders    o ON o.OrderID    = oi.OrderID
 JOIN Customers c ON c.CustomerID = o.CustomerID
 JOIN Products  p ON p.ProductID  = oi.ProductID;
 
-/* 5. Payments of every order  (Payments + Orders + Customers) */
 SELECT pay.PaymentID,
        o.OrderID,
        c.FirstName + ' ' + c.LastName AS CustomerName,
@@ -70,8 +62,6 @@ FROM Payments pay
 JOIN Orders    o ON o.OrderID    = pay.OrderID
 JOIN Customers c ON c.CustomerID = o.CustomerID;
 
-/* 6. Shipment tracking: order + customer + city + shipping company
-      (Shipments + Orders + Customers + Addresses + ShippingCompanies) */
 SELECT s.ShipmentID,
        s.OrderID,
        c.FirstName + ' ' + c.LastName AS CustomerName,
@@ -87,8 +77,6 @@ JOIN Customers         c  ON c.CustomerID        = o.CustomerID
 JOIN Addresses         a  ON a.AddressID         = o.AddressID
 JOIN ShippingCompanies sc ON sc.ShippingCompanyID = s.ShippingCompanyID;
 
-/* 7. Product reviews with product and customer names
-      (Reviews + Products + Customers) */
 SELECT r.ReviewID,
        p.ProductID,
        p.ProductName,
@@ -100,8 +88,6 @@ FROM Reviews r
 JOIN Products  p ON p.ProductID  = r.ProductID
 JOIN Customers c ON c.CustomerID = r.CustomerID;
 
-/* 8. Return requests with customer and product
-      (Returns + Orders + Customers + Products) */
 SELECT rt.ReturnID,
        rt.OrderID,
        c.FirstName + ' ' + c.LastName AS CustomerName,
@@ -116,8 +102,6 @@ JOIN Orders    o ON o.OrderID    = rt.OrderID
 JOIN Customers c ON c.CustomerID = o.CustomerID
 JOIN Products  p ON p.ProductID  = rt.ProductID;
 
-/* 9. What is currently inside customers' ACTIVE carts
-      (Carts + Customers + CartItems + Products) */
 SELECT ca.CartID,
        c.FirstName + ' ' + c.LastName AS CustomerName,
        p.ProductName,

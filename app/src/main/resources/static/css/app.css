@@ -70,7 +70,6 @@ body {
     max-width: 40rem;
 }
 
-/* Product pictures */
 .product-card-img {
     aspect-ratio: 4 / 3;
     background: var(--bs-tertiary-bg);
@@ -117,7 +116,6 @@ body {
     container-type: inline-size;
 }
 
-/* On narrow screens every cart row becomes a card, so no button is hidden off screen */
 @container (width < 600px) {
     .table.cart-table,
     .table.cart-table tbody,
@@ -186,14 +184,12 @@ body {
     }
 }
 
-/* Return labels on the customer's order page */
 .return-badge { font-weight: 500; border: 1px solid transparent; }
 .return-requested { background: #fff7e6; color: #7a4b00; border-color: #f0d199; }
 .return-approved { background: #e8f1fb; color: #1b4f86; border-color: #b9d2ee; }
 .return-refunded { background: #e6f4f1; color: #0f5a53; border-color: #a9d6cf; }
 .return-rejected { background: #fdecec; color: #8a1f1f; border-color: #efb8b8; }
 
-/* Reject button opens a small reason form */
 .reject-box summary { list-style: none; }
 .reject-box summary::-webkit-details-marker { display: none; }
 @media (min-width: 576px) {

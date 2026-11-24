@@ -60,7 +60,6 @@ public class AdminRepository {
             ORDER BY r.RequestDate DESC, r.ReturnID DESC
             """;
 
-    /* The row stays locked until the transaction ends, so a return cannot be refunded twice. */
     private static final String LOCK_RETURN = """
             SELECT r.ReturnID, r.ProductID, r.Quantity, r.Status, r.Quantity * oi.UnitPrice AS RefundAmount
             FROM Returns r WITH (UPDLOCK, ROWLOCK)
@@ -164,7 +163,6 @@ public class AdminRepository {
                 """, orderId);
     }
 
-    /** Money already taken is refunded; a payment that was never collected fails. */
     public void cancelPayments(int orderId) {
         jdbcTemplate.update("""
                 UPDATE Payments
@@ -225,7 +223,6 @@ public class AdminRepository {
                 quantity, productId);
     }
 
-    /** The shipping company the customer chose at checkout, or empty for older orders. */
     public Optional<Integer> findChosenShippingCompany(int orderId) {
         return jdbcTemplate.query("SELECT ShippingCompanyID FROM Orders WHERE OrderID = ? AND ShippingCompanyID IS NOT NULL",
                 (rs, rowNum) -> rs.getInt("ShippingCompanyID"), orderId).stream().findFirst();

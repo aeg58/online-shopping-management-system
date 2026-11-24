@@ -62,7 +62,6 @@ public class AdminService {
         }
     }
 
-    /** The discount rules are checked by the CHECK constraints of the Coupons table. */
     public void addCoupon(CouponForm form) {
         String code = form.getCode().trim().toUpperCase(Locale.ROOT);
         if (code.isEmpty()) {
@@ -79,23 +78,11 @@ public class AdminService {
                 parseUsageLimit(form.getUsageLimit()));
     }
 
-    /**
-     * Changes the order status in one transaction. Cancelling an order puts its items back into stock,
-     * gives the coupon use back, refunds the payment and marks a shipment on the way as Returned.
-     * A delivered order is returned with a return request instead, and a cancelled order stays cancelled,
-     * so stock can never be added back twice.
-     */
-    /** Locks the order row until the transaction ends and returns its status. */
     public String lockOrderStatus(int orderId) {
         return adminRepository.lockOrderStatus(orderId)
                 .orElseThrow(() -> new AdminRequestException("This order was not found"));
     }
 
-    /**
-     * Cancels an order in one transaction: stock, coupon use and payment are given back.
-     * The admin cannot set other statuses by hand: an order becomes Shipped and Delivered only
-     * through the shipment, so a paid order can never be moved back to Pending.
-     */
     @Transactional
     public void cancelOrder(int orderId) {
         String currentStatus = adminRepository.lockOrderStatus(orderId)
@@ -114,7 +101,6 @@ public class AdminService {
         adminRepository.updateOrderStatus(orderId, CANCELLED);
     }
 
-    /** Creates the shipment and marks the order as shipped in one transaction. */
     @Transactional
     public void createShipment(int orderId, int shippingCompanyId, String trackingNumber) {
         String tracking = trackingNumber.trim();
@@ -129,7 +115,6 @@ public class AdminService {
         if ("Cancelled".equals(status) || "Delivered".equals(status)) {
             throw new AdminRequestException("A " + status.toLowerCase(Locale.ROOT) + " order cannot be shipped");
         }
-        // The customer paid the fee of the company chosen at checkout, so the order is shipped with that company
         int chosenCompany = adminRepository.findChosenShippingCompany(orderId).orElse(shippingCompanyId);
         if (chosenCompany != shippingCompanyId) {
             throw new AdminRequestException("This order must be shipped with the company the customer chose");
@@ -139,7 +124,6 @@ public class AdminService {
         adminRepository.updateOrderStatus(orderId, "Shipped");
     }
 
-    /** Marks the shipment and the order as delivered in one transaction. Cash is collected on delivery. */
     @Transactional
     public void markDelivered(int orderId) {
         String currentStatus = adminRepository.lockOrderStatus(orderId)
@@ -159,7 +143,6 @@ public class AdminService {
         decideReturn(returnId, "Approved");
     }
 
-    /** The admin must say why; the customer sees the reason on the order page. */
     @Transactional
     public void rejectReturn(int returnId, String rejectReason) {
         String reason = rejectReason.trim();
@@ -176,7 +159,6 @@ public class AdminService {
         adminRepository.rejectReturn(returnId, reason);
     }
 
-    /** Refunds the return and puts the returned quantity back into stock in one transaction. */
     @Transactional
     public void refundReturn(int returnId) {
         ReturnRecord record = lockReturn(returnId);

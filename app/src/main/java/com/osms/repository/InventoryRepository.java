@@ -12,8 +12,6 @@ public class InventoryRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    /* UPDLOCK keeps the stock row locked until the transaction ends,
-       so two orders cannot sell the same last unit. */
     public int lockStock(int productId) {
         Integer stock = jdbcTemplate.queryForObject(
                 "SELECT QuantityInStock FROM Inventory WITH (UPDLOCK, ROWLOCK) WHERE ProductID = ?",

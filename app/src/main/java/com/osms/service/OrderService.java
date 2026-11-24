@@ -50,10 +50,6 @@ public class OrderService {
         this.adminService = adminService;
     }
 
-    /**
-     * The customer cancels an order that is not shipped yet (Pending or Paid).
-     * It runs the same cancellation as the admin: stock, coupon use and payment are given back in one transaction.
-     */
     @Transactional
     public void cancelByCustomer(int customerId, int orderId) {
         orderRepository.findForCustomer(orderId, customerId)
@@ -65,18 +61,6 @@ public class OrderService {
         adminService.cancelOrder(orderId);
     }
 
-    /**
-     * Places an order as ONE database transaction. If any step fails, every step is rolled back.
-     *
-     * 1. Lock and re-check the stock of every cart item.
-     * 2. Validate the coupon (optional) and calculate the discount, then add the shipping fee.
-     * 3. Insert the order with status Pending and the chosen shipping company.
-     * 4. Insert the order items with the current product price (business rule BR7).
-     * 5. Decrease the stock.
-     * 6. Increase the used count of the coupon.
-     * 7. Insert the payment. Paid methods also change the order status to Paid.
-     * 8. Mark the cart as CheckedOut.
-     */
     @Transactional
     public int placeOrder(int customerId, int addressId, int shippingCompanyId, String couponCode,
                           String paymentMethod) {
@@ -90,7 +74,6 @@ public class OrderService {
 
         int cartId = cartRepository.lockActiveCartId(customerId)
                 .orElseThrow(() -> new CheckoutException("Your cart is empty"));
-        // Rows are always locked in the same order, so two orders cannot block each other forever
         List<CartItemView> items = cartRepository.findItems(cartId).stream()
                 .sorted(Comparator.comparingInt(CartItemView::productId))
                 .toList();
@@ -98,7 +81,6 @@ public class OrderService {
             throw new CheckoutException("Your cart is empty");
         }
 
-        // Step 1
         for (CartItemView item : items) {
             int stock = inventoryRepository.lockStock(item.productId());
             if (!item.productActive()) {
@@ -109,7 +91,6 @@ public class OrderService {
             }
         }
 
-        // Step 2
         BigDecimal subtotal = items.stream().map(CartItemView::lineTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
         Coupon coupon = findValidCoupon(couponRepository.lockByCode(couponCode.trim()), couponCode, subtotal);
         BigDecimal discount = coupon == null ? BigDecimal.ZERO : calculateDiscount(coupon, subtotal);
@@ -118,24 +99,19 @@ public class OrderService {
             throw new CheckoutException("The order total must be greater than 0 after the discount");
         }
 
-        // Step 3
         Integer couponId = coupon == null ? null : coupon.couponId();
         int orderId = orderRepository.insertOrder(customerId, addressId, couponId, company.shippingCompanyId(),
                 company.baseFee(), discount, total);
 
         for (CartItemView item : items) {
-            // Step 4
             orderRepository.insertItem(orderId, item.productId(), item.quantity(), item.price());
-            // Step 5
             inventoryRepository.decreaseStock(item.productId(), item.quantity());
         }
 
-        // Step 6
         if (coupon != null) {
             couponRepository.increaseUsedCount(coupon.couponId());
         }
 
-        // Step 7
         if (CASH_ON_DELIVERY.equals(paymentMethod)) {
             paymentRepository.insertPending(orderId, paymentMethod, total);
         } else {
@@ -143,15 +119,10 @@ public class OrderService {
             orderRepository.markPaid(orderId);
         }
 
-        // Step 8
         cartRepository.markCheckedOut(cartId);
         return orderId;
     }
 
-    /**
-     * Calculates the order summary for the checkout page while the customer types a coupon or picks a company.
-     * Nothing is saved; placeOrder checks everything again inside its transaction.
-     */
     public CheckoutSummary previewOrder(List<CartItemView> items, int shippingCompanyId, String couponCode) {
         BigDecimal subtotal = items.stream().map(CartItemView::lineTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
         BigDecimal fee = shipmentRepository.findCompany(shippingCompanyId)

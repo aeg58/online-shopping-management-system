@@ -8,10 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-/**
- * Negative prices and negative stock are not checked here on purpose: the CHECK constraints
- * CK_Products_Price and CK_Inventory_Quantity in the database reject them.
- */
 @Service
 public class SellerProductService {
 
@@ -25,7 +21,6 @@ public class SellerProductService {
         this.sellerRepository = sellerRepository;
     }
 
-    /** Inserts the product and its inventory row in one transaction, returns the new ProductID. */
     @Transactional
     public int addProduct(int sellerId, ProductForm form) {
         int categoryId = parseCategory(form.getCategoryId());
@@ -45,7 +40,6 @@ public class SellerProductService {
         return productId;
     }
 
-    /** Updates the product and its stock in one transaction. */
     @Transactional
     public void updateProduct(int sellerId, int productId, ProductForm form) {
         String description = parseDescription(form.getDescription());

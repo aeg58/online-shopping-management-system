@@ -20,7 +20,6 @@ public class ReviewService {
                 && !reviewRepository.hasReviewed(customerId, productId);
     }
 
-    /** The rating range and the one review per customer rule are checked by the database (BR10). */
     public void addReview(int customerId, int productId, int rating, String comment) {
         if (!reviewRepository.hasPurchased(customerId, productId)) {
             throw new CustomerRequestException("You can review a product after your order is delivered");

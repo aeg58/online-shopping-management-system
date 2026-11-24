@@ -69,7 +69,6 @@ public class CheckoutController {
         return "shop/checkout";
     }
 
-    /** Called by the checkout page script when the coupon or the shipping company changes. */
     @GetMapping("/summary")
     @ResponseBody
     public Map<String, String> summary(@SessionAttribute(SessionUser.SESSION_KEY) SessionUser user,

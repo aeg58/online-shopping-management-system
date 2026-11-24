@@ -14,8 +14,6 @@ import java.util.Optional;
 @Repository
 public class CouponRepository {
 
-    /* UPDLOCK keeps the coupon row locked until the transaction ends,
-       so two orders cannot take the last allowed use of a coupon. */
     private static final String LOCK_BY_CODE = """
             SELECT CouponID, Code, DiscountType, DiscountValue, MinOrderAmount, UsageLimit, UsedCount, IsActive,
                    CASE WHEN CAST(GETDATE() AS DATE) BETWEEN StartDate AND EndDate THEN 1 ELSE 0 END AS InDateRange
@@ -23,7 +21,6 @@ public class CouponRepository {
             WHERE Code = ?
             """;
 
-    // Same columns without the lock: used only to show the discount before the order is placed
     private static final String FIND_BY_CODE = """
             SELECT CouponID, Code, DiscountType, DiscountValue, MinOrderAmount, UsageLimit, UsedCount, IsActive,
                    CASE WHEN CAST(GETDATE() AS DATE) BETWEEN StartDate AND EndDate THEN 1 ELSE 0 END AS InDateRange

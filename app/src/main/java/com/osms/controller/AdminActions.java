@@ -10,7 +10,6 @@ final class AdminActions {
     private AdminActions() {
     }
 
-    /** Runs an admin action and stores its result as a message for the next page. */
     static void perform(RedirectAttributes redirectAttributes, String successMessage, Runnable action) {
         try {
             action.run();

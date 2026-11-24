@@ -1,7 +1,6 @@
 USE shoppingmngmntsystem;
 GO
 
-/* 1. Returns all orders of a given customer */
 CREATE PROCEDURE GetCustomerOrders
 @CustomerID INT
 AS
@@ -12,7 +11,6 @@ BEGIN
 END;
 GO
 
-/* 2. Returns products whose price is between two given values */
 CREATE PROCEDURE GetProductsByPriceRange
 @MinPrice DECIMAL(10,2),
 @MaxPrice DECIMAL(10,2)
@@ -24,7 +22,6 @@ BEGIN
 END;
 GO
 
-/* 3. Returns all orders placed after a given date */
 CREATE PROCEDURE GetOrdersAfterDate
 @OrderDate DATE
 AS
@@ -35,8 +32,6 @@ BEGIN
 END;
 GO
 
-/* 4. Inserts a new category
-      (CategoryID is an IDENTITY column, so SQL Server gives it automatically) */
 CREATE PROCEDURE InsertCategory
 @CategoryName VARCHAR(100),
 @Description VARCHAR(255)
@@ -48,7 +43,6 @@ END;
 GO
 
 
-/* 5. Returns the number of products in each category (no parameter) */
 CREATE PROCEDURE CountProductsPerCategory
 AS
 BEGIN
@@ -59,7 +53,6 @@ BEGIN
 END;
 GO
 
-/* 6. Returns all orders shipped to a given city and the customers who placed them */
 CREATE PROCEDURE GetOrdersByCity
 @City VARCHAR(50)
 AS
@@ -73,7 +66,6 @@ BEGIN
 END;
 GO
 
-/* 7. Takes a category name and returns the products with the id and store name of their seller */
 CREATE PROCEDURE GetProductsWithSeller
 @CategoryName VARCHAR(100)
 AS

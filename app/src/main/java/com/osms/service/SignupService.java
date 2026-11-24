@@ -11,15 +11,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.regex.Pattern;
 
-/**
- * Creates new customer and seller accounts. Only these two roles can sign up; admins are added by hand.
- * A taken username, email, store name or tax number is rejected by the UNIQUE constraints of the database.
- */
 @Service
 public class SignupService {
 
     private static final int MIN_PASSWORD_LENGTH = 6;
-    private static final int MAX_PASSWORD_BYTES = 72; // BCrypt reads at most 72 bytes
+    private static final int MAX_PASSWORD_BYTES = 72;
     private static final Pattern USERNAME = Pattern.compile("[A-Za-z0-9_.]+");
 
     private final UserRepository userRepository;
@@ -30,7 +26,6 @@ public class SignupService {
         this.passwordService = passwordService;
     }
 
-    /** Inserts the Users row and the Customers row in one transaction. */
     @Transactional
     public void signUpCustomer(SignupForm form) {
         String firstName = text(form.getFirstName(), "First name", 50, true);
@@ -42,7 +37,6 @@ public class SignupService {
         userRepository.insertCustomer(userId, firstName, lastName, phone, birthDate);
     }
 
-    /** Inserts the Users row and the Sellers row in one transaction. The store waits for admin approval. */
     @Transactional
     public void signUpSeller(SignupForm form) {
         String storeName = text(form.getStoreName(), "Store name", 100, true);

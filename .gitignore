@@ -1,10 +1,8 @@
-# OS / editors
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 *.iml
-# Build output
 target/
 build/
 out/
@@ -15,11 +13,8 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-# Secrets: never commit passwords
 .env
 application-local.properties
 appsettings.Development.json
-# Office temp files
 ~$*
-# Product photos uploaded while testing the app
 app/uploads/

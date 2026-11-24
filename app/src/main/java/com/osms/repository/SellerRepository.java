@@ -15,7 +15,6 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
-/** Every query filters by SellerID, so a seller can only reach his own products (business rule BR13). */
 @Repository
 public class SellerRepository {
 

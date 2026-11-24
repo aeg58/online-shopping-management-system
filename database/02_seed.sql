@@ -1,10 +1,8 @@
 USE shoppingmngmntsystem;
 GO
 
-/* ============================ 1. Roles ============================ */
 INSERT INTO Roles (RoleName) VALUES ('Admin'),('Seller'),('Customer');
 
-/* ============================ 2. Users ============================ */
 INSERT INTO Users (RoleID, Username, Email, PasswordHash, IsActive, CreatedAt) VALUES
 (1, 'admin',          'admin@shop.com',            'hash_admin_0001', 1, '2026-01-05'),
 (2, 'techworld',      'contact@techworld.com',     'hash_sell_0002',  1, '2026-01-20'),
@@ -20,7 +18,6 @@ INSERT INTO Users (RoleID, Username, Email, PasswordHash, IsActive, CreatedAt) V
 (3, 'burak_celik',    'burak.celik@mail.com',      'hash_cust_0012',  1, '2026-05-07'),
 (3, 'deniz_aydin',    'deniz.aydin@mail.com',      'hash_cust_0013',  0, '2026-05-30');
 
-/* ========================== 3. Customers ========================== */
 INSERT INTO Customers (UserID, FirstName, LastName, Phone, BirthDate) VALUES
 (6,  'Ali',    'Yilmaz', '+90 532 111 1111', '1998-04-12'),
 (7,  'Ayse',   'Demir',  '+90 533 222 2222', '2000-09-25'),
@@ -31,7 +28,6 @@ INSERT INTO Customers (UserID, FirstName, LastName, Phone, BirthDate) VALUES
 (12, 'Burak',  'Celik',  '+90 538 777 7777', '1994-08-09'),
 (13, 'Deniz',  'Aydin',  NULL,               NULL);
 
-/* ========================== 4. Addresses ========================== */
 INSERT INTO Addresses (CustomerID, Title, Country, City, District, AddressLine, PostalCode, IsDefault) VALUES
 (1, 'Home',   'Turkey', 'Istanbul', 'Fatih',    'Ataturk Cad. No:12 D:3',     '34080', 1),
 (2, 'Home',   'Turkey', 'Ankara',   'Cankaya',  'Kizilay Sk. No:7 D:5',       '06420', 1),
@@ -43,14 +39,12 @@ INSERT INTO Addresses (CustomerID, Title, Country, City, District, AddressLine, 
 (8, 'Home',   'Turkey', 'Eskisehir','Tepebasi', 'Hoyuk Mah. Gul Sk. No:14',   NULL,    1),
 (1, 'Office', 'Turkey', 'Istanbul', 'Sisli',    'Buyukdere Cad. No:100 K:7',  '34394', 0);
 
-/* =========================== 5. Sellers =========================== */
 INSERT INTO Sellers (UserID, StoreName, TaxNumber, Phone, IsApproved) VALUES
 (2, 'TechWorld',    '1234567890', '+90 212 100 1000', 1),
 (3, 'FashionHub',   '2345678901', '+90 212 200 2000', 1),
 (4, 'Home & Books', '3456789012', '+90 212 300 3000', 1),
 (5, 'FitLife',      '4567890123', '+90 212 400 4000', 1);
 
-/* ========================= 6. Categories ========================== */
 INSERT INTO Categories (CategoryName, Description) VALUES
 ('Electronics',    'Computers, accessories and gadgets'),
 ('Clothing',       'Shoes and apparel for all seasons'),
@@ -59,7 +53,6 @@ INSERT INTO Categories (CategoryName, Description) VALUES
 ('Sports',         'Fitness and outdoor equipment'),
 ('Beauty',         'Skin care and personal care');
 
-/* ========================== 7. Products =========================== */
 INSERT INTO Products (SellerID, CategoryID, ProductName, Description, Price, IsActive, CreatedAt) VALUES
 (1, 1, 'Wireless Mouse',        '2.4GHz ergonomic wireless mouse',         24.99, 1, '2026-02-01'),
 (1, 1, 'Mechanical Keyboard',   'RGB mechanical keyboard, blue switch',    79.90, 1, '2026-02-01'),
@@ -78,7 +71,6 @@ INSERT INTO Products (SellerID, CategoryID, ProductName, Description, Price, IsA
 (4, 5, 'Protein Shaker',        '700ml shaker bottle with mixer ball',      9.99, 1, '2026-03-02'),
 (4, 6, 'Face Moisturizer',      'Daily hydrating face cream, 50ml',        18.75, 0, '2026-03-05');
 
-/* ========================== 8. Inventory ========================== */
 INSERT INTO Inventory (ProductID, QuantityInStock, LastUpdated) VALUES
 (1,  150, '2026-11-01'),
 (2,   60, '2026-11-01'),
@@ -97,7 +89,6 @@ INSERT INTO Inventory (ProductID, QuantityInStock, LastUpdated) VALUES
 (15, 200, '2026-11-01'),
 (16,   0, '2026-11-01');
 
-/* ========================== 9. Carts ============================== */
 INSERT INTO Carts (CustomerID, Status, CreatedAt) VALUES
 (1, 'CheckedOut', '2026-09-30'),
 (2, 'CheckedOut', '2026-10-04'),
@@ -108,7 +99,6 @@ INSERT INTO Carts (CustomerID, Status, CreatedAt) VALUES
 (7, 'Active',     '2026-11-15'),
 (1, 'Active',     '2026-11-17');
 
-/* ========================= 10. CartItems ========================== */
 INSERT INTO CartItems (CartID, ProductID, Quantity) VALUES
 (1, 1,  1),
 (1, 2,  1),
@@ -125,20 +115,17 @@ INSERT INTO CartItems (CartID, ProductID, Quantity) VALUES
 (8, 8,  1),
 (8, 16, 2);
 
-/* ========================== 11. Coupons =========================== */
 INSERT INTO Coupons (Code, DiscountType, DiscountValue, MinOrderAmount, StartDate, EndDate, UsageLimit, UsedCount, IsActive) VALUES
 ('WELCOME10',     'Percent', 10.00,  50.00, '2026-01-01', '2026-12-31', 1000,  3, 1),
 ('SAVE20',        'Fixed',   20.00, 100.00, '2026-06-01', '2026-12-31',  500,  2, 1),
 ('SUMMER15',      'Percent', 15.00,  80.00, '2026-06-01', '2026-08-31',  200, 40, 0),
 ('BLACKFRIDAY25', 'Percent', 25.00, 150.00, '2026-11-20', '2026-11-30',  300,  0, 1);
 
-/* ===================== 12. ShippingCompanies ====================== */
 INSERT INTO ShippingCompanies (CompanyName, Phone, BaseFee) VALUES
 ('Yurtici Kargo', '+90 444 99 99', 4.99),
 ('Aras Kargo',    '+90 444 25 52', 3.99),
 ('MNG Kargo',     '+90 444 06 06', 4.49);
 
-/* ============================ 13. Orders ========================== */
 INSERT INTO Orders (CustomerID, AddressID, CouponID, OrderDate, Status, DiscountAmount, TotalAmount) VALUES
 (1, 1, 1,    '2026-10-01', 'Delivered', 10.49,  94.40),
 (2, 2, NULL, '2026-10-05', 'Delivered',  0.00, 118.98),
@@ -151,7 +138,6 @@ INSERT INTO Orders (CustomerID, AddressID, CouponID, OrderDate, Status, Discount
 (1, 9, 1,    '2026-11-08', 'Cancelled',  5.90,  53.10),
 (2, 2, NULL, '2026-11-12', 'Delivered',  0.00, 118.73);
 
-/* ========================= 14. OrderItems ========================= */
 INSERT INTO OrderItems (OrderID, ProductID, Quantity, UnitPrice) VALUES
 (1,  1,  1,  24.99),
 (1,  2,  1,  79.90),
@@ -173,7 +159,6 @@ INSERT INTO OrderItems (OrderID, ProductID, Quantity, UnitPrice) VALUES
 (10, 14, 2,  49.99),
 (10, 16, 1,  18.75);
 
-/* ========================== 15. Payments ========================== */
 INSERT INTO Payments (OrderID, Method, Amount, Status, PaidAt) VALUES
 (1,  'CreditCard',     94.40, 'Completed', '2026-10-01'),
 (2,  'DebitCard',     118.98, 'Completed', '2026-10-05'),
@@ -187,7 +172,6 @@ INSERT INTO Payments (OrderID, Method, Amount, Status, PaidAt) VALUES
 (9,  'CreditCard',     53.10, 'Refunded',  '2026-11-08'),
 (10, 'BankTransfer',  118.73, 'Completed', '2026-11-12');
 
-/* ========================== 16. Shipments ========================= */
 INSERT INTO Shipments (OrderID, ShippingCompanyID, TrackingNumber, Status, ShippedDate, DeliveredDate) VALUES
 (1,  1, '100000000001', 'Delivered', '2026-10-02', '2026-10-04'),
 (2,  2, '200000000002', 'Delivered', '2026-10-06', '2026-10-08'),
@@ -197,7 +181,6 @@ INSERT INTO Shipments (OrderID, ShippingCompanyID, TrackingNumber, Status, Shipp
 (8,  3, '300000000006', 'Delivered', '2026-11-06', '2026-11-09'),
 (10, 1, '100000000007', 'Delivered', '2026-11-13', '2026-11-15');
 
-/* ============================ 17. Reviews ========================= */
 INSERT INTO Reviews (ProductID, CustomerID, Rating, Comment, CreatedAt) VALUES
 (1,  1, 5, 'Works perfectly, very comfortable.',          '2026-10-06'),
 (2,  1, 4, 'Great keyboard but a bit loud.',              '2026-10-06'),
@@ -208,7 +191,6 @@ INSERT INTO Reviews (ProductID, CustomerID, Rating, Comment, CreatedAt) VALUES
 (12, 8, 4, 'Good quality pans for the price.',            '2026-11-12'),
 (14, 2, 5, 'Solid dumbbells, great value.',               '2026-11-17');
 
-/* ============================ 18. Returns ========================= */
 INSERT INTO Returns (OrderID, ProductID, Quantity, Reason, Status, RequestDate, RefundAmount) VALUES
 (5,  13, 1, 'Mat too thin for my needs',       'Approved',  '2026-10-27', 22.00),
 (2,  6,  1, 'Wrong size',                      'Refunded',  '2026-10-12', 14.99),

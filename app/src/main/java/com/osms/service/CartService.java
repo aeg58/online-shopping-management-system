@@ -31,7 +31,6 @@ public class CartService {
         return items.stream().map(CartItemView::lineTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    /** Adds a product to the active cart and returns the product name. */
     @Transactional
     public String addItem(int customerId, int productId, int quantity) {
         checkQuantity(quantity);
