@@ -1,36 +1,4 @@
-/* =====================================================================
-   Online Shopping Management System - Schema (SQL Server)
-   Author: Mohammed (Database Design)
-   File  : database/01_schema.sql
-
-   BUSINESS RULES
-   BR1  Every user has exactly one role: Admin, Seller or Customer.
-   BR2  A Customer or Seller profile belongs to exactly one User (1:1).
-   BR3  A customer can have many addresses; an order ships to one of them.
-   BR4  Every product belongs to one seller and one category.
-   BR5  Stock can never be negative; each product has one inventory row.
-   BR6  A customer has at most one ACTIVE cart;
-        a product appears only once in a cart.
-   BR7  Order items store the price at purchase time (UnitPrice).
-   BR8  A coupon is valid only between StartDate and EndDate and until
-        UsageLimit is reached.
-        Percent discounts are between 1 and 100.
-   BR9  An order can have one or more payments and at most one shipment.
-   BR10 A customer can review a product only once, rating 1-5.
-   BR11 A return refers to one specific order item.
-   BR12 Prices, quantities and amounts cannot be negative.
-   BR13 A seller can only change the stock of his own products.
-   ===================================================================== */
-
---------------------------------------------------------------------
--- End of Section 1
-
-
--- Begining of Section 2
---------------------------------------------------------------------
-
-/* ============================ Database Creation ============================ */
-   CREATE DATABASE shoppingmngmntsystem;
+CREATE DATABASE shoppingmngmntsystem;
 GO
 
 USE shoppingmngmntsystem;
